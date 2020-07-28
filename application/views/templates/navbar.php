@@ -48,7 +48,7 @@
             <ul class="navbar-nav float-left mr-auto">
 
             </ul>
-            <h5 class="card-header" style="color:#fff;">SDN BADEAN 1 BONDOWOSO</h5>
+            <h5 class="card-header" style="color:#fff;">Hi ! AJI PRATAMA</h5>
             <!-- ============================================================== -->
             <!-- Right side toggle and nav items -->
             <!-- ============================================================== -->
