@@ -36,7 +36,7 @@
                 <nav class="main-menu mobile-menu">
                     <ul>
                         <li><a class="active" href="./index.html">Home</a></li>
-                        <li><a href="./categories.html">Shop</a>
+                        <li><a href="./categories.html">Galeri Foto</a>
                             <ul class="sub-menu">
                                 <li><a href="product-page.html">Product Page</a></li>
                                 <li><a href="shopping-cart.html">Shopping Card</a></li>
