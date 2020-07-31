@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1>Studio</h1>
-                            <h2>Foto.</h2>
+                            <h2>Foto</h2>
                             <a href="#" class="primary-btn">See More</a>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1>Studio</h1>
-                            <h2>Foto.</h2>
+                            <h2>Foto</h2>
                             <a href="#" class="primary-btn">See More</a>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1>Studio</h1>
-                            <h2>Foto.</h2>
+                            <h2>Foto</h2>
                             <a href="#" class="primary-btn">See More</a>
                         </div>
                     </div>
@@ -92,101 +92,23 @@
                 </div>
             </div>
             <div class="row" id="product-list">
-                <div class="col-lg-3 col-sm-6 mix all dresses bags">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-1.jpg" alt=""></a>
-                            <div class="p-status">new</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Green Dress with details</h6>
-                            <p>$22.90</p>
+                <?php foreach ($galeri as $g) { ?>
+                    <div class="col-lg-3 col-sm-6 mix all dresses bags">
+                        <div class="single-product-item">
+                            <figure>
+                                <a href="#"><img src="<?= base_url() ?>vendor/studio/images/<?= $g->foto ?>" alt=""></a>
+                                <div class="p-status"><?= $g->nama_kategori ?></div>
+                            </figure>
+                            <div class="product-text">
+                                <h6><?= word_limiter($g->deskripsi, 10) ?></h6>
+                                <p>Rp.<?= number_format($g->harga, 0, ',', '.')  ?></p>
+                            </div>
+                            <div>
+                                <a href="<?= base_url('Customer/Kategori/detail_kategori/' . $g->id_kategori) ?>" style="color: red; font-size:12px; float:right">Read More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all dresses bags">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-2.jpg" alt=""></a>
-                            <div class="p-status sale">sale</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Yellow Maxi Dress</h6>
-                            <p>$25.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all shoes accesories">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-3.jpg" alt=""></a>
-                            <div class="p-status">new</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>One piece bodysuit</h6>
-                            <p>$19.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all shoes accesories">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-4.jpg" alt=""></a>
-                            <div class="p-status popular">popular</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Blue Dress with details</h6>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all dresses shoes">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-5.jpg" alt=""></a>
-                            <div class="p-status">new</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Green Dress with details</h6>
-                            <p>$22.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all accesories bags">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-6.jpg" alt=""></a>
-                            <div class="p-status sale">sale</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Yellow Maxi Dress</h6>
-                            <p>$25.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all dresses bags">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-7.jpg" alt=""></a>
-                        </figure>
-                        <div class="product-text">
-                            <h6>One piece bodysuit</h6>
-                            <p>$19.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all accesories bags">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-8.jpg" alt=""></a>
-                            <div class="p-status popular">popular</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Blue Dress with details</h6>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </section>

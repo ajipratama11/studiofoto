@@ -1,7 +1,7 @@
-  <!-- Page Preloder -->
+  <!-- Page Preloder
   <div id="preloder">
       <div class="loader"></div>
-  </div>
+  </div> -->
 
   <!-- Search model -->
   <div class="search-model">
@@ -31,21 +31,23 @@
               </div>
               <div class="user-access">
                   <a href="#">Register</a>
-                  <a href="#" class="in" style="font-size: 13px;">Sign in</a>
+                  <a href="#" class="in">Sign in</a>
               </div>
               <nav class="main-menu mobile-menu">
                   <ul>
-                      <li><a class="active" href="./index.html" style="font-size: 13px;">Beranda</a></li>
-                      <li><a href="./categories.html" style="font-size: 13px;">Galeri Foto</a>
+                      <li><a class="active" href="./index.html">Beranda</a></li>
+                      <li><a href="./categories.html">Kategori Foto</a>
                           <ul class="sub-menu">
-                              <li><a href="product-page.html">Product Page</a></li>
-                              <li><a href="shopping-cart.html">Shopping Card</a></li>
-                              <li><a href="check-out.html">Check out</a></li>
+                              <?php $data = $this->db->get('kategori')->result();
+                                foreach ($data as $k) {
+                                ?>
+                                  <li><a href="product-page.html"><?= $k->nama_kategori ?></a></li>
+                              <?php } ?>
                           </ul>
                       </li>
-                      <li><a href="./product-page.html" style="font-size: 13px;" style="font-size: 13px;">About</a></li>
-                      <li><a href="./check-out.html" style="font-size: 13px;">Blog</a></li>
-                      <li><a href="./contact.html" style="font-size: 13px;">Contact</a></li>
+                      <li><a href="./product-page.html">About</a></li>
+                      <li><a href="./check-out.html">Blog</a></li>
+                      <li><a href="./contact.html">Contact</a></li>
                   </ul>
               </nav>
           </div>

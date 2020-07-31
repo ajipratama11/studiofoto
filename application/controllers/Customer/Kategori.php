@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Beranda extends CI_Controller
+class Kategori extends CI_Controller
 {
     function __construct()
     {
@@ -16,11 +16,10 @@ class Beranda extends CI_Controller
         // }
     }
 
-    public function index()
+    public function detail_kategori($id_kategori = null)
     {
-        $this->db->join('kategori', 'kategori.id_kategori=galeri.id_kategori');
-        $this->db->limit('8');
-        $data['galeri'] = $this->db->get('galeri')->result();
-        $this->load->view('Customer/v_beranda', $data);
+        $this->db->where('id_kategori', $id_kategori);
+        $data['kategori'] = $this->db->get('kategori')->row_array();
+        $this->load->view('Customer/v_detail_kategori', $data);
     }
 }

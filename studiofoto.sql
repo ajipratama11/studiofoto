@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jul 2020 pada 07.35
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.2.26
+-- Generation Time: Jul 31, 2020 at 11:52 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -37,7 +37,7 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `customer`
+-- Table structure for table `customer`
 --
 
 CREATE TABLE `customer` (
@@ -50,10 +50,18 @@ CREATE TABLE `customer` (
   `password` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`id_cus`, `nama_cus`, `alamat_cus`, `no_hp`, `email_cus`, `username`, `password`) VALUES
+(1, 'Fahrizal Azi Ferdiansyah', 'Banyuwangi Balak', 'jiwanrizal$gmai', '085678128123', 'jiwan', '12345'),
+(3, 'm', 'm', 'm', '3123', 'jiw', '123');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dekorasi`
+-- Table structure for table `dekorasi`
 --
 
 CREATE TABLE `dekorasi` (
@@ -65,18 +73,53 @@ CREATE TABLE `dekorasi` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `galeri`
 --
 
-CREATE TABLE `kategori` (
-  `id_kategori` int(35) NOT NULL,
-  `nama_kategori` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `galeri` (
+  `id_galeri` int(11) NOT NULL,
+  `foto` varchar(30) NOT NULL,
+  `id_kategori` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `galeri`
+--
+
+INSERT INTO `galeri` (`id_galeri`, `foto`, `id_kategori`) VALUES
+(1, 'gallery-4.jpg', '5'),
+(2, 'gallery-5.jpg', '2');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kertas`
+-- Table structure for table `kategori`
+--
+
+CREATE TABLE `kategori` (
+  `id_kategori` int(35) NOT NULL,
+  `nama_kategori` varchar(50) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `deskripsi` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `harga`, `deskripsi`) VALUES
+(1, 'PreWedding', 22000, '0'),
+(2, 'Wedding', 100000, 'Baju couple dan serasi'),
+(3, 'Couple', 0, '0'),
+(4, 'Kids', 0, '0'),
+(5, 'Single', 50000, 'Dapat Konsumsi'),
+(6, 'Wisuda', 0, '0'),
+(7, 'Grup', 0, '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kertas`
 --
 
 CREATE TABLE `kertas` (
@@ -88,7 +131,7 @@ CREATE TABLE `kertas` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `konfirmasi_pembayaran`
+-- Table structure for table `konfirmasi_pembayaran`
 --
 
 CREATE TABLE `konfirmasi_pembayaran` (
@@ -102,7 +145,7 @@ CREATE TABLE `konfirmasi_pembayaran` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pemesanan`
+-- Table structure for table `pemesanan`
 --
 
 CREATE TABLE `pemesanan` (
@@ -120,7 +163,7 @@ CREATE TABLE `pemesanan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sesi_pemotretan`
+-- Table structure for table `sesi_pemotretan`
 --
 
 CREATE TABLE `sesi_pemotretan` (
@@ -132,7 +175,7 @@ CREATE TABLE `sesi_pemotretan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ukuran`
+-- Table structure for table `ukuran`
 --
 
 CREATE TABLE `ukuran` (
@@ -146,101 +189,113 @@ CREATE TABLE `ukuran` (
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `customer`
+-- Indexes for table `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id_cus`);
 
 --
--- Indeks untuk tabel `dekorasi`
+-- Indexes for table `dekorasi`
 --
 ALTER TABLE `dekorasi`
   ADD PRIMARY KEY (`id_dekorasi`);
 
 --
--- Indeks untuk tabel `kategori`
+-- Indexes for table `galeri`
+--
+ALTER TABLE `galeri`
+  ADD PRIMARY KEY (`id_galeri`);
+
+--
+-- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indeks untuk tabel `kertas`
+-- Indexes for table `kertas`
 --
 ALTER TABLE `kertas`
   ADD PRIMARY KEY (`id_kertas`);
 
 --
--- Indeks untuk tabel `konfirmasi_pembayaran`
+-- Indexes for table `konfirmasi_pembayaran`
 --
 ALTER TABLE `konfirmasi_pembayaran`
   ADD PRIMARY KEY (`id_konfirmasi`);
 
 --
--- Indeks untuk tabel `pemesanan`
+-- Indexes for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
   ADD PRIMARY KEY (`id_pemesanan`);
 
 --
--- Indeks untuk tabel `ukuran`
+-- Indexes for table `ukuran`
 --
 ALTER TABLE `ukuran`
   ADD PRIMARY KEY (`id_ukuran`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `customer`
+-- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id_cus` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `dekorasi`
+-- AUTO_INCREMENT for table `dekorasi`
 --
 ALTER TABLE `dekorasi`
   MODIFY `id_dekorasi` int(40) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `kategori`
+-- AUTO_INCREMENT for table `galeri`
 --
-ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(35) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `galeri`
+  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `kertas`
+-- AUTO_INCREMENT for table `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `id_kategori` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `kertas`
 --
 ALTER TABLE `kertas`
   MODIFY `id_kertas` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `konfirmasi_pembayaran`
+-- AUTO_INCREMENT for table `konfirmasi_pembayaran`
 --
 ALTER TABLE `konfirmasi_pembayaran`
   MODIFY `id_konfirmasi` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `pemesanan`
+-- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
   MODIFY `id_pemesanan` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `ukuran`
+-- AUTO_INCREMENT for table `ukuran`
 --
 ALTER TABLE `ukuran`
   MODIFY `id_ukuran` int(30) NOT NULL AUTO_INCREMENT;
