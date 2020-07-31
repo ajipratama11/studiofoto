@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>vendor/admin/assets/images/logo_sd.png">
-    <title>SDN BADEAN 1 BONDOWOSO</title>
+    <title>ADMIN | STUDIO FOTO</title>
     <!-- Custom CSS -->
     <link href="<?= base_url("vendor/admin/dist/css/style.min.css") ?>" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
