@@ -1,324 +1,232 @@
 <?php $this->load->view('element/head') ?>
-
-<body>
 <?php $this->load->view('element/header') ?>
-    <!-- Header Info Begin -->
-    <div class="header-info">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="header-item">
-                        <img src="<?= base_url() ?>vendor/studio/img/icons/delivery.png" alt="">
-                        <p>Free shipping on orders over $30 in USA</p>
+<section id="home" class="video-hero" style="height: 800px; background-image: url(<?= base_url() ?>vendor/studio/images/cover_img_1.jpg);  background-size:cover; background-position: center center;background-attachment:fixed;" data-section="home">
+    <div class="overlay"></div>
+    <!-- <a class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=Yz5-mrDBbxU',containment:'#home', showControls:false, autoPlay:true, loop:true, mute:true, startAt:0, opacity:1, quality:'default'}"></a>  -->
+    <div class="display-t text-center">
+        <div class="display-tc">
+            <div class="container">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="animate-box">
+                        <h1 class="holder"><span>Fashion Photoshoot</span></h1>
+                        <h2>Classy Rebel Fashion Photoshoot</h2>
+                        <p>27.03.2018</p>
+                        <p><a href="gallery.html" class="btn btn-primary btn-custom">View Gallery</a></p>
                     </div>
-                </div>
-                <div class="col-md-4 text-left text-lg-center">
-                    <div class="header-item">
-                        <img src="<?= base_url() ?>vendor/studio/img/icons/voucher.png" alt="">
-                        <p>20% Student Discount</p>
-                    </div>
-                </div>
-                <div class="col-md-4 text-left text-xl-right">
-                    <div class="header-item">
-                    <img src="<?= base_url() ?>vendor/studio/img/icons/sales.png" alt="">
-                    <p>30% off on dresses. Use code: 30OFF</p>
-                </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Header Info End -->
-    <!-- Header End -->
+</section>
 
-    <!-- Hero Slider Begin -->
-    <section class="hero-slider">
-        <div class="hero-items owl-carousel">
-            <div class="single-slider-item set-bg" data-setbg="<?= base_url() ?>vendor/studio/img/slider-1.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1>2019</h1>
-                            <h2>Lookbook.</h2>
-                            <a href="#" class="primary-btn">See More</a>
-                        </div>
+<div id="colorlib-services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center animate-box">
+                <div class="services">
+                    <span class="icon">
+                        <i class="icon-camera4"></i>
+                    </span>
+                    <div class="desc">
+                        <h3>Photography</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                            Consonantia, there live the blind texts.</p>
                     </div>
                 </div>
             </div>
-            <div class="single-slider-item set-bg" data-setbg="<?= base_url() ?>vendor/studio/img/slider-2.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1>2019</h1>
-                            <h2>Lookbook.</h2>
-                            <a href="#" class="primary-btn">See More</a>
-                        </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="services">
+                    <span class="icon">
+                        <i class="icon-image2"></i>
+                    </span>
+                    <div class="desc">
+                        <h3>Image Processing</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                            Consonantia, there live the blind texts.</p>
                     </div>
                 </div>
             </div>
-            <div class="single-slider-item set-bg" data-setbg="<?= base_url() ?>vendor/studio/img/slider-3.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1>2019</h1>
-                            <h2>Lookbook.</h2>
-                            <a href="#" class="primary-btn">See More</a>
-                        </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="services">
+                    <span class="icon">
+                        <i class="icon-video3"></i>
+                    </span>
+                    <div class="desc">
+                        <h3>Videography</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                            Consonantia, there live the blind texts.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Slider End -->
-
-    <!-- Features Section Begin -->
-    <section class="features-section spad">
-        <div class="features-ads">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="single-features-ads first">
-                            <img src="<?= base_url() ?>vendor/studio/img/icons/f-delivery.png" alt="">
-                            <h4>Free shipping</h4>
-                            <p>Fusce urna quam, euismod sit amet mollis quis, vestibulum quis velit. Vesti bulum mal
-                                esuada aliquet libero viverra cursus. </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-features-ads second">
-                            <img src="<?= base_url() ?>vendor/studio/img/icons/coin.png" alt="">
-                            <h4>100% Money back </h4>
-                            <p>Urna quam, euismod sit amet mollis quis, vestibulum quis velit. Vesti bulum mal esuada
-                                aliquet libero viverra cursus. </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-features-ads">
-                            <img src="<?= base_url() ?>vendor/studio/img/icons/chat.png" alt="">
-                            <h4>Online support 24/7</h4>
-                            <p>Urna quam, euismod sit amet mollis quis, vestibulum quis velit. Vesti bulum mal esuada
-                                aliquet libero viverra cursus. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Features Box -->
-        <div class="features-box">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="single-box-item first-box">
-                                    <img src="<?= base_url() ?>vendor/studio/img/f-box-1.jpg" alt="">
-                                    <div class="box-text">
-                                        <span class="trend-year">2019 Party</span>
-                                        <h2>Jewelry</h2>
-                                        <span class="trend-alert">Trend Allert</span>
-                                        <a href="#" class="primary-btn">See More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="single-box-item second-box">
-                                    <img src="<?= base_url() ?>vendor/studio/img/f-box-2.jpg" alt="">
-                                    <div class="box-text">
-                                        <span class="trend-year">2019 Trend</span>
-                                        <h2>Footwear</h2>
-                                        <span class="trend-alert">Bold & Black</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="single-box-item large-box">
-                            <img src="<?= base_url() ?>vendor/studio/img/f-box-3.jpg" alt="">
-                            <div class="box-text">
-                                <span class="trend-year">2019 Party</span>
-                                <h2>Collection</h2>
-                                <div class="trend-alert">Trend Allert</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Features Section End -->
-
-    <!-- Latest Product Begin -->
-    <section class="latest-products spad">
-        <div class="container">
-            <div class="product-filter">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="section-title">
-                            <h2>Latest Products</h2>
-                        </div>
-                        <ul class="product-controls">
-                            <li data-filter="*">All</li>
-                            <li data-filter=".dresses">Dresses</li>
-                            <li data-filter=".bags">Bags</li>
-                            <li data-filter=".shoes">Shoes</li>
-                            <li data-filter=".accesories">Accesories</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="product-list">
-                <div class="col-lg-3 col-sm-6 mix all dresses bags">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-1.jpg" alt=""></a>
-                            <div class="p-status">new</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Green Dress with details</h6>
-                            <p>$22.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all dresses bags">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-2.jpg" alt=""></a>
-                            <div class="p-status sale">sale</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Yellow Maxi Dress</h6>
-                            <p>$25.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all shoes accesories">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-3.jpg" alt=""></a>
-                            <div class="p-status">new</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>One piece bodysuit</h6>
-                            <p>$19.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all shoes accesories">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-4.jpg" alt=""></a>
-                            <div class="p-status popular">popular</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Blue Dress with details</h6>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all dresses shoes">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-5.jpg" alt=""></a>
-                            <div class="p-status">new</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Green Dress with details</h6>
-                            <p>$22.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all accesories bags">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-6.jpg" alt=""></a>
-                            <div class="p-status sale">sale</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Yellow Maxi Dress</h6>
-                            <p>$25.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all dresses bags">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-7.jpg" alt=""></a>
-                        </figure>
-                        <div class="product-text">
-                            <h6>One piece bodysuit</h6>
-                            <p>$19.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all accesories bags">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="<?= base_url() ?>vendor/studio/img/products/img-8.jpg" alt=""></a>
-                            <div class="p-status popular">popular</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>Blue Dress with details</h6>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Latest Product End -->
-
-    <!-- Lookbok Section Begin -->
-    <section class="lookbok-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-4 offset-lg-1">
-                    <div class="lookbok-left">
-                        <div class="section-title">
-                            <h2>2019 <br />#lookbook</h2>
-                        </div>
-                        <p>Fusce urna quam, euismod sit amet mollis quis, vestibulum quis velit. Vestibulum malesuada
-                            aliquet libero viverra cursus. Aliquam erat volutpat. Morbi id dictum quam, ut commodo
-                            lorem. In at nisi nec arcu porttitor aliquet vitae at dui. Sed sollicitudin nulla non leo
-                            viverra scelerisque. Phasellus facilisis lobortis metus, sit amet viverra lectus finibus ac.
-                            Aenean non felis dapibus, placerat libero auctor, ornare ante. Morbi quis ex eleifend,
-                            sodales nulla vitae, scelerisque ante. Nunc id vulputate dui. Suspendisse consectetur rutrum
-                            metus nec scelerisque. s</p>
-                        <a href="#" class="primary-btn look-btn">See More</a>
-                    </div>
-                </div>
-                <div class="col-lg-5 offset-lg-1">
-                    <div class="lookbok-pic">
-                        <img src="<?= base_url() ?>vendor/studio/img/lookbok.jpg" alt="">
-                        <div class="pic-text">fashion</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Lookbok Section End -->
-
-    <!-- Logo Section Begin -->
-    <div class="logo-section spad">
-        <div class="logo-items owl-carousel">
-            <div class="logo-item">
-                <img src="<?= base_url() ?>vendor/studio/img/logos/logo-1.png" alt="">
-            </div>
-            <div class="logo-item">
-                <img src="<?= base_url() ?>vendor/studio/img/logos/logo-2.png" alt="">
-            </div>
-            <div class="logo-item">
-                <img src="<?= base_url() ?>vendor/studio/img/logos/logo-3.png" alt="">
-            </div>
-            <div class="logo-item">
-                <img src="<?= base_url() ?>vendor/studio/img/logos/logo-4.png" alt="">
-            </div>
-            <div class="logo-item">
-                <img src="<?= base_url() ?>vendor/studio/img/logos/logo-5.png" alt="">
             </div>
         </div>
     </div>
-    <!-- Logo Section End -->
+</div>
+<div class="colorlib-about-flex">
+    <div class="col-half about-flex-img animate-box" style="background-image: url(images/about.jpg);"></div>
+    <div class="col-half">
+        <div class="row">
+            <div class="col-md-12 col-md-pull-2 animate-box">
+                <div class="about-desc">
+                    <h2>We Are Imahe a Photography Studio</h2>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary
+                        regelialia. It is a paradisematic country, in which roasted parts of sentences fly into
+                        your mouth.</p>
+                    <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild
+                        Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed
+                        her seven versalia, put her initial into the belt and made herself on the way.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="colorlib-gallery">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
+                <h2>Gallery</h2>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
+                    unorthographic life One day however a small line of blind text by the name</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 no-gutters">
+                <a href="images/gallery-1.jpg" class="gallery-img image-popup-link animate-box"><img class="img-responsive" src="images/gallery-1.jpg" alt="">
+                    <div class="desc text-center">
+                        <h2>Fashion be like</h2>
+                        <p class="category"><span>Fashion</span></p>
+                    </div>
+                </a>
+                <a href="images/gallery-2.jpg" class="gallery-img image-popup-link animate-box"><img class="img-responsive" src="images/gallery-2.jpg" alt="">
+                    <div class="desc text-center">
+                        <h2>Fashion be like</h2>
+                        <p class="category"><span>Jacket</span> <span>Woman</span></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 no-gutters">
+                <a href="images/gallery-3.jpg" class="gallery-img image-popup-link animate-box"><img class="img-responsive" src="images/gallery-3.jpg" alt="">
+                    <div class="desc text-center">
+                        <h2>Fashion be like</h2>
+                        <p class="category"><span>Jacket</span> <span>Male</span></p>
+                    </div>
+                </a>
+                <a href="images/gallery-4.jpg" class="gallery-img image-popup-link animate-box"><img class="img-responsive" src="images/gallery-4.jpg" alt="">
+                    <div class="desc text-center">
+                        <h2>Fashion be like</h2>
+                        <p class="category"><span>Fashion</span></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 no-gutters">
+                <a href="images/gallery-5.jpg" class="gallery-img image-popup-link animate-box"><img class="img-responsive" src="images/gallery-5.jpg" alt="">
+                    <div class="desc text-center">
+                        <h2>Fashion be like</h2>
+                        <p class="category"><span>Fashion</span></p>
+                    </div>
+                </a>
+                <a href="images/gallery-6.jpg" class="gallery-img image-popup-link animate-box"><img class="img-responsive" src="images/gallery-6.jpg" alt="">
+                    <div class="desc text-center">
+                        <h2>Fashion be like</h2>
+                        <p class="category"><span>Fashion</span></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 no-gutters">
+                <a href="images/gallery-7.jpg" class="gallery-img image-popup-link animate-box"><img class="img-responsive" src="images/gallery-7.jpg" alt="">
+                    <div class="desc text-center">
+                        <h2>Fashion be like</h2>
+                        <p class="category"><span>Fashion</span></p>
+                    </div>
+                </a>
+                <a href="images/gallery-8.jpg" class="gallery-img image-popup-link animate-box"><img class="img-responsive" src="images/gallery-8.jpg" alt="">
+                    <div class="desc text-center">
+                        <h2>Fashion be like</h2>
+                        <p class="category"><span>Fashion</span></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="colorlib-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
+                <h2>Recent Blog</h2>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
+                    unorthographic life One day however a small line of blind text by the name</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 animate-box">
+                <article class="article-entry">
+                    <a href="blog.html" class="blog-img" style="background-image: url(images/blog-1.jpg);"></a>
+                    <div class="desc">
+                        <h2><a href="blog.html">Photoshoot Technique</a></h2>
+                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
+                            unorthographic life</p>
+                    </div>
+                    <div class="admin">
+                        <p><span><i class="icon-user2"></i> by: Mark Harris</span> <span class="day"><i class="icon-calendar"></i> 30 March 2018</span> <span><a href="#"><i class="icon-bubble3"></i> 10</a></span></p>
+                    </div>
+                </article>
+            </div>
+            <div class="col-md-4 animate-box">
+                <article class="article-entry">
+                    <a href="blog.html" class="blog-img" style="background-image: url(images/blog-2.jpg);"></a>
+                    <div class="desc">
+                        <h2><a href="blog.html">Some tricks in Photoshop for your photo</a></h2>
+                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
+                            unorthographic life</p>
+                    </div>
+                    <div class="admin">
+                        <p><span><i class="icon-user2"></i> by: Mark Harris</span> <span class="day"><i class="icon-calendar"></i> 30 March 2018</span> <span><a href="#"><i class="icon-bubble3"></i> 10</a></span></p>
+                    </div>
+                </article>
+            </div>
+            <div class="col-md-4 animate-box">
+                <article class="article-entry">
+                    <a href="blog.html" class="blog-img" style="background-image: url(images/blog-3.jpg);"></a>
+                    <div class="desc">
+                        <h2><a href="blog.html">50 Effects in Photoshop</a></h2>
+                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
+                            unorthographic life</p>
+                    </div>
+                    <div class="admin">
+                        <p><span><i class="icon-user2"></i> by: Mark Harris</span> <span class="day"><i class="icon-calendar"></i> 30 March 2018</span> <span><a href="#"><i class="icon-bubble3"></i> 10</a></span></p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="colorlib-instagram">
+    <div class="row">
+        <div class="col-md-12 col-md-offset-0 colorlib-heading text-center animate-box">
+            <h2><i class="icon-instagram"></i> Instagram</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="instagram-entry animate-box">
+            <a href="#" class="instagram text-center" style="background-image: url(<?= base_url() ?>vendor/studio/images/insta-1.jpg);">
+            </a>
+            <a href="#" class="instagram text-center" style="background-image: url(<?= base_url() ?>vendor/studio/images/insta-2.jpg);">
+            </a>
+            <a href="#" class="instagram text-center" style="background-image: url(<?= base_url() ?>vendor/studio/images/insta-3.jpg);">
+            </a>
+            <a href="#" class="instagram text-center" style="background-image: url(<?= base_url() ?>vendor/studio/images/insta-4.jpg);">
+            </a>
+            <a href="#" class="instagram text-center" style="background-image: url(images/insta-5.jpg);">
+            </a>
+            <a href="#" class="instagram text-center" style="background-image: url(images/insta-6.jpg);">
+            </a>
+            <a href="#" class="instagram text-center" style="background-image: url(images/insta-7.jpg);">
+            </a>
+            <a href="#" class="instagram text-center" style="background-image: url(images/insta-8.jpg);">
+            </a>
+        </div>
+    </div>
+</div>
 <?php $this->load->view('element/footer') ?>
-</body>
-
-</html>

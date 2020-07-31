@@ -1,99 +1,117 @@
+<footer id="colorlib-footer">
+    <div class="container">
+        <div class="row row-pb-md">
+            <div class="col-md-3 colorlib-widget">
+                <h4>About Imahe</h4>
+                <p>Far from the countries Vokalia and Consonantia, there live the blind texts. Separated they
+                    live in Bookmarksgrove right at the coast of the Semantics</p>
+                <p>
+                    <ul class="colorlib-social-icons">
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook"></i></a></li>
+                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    </ul>
+                </p>
+            </div>
+            <div class="col-md-3 colorlib-widget">
+                <h4>Information</h4>
+                <p>
+                    <ul class="colorlib-footer-links">
+                        <li><a href="#"><i class="icon-check"></i> Home</a></li>
+                        <li><a href="#"><i class="icon-check"></i> Gallery</a></li>
+                        <li><a href="#"><i class="icon-check"></i> About</a></li>
+                        <li><a href="#"><i class="icon-check"></i> Blog</a></li>
+                        <li><a href="#"><i class="icon-check"></i> Contact</a></li>
+                        <li><a href="#"><i class="icon-check"></i> Privacy</a></li>
+                    </ul>
+                </p>
+            </div>
 
-    <!-- Footer Section Begin -->
-    <footer class="footer-section spad">
-        <div class="container">
-            <div class="newslatter-form">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form action="#">
-                            <input type="text" placeholder="Your email address">
-                            <button type="submit">Subscribe to our newsletter</button>
-                        </form>
+            <div class="col-md-3 colorlib-widget">
+                <h4>Recent Blog</h4>
+                <div class="f-blog">
+                    <a href="blog.html" class="blog-img" style="background-image: url(images/blog-1.jpg);">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="blog.html">Photoshoot Technique</a></h2>
+                        <p class="admin"><span>30 March 2018</span></p>
+                    </div>
+                </div>
+                <div class="f-blog">
+                    <a href="blog.html" class="blog-img" style="background-image: url(images/blog-2.jpg);">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="blog.html">Camera Lens Shoot</a></h2>
+                        <p class="admin"><span>30 March 2018</span></p>
+                    </div>
+                </div>
+                <div class="f-blog">
+                    <a href="blog.html" class="blog-img" style="background-image: url(images/blog-3.jpg);">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="blog.html">Imahe the biggest photography studio</a></h2>
+                        <p class="admin"><span>30 March 2018</span></p>
                     </div>
                 </div>
             </div>
-            <div class="footer-widget">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h4>About us</h4>
-                            <ul>
-                                <li>About Us</li>
-                                <li>Community</li>
-                                <li>Jobs</li>
-                                <li>Shipping</li>
-                                <li>Contact Us</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h4>Customer Care</h4>
-                            <ul>
-                                <li>Search</li>
-                                <li>Privacy Policy</li>
-                                <li>2019 Lookbook</li>
-                                <li>Shipping & Delivery</li>
-                                <li>Gallery</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h4>Our Services</h4>
-                            <ul>
-                                <li>Free Shipping</li>
-                                <li>Free Returnes</li>
-                                <li>Our Franchising</li>
-                                <li>Terms and conditions</li>
-                                <li>Privacy Policy</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h4>Information</h4>
-                            <ul>
-                                <li>Payment methods</li>
-                                <li>Times and shipping costs</li>
-                                <li>Product Returns</li>
-                                <li>Shipping methods</li>
-                                <li>Conformity of the products</li>
-                            </ul>
-                        </div>
-                    </div>
+
+            <div class="col-md-3 colorlib-widget">
+                <h4>Contact Info</h4>
+                <ul class="colorlib-footer-links">
+                    <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
+                    <li><a href="tel://1234567920"><i class="icon-phone"></i> + 1235 2355 98</a></li>
+                    <li><a href="mailto:info@yoursite.com"><i class="icon-envelope"></i> info@yoursite.com</a>
+                    </li>
+                    <li><a href="#"><i class="icon-location4"></i> yourwebsite.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="copy">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <small class="block">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>
+                                document.write(new Date().getFullYear());
+                            </script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></small><br>
+                        <small class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a>, <a href="http://pexels.com/" target="_blank">Pexels</a></small>
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="social-links-warp">
-			<div class="container">
-				<div class="social-links">
-					<a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
-					<a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
-					<a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
-					<a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
-					<a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
-					<a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
-				</div>
-			</div>
+    </div>
+</footer>
+</div>
 
-<div class="container text-center pt-5">
-                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-            </div>
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+</div>
 
+<!-- jQuery -->
+<script src="<?= base_url() ?>vendor/studio/js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="<?= base_url() ?>vendor/studio/js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="<?= base_url() ?>vendor/studio/js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="<?= base_url() ?>vendor/studio/js/jquery.waypoints.min.js"></script>
+<!-- Stellar Parallax -->
+<script src="<?= base_url() ?>vendor/studio/js/jquery.stellar.min.js"></script>
+<!-- YTPlayer -->
+<script src="<?= base_url() ?>vendor/studio/js/jquery.mb.YTPlayer.min.js"></script>
+<!-- Owl carousel -->
+<script src="<?= base_url() ?>vendor/studio/js/owl.carousel.min.js"></script>
+<!-- Magnific Popup -->
+<script src="<?= base_url() ?>vendor/studio/js/jquery.magnific-popup.min.js"></script>
+<script src="<?= base_url() ?>vendor/studio/js/magnific-popup-options.js"></script>
+<!-- Main -->
+<script src="<?= base_url() ?>vendor/studio/js/main.js"></script>
 
-		</div>
-    </footer>
-    <!-- Footer Section End -->
+</body>
 
-    <!-- Js Plugins -->
-    <script src="<?= base_url() ?>vendor/studio/js/jquery-3.3.1.min.js"></script>
-    <script src="<?= base_url() ?>vendor/studio/js/bootstrap.min.js"></script>
-    <script src="<?= base_url() ?>vendor/studio/js/jquery.magnific-popup.min.js"></script>
-    <script src="<?= base_url() ?>vendor/studio/js/jquery.slicknav.js"></script>
-    <script src="<?= base_url() ?>vendor/studio/js/owl.carousel.min.js"></script>
-    <script src="<?= base_url() ?>vendor/studio/js/jquery.nice-select.min.js"></script>
-    <script src="<?= base_url() ?>vendor/studio/js/mixitup.min.js"></script>
-    <script src="<?= base_url() ?>vendor/studio/js/main.js"></script>
+</html>
