@@ -8,6 +8,7 @@ class Pemesanan extends CI_Controller
         parent::__construct();
 
         $this->load->helper(array('url'));
+        $this->load->model('M_pemesan');
         // if($this->session->userdata('status') != "admin"){
         // 	echo "<script>
         //         alert('Anda harus login terlebih dahulu');
@@ -55,28 +56,59 @@ class Pemesanan extends CI_Controller
         $this->db->where('id_kategori', $post['id_kategori']);
         $kategori = $this->db->get('kategori')->row();
 
-        $tes = strtotime('+1 minutes', strtotime($post['waktu']));
+        //add 1 hour to time
+        $cenvertedTime = date('H:i', strtotime('+' . $lama . ' minutes', strtotime($post['waktu'])));
 
         $this->lokasi = $post['lokasi'];
-        $this->tgl_pemesanan = $post['tanggal'];
-        $this->waktu_pemesanan = $post['waktu'] . '-' . $tes;
-        $this->total_biaya = $dekor->harga + $sesi->harga + $kategori->harga;
+        $tgl = $this->tgl_pemesanan = $post['tanggal'];
+        $mulai = $this->waktu_pemesanan = $post['waktu'];
+        $selesai = $this->waktu_selesai = $cenvertedTime;
+        $this->total_biaya = $dekor->harga_dekorasi + $sesi->harga_sesi + $kategori->harga;
         $this->status = "Belum Checkout";
         $this->jenis_pembayaran = "Dp";
 
-        $this->db->like('tgl_pemesanan', $this->tgl_pemesanan);
-        $jadwal = $this->db->get('pemesanan')->row();
-        if ($jadwal) {
+        var_dump($mulai);
+        var_dump($selesai);
+        var_dump($tgl);
+
+        $cek_jadwal = $this->db->query("SELECT * FROM `pemesanan` WHERE '$mulai' >=  waktu_pemesanan   and '$mulai' <=  waktu_selesai AND  tgl_pemesanan =  '$tgl'  ")->row();
+        if ($cek_jadwal) {
             $this->session->set_flashdata(
                 'gagal',
                 '<div class="alert alert-danger col-md-12" >
                     <p> Jadwal sudah ada yang memesan!!!</p>
-                    <button class="button btn-success form-control col-md-2" style="font-size:12px;" id="tombol_show">Lihat Jadwal</button>
+                  
                 </div>'
             );
             redirect('Customer/Pemesanan/pemesanan/' . $this->id_kategori);
         } else {
             $data = $this->db->insert('pemesanan', $this);
+            redirect('Customer/Keranjang/');
         }
+
+
+        // $this->db->like('tgl_pemesanan', $this->tgl_pemesanan);
+        // $this->db->like('waktu_pemesanan', $this->waktu_pemesanan);
+        // $jadwal = $this->db->get('pemesanan')->row();
+        // if ($jadwal) {
+        //     $this->session->set_flashdata(
+        //         'gagal',
+        //         '<div class="alert alert-danger col-md-12" >
+        //             <p> Jadwal sudah ada yang memesan!!!</p>
+
+        //         </div>'
+        //     );
+        //     redirect('Customer/Pemesanan/pemesanan/' . $this->id_kategori);
+        // } else {
+        //     $data = $this->db->insert('pemesanan', $this);
+        // }
+    }
+
+    public function jadwalList()
+    {
+        $postData = $this->input->post();
+        $data = $this->M_pemesan->getJadwal($postData);
+
+        echo json_encode($data);
     }
 }

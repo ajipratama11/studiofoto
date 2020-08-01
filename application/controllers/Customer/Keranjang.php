@@ -1,0 +1,30 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Keranjang extends CI_Controller
+{
+    function __construct()
+    {
+        parent::__construct();
+
+        $this->load->helper(array('url'));
+
+        // if($this->session->userdata('status') != "admin"){
+        // 	echo "<script>
+        //         alert('Anda harus login terlebih dahulu');
+        //         window.location.href = '".base_url('Owner_controller/A_login')."';
+        //     </script>";//Url tujuan
+        // }
+    }
+
+    public function index()
+    {
+        $id_cus = $this->session->userdata('id_cus');
+        $this->db->join('kategori', 'kategori.id_kategori=pemesanan.id_kategori');
+        $this->db->join('sesi_pemotretan', 'sesi_pemotretan.id_sesi=pemesanan.id_sesi');
+        $this->db->join('dekorasi', 'dekorasi.id_dekorasi=pemesanan.id_dekorasi');
+        $this->db->where('id_cus', $id_cus);
+        $data['cus'] = $this->db->get('pemesanan')->result();
+        $this->load->view('Customer/v_keranjang', $data);
+    }
+}

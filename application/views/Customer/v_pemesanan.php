@@ -1,6 +1,8 @@
   <!-- Page Add Section Begin -->
   <?php $this->load->view('element/head') ?>
 
+
+
   <body>
       <?php $this->load->view('element/header') ?>
       <section class="page-add">
@@ -23,32 +25,18 @@
       <div class="contact-section">
           <div class="container">
               <div class="row">
-                  <div class="col-lg-8">
-                      <?php echo $this->session->flashdata('gagal'); ?>
-                      <button class="button btn-success form-control col-md-2" style="font-size:12px;" id="tombol_show">Lihat Jadwal</button>
-                      <div id="box" class="col-md-12">
+                  <div class="col-lg-4">
+                      <div>
+                          <div class="cw-item">
+                              <h5>Kategori yang Dipilih</h5>
+                              <h3><?= $pemesan['nama_kategori'] ?></h3>
+                              <h3>Rp. <?= number_format($pemesan['harga'], 0, ',', '.') ?></h3>
 
-                          <label style="float: right;"><b>Jadwal Pemesan</b></label>
-
-                          <table class="table">
-                              <thead>
-                                  <tr>
-                                      <th>Nama Pemesan</th>
-                                      <th>Jadwal</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <td>Azi</td>
-                                      <td>Azi</td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                          <hr>
+                          </div>
                       </div>
                       <form action="<?= base_url() ?>Customer/Pemesanan/keranjang" class="contact-form" method="post">
                           <div class="row">
-                              <div class="col-lg-12">
+                              <div class="col-lg-12 mt-5">
                                   <label><b>Pilih Dekorasi : </b></label>
                               </div><br>
                               <div class="col-lg-12">
@@ -78,7 +66,7 @@
                               <div class="col-lg-12">
                                   <select id="tempat" name="id_sesi" type="text" class="form-control" placeholder="First Name">
                                       <?php foreach ($sesi as $s) { ?>
-                                          <option value="<?= $s->id_sesi ?>"><?= $s->jumlah_sesi ?> Kali (Rp.<?= number_format($s->harga, 0, ',', '.')  ?>)</option>
+                                          <option value="<?= $s->id_sesi ?>"><?= $s->jumlah_sesi ?> Kali (Rp.<?= number_format($s->harga_sesi, 0, ',', '.')  ?>)</option>
                                       <?php  } ?>
                                   </select>
                               </div>
@@ -100,54 +88,50 @@
                       </form>
 
                   </div>
-                  <div class="col-lg-3 offset-lg-1">
-                      <div class="contact-widget">
-                          <div class="cw-item">
-                              <h5>Kategori yang Dipilih</h5>
-                              <ul>
-                                  <li><?= $pemesan['nama_kategori'] ?></li>
-                                  <li>Rp. <?= number_format($pemesan['harga'], 0, ',', '.') ?></li>
-                              </ul>
+                  <div class="col-lg-8 ">
+
+                      <?php echo $this->session->flashdata('gagal'); ?>
+                      <div class="row">
+                          <button class="button btn-success form-control col-md-2" style="font-size:12px; margin-right:10px;" id="tombol_show">Lihat Jadwal</button>
+                          <button class="button btn-danger form-control col-md-2" style="font-size:12px;" id="tombol_hide">Tutup Jadwal</button>
+                      </div>
+                      <div id="box" class="col-md-12 ">
+                          <input type="date" style="float: right;" class="form-control col-md-4" id="sel_bulan">
+                          <!-- <label style="float: right;"><b>Jadwal Pemesan</b></label> -->
+                          <div class="table-responsive">
+                              <table class="table table-bordered" style="width: 500px;" id='userTable'>
+                                  <thead>
+                                      <tr>
+                                          <th>
+                                              #Id Cus
+                                          </th>
+                                          <th>
+                                              Nama Pelanggan
+                                          </th>
+                                          <th>
+                                              Tanggal Pemesan
+                                          </th>
+                                          <th>
+                                              Mulai
+                                          </th>
+                                          <th>
+                                              Seelesai
+                                          </th>
+
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+
+                                  </tbody>
+                              </table>
                           </div>
-                          <div class="cw-item">
-                              <h5>Phone</h5>
-                              <ul>
-                                  <li>+1 (603)535-4592</li>
-                                  <li>+1 (603)535-4556</li>
-                              </ul>
-                          </div>
-                          <div class="cw-item">
-                              <h5>E-mail</h5>
-                              <ul>
-                                  <li>contact@violetstore.com</li>
-                                  <li>www.violetstore.com</li>
-                              </ul>
-                          </div>
+                          <hr>
                       </div>
                   </div>
               </div>
           </div>
       </div>
-      <div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Hapus ?</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                      Hapus barang dari keranjang?
-                  </div>
-                  <div class="modal-footer">
-                      <a type="button" class="btn btn-danger" href="<?= base_url('Customer/Produk/hapus_produk/' . $k->id_pemesanan) ?>">Hapus</a>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
-                  </div>
-              </div>
-          </div>
-      </div>
       <!-- Contact Section End --> <?php $this->load->view('element/footer') ?>
       <script>
           $(document).ready(function() {
@@ -173,6 +157,47 @@
               border: 2px solid black;
           } */
       </style>
+      <script type="text/javascript">
+          $(document).ready(function() {
+              var userDataTable = $('#userTable').DataTable({
+                  //   'processing': true,
+                  'serverSide': true,
+                  'serverMethod': 'post',
+                  //'searching': false, // Remove default Search Control
+                  'ajax': {
+                      'url': '<?= base_url() ?>Customer/Pemesanan/jadwalList',
+                      'data': function(data) {
+                          data.searchBulan = $('#sel_bulan').val();
+                          console.log(data);
+                      }
+
+                  },
+                  'columns': [{
+                          data: 'id_cus'
+                      },
+                      {
+                          data: 'nama_cus'
+                      },
+                      {
+                          data: 'tgl_pemesanan'
+                      },
+                      {
+                          data: 'waktu_pemesanan'
+                      },
+                      {
+                          data: 'waktu_selesai'
+                      }
+                  ]
+              });
+
+              $('#sel_bulan').change(function() {
+                  userDataTable.draw();
+              });
+              $('#searchName').keyup(function() {
+                  userDataTable.draw();
+              });
+          });
+      </script>
       <script type='text/javascript'>
           $(window).load(function() {
               $("#tempat").change(function() {
