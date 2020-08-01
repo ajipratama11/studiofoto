@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2020 at 11:52 AM
+-- Generation Time: Aug 01, 2020 at 05:49 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -67,8 +67,17 @@ INSERT INTO `customer` (`id_cus`, `nama_cus`, `alamat_cus`, `no_hp`, `email_cus`
 CREATE TABLE `dekorasi` (
   `id_dekorasi` int(40) NOT NULL,
   `nama_dekorasi` varchar(50) NOT NULL,
-  `harga` int(30) NOT NULL
+  `harga_dekorasi` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dekorasi`
+--
+
+INSERT INTO `dekorasi` (`id_dekorasi`, `nama_dekorasi`, `harga_dekorasi`) VALUES
+(1, 'Minimal', 20000),
+(2, 'Sedang', 30000),
+(3, 'Mewah', 50000);
 
 -- --------------------------------------------------------
 
@@ -137,10 +146,18 @@ CREATE TABLE `kertas` (
 CREATE TABLE `konfirmasi_pembayaran` (
   `id_konfirmasi` int(50) NOT NULL,
   `id_pemesanan` int(50) NOT NULL,
-  `dp` int(50) NOT NULL,
+  `opsi` varchar(30) NOT NULL,
+  `dp` int(50) DEFAULT NULL,
   `total_bayar` int(50) NOT NULL,
   `bukti_transfer` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `konfirmasi_pembayaran`
+--
+
+INSERT INTO `konfirmasi_pembayaran` (`id_konfirmasi`, `id_pemesanan`, `opsi`, `dp`, `total_bayar`, `bukti_transfer`) VALUES
+(7, 35, 'DP', 65000, 130000, '0918194620X310.jpg');
 
 -- --------------------------------------------------------
 
@@ -150,15 +167,28 @@ CREATE TABLE `konfirmasi_pembayaran` (
 
 CREATE TABLE `pemesanan` (
   `id_pemesanan` int(50) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
   `id_cus` int(50) NOT NULL,
-  `id_ukuran` int(50) NOT NULL,
-  `id_kertas` int(50) NOT NULL,
   `id_dekorasi` int(50) NOT NULL,
   `id_sesi` int(50) NOT NULL,
+  `jenis` varchar(30) NOT NULL,
+  `lokasi` text,
   `tgl_pemesanan` varchar(128) NOT NULL,
-  `jenis_pembayaran` varchar(50) NOT NULL,
-  `total_biaya` int(70) NOT NULL
+  `waktu_pemesanan` varchar(30) NOT NULL,
+  `waktu_selesai` varchar(30) NOT NULL,
+  `total_biaya` int(70) NOT NULL,
+  `status_cus` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pemesanan`
+--
+
+INSERT INTO `pemesanan` (`id_pemesanan`, `id_kategori`, `id_cus`, `id_dekorasi`, `id_sesi`, `jenis`, `lokasi`, `tgl_pemesanan`, `waktu_pemesanan`, `waktu_selesai`, `total_biaya`, `status_cus`) VALUES
+(35, 2, 1, 1, 1, 'Studio', '', '01-01-2020', '02:00', '02:06', 130000, 'Sudah Checkout'),
+(36, 5, 1, 1, 1, 'Studio', '', '01-01-2020', '03:01', '03:07', 80000, 'Belum Checkout'),
+(37, 5, 1, 1, 1, 'Studio', '', '01-01-2020', '03:02', '03:08', 80000, 'Belum Checkout'),
+(43, 5, 1, 1, 1, 'Studio', '', '01-01-2020', '02:07', '02:13', 80000, 'Belum Checkout');
 
 -- --------------------------------------------------------
 
@@ -169,8 +199,16 @@ CREATE TABLE `pemesanan` (
 CREATE TABLE `sesi_pemotretan` (
   `id_sesi` int(30) NOT NULL,
   `jumlah_sesi` int(30) NOT NULL,
-  `harga` int(30) NOT NULL
+  `harga_sesi` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sesi_pemotretan`
+--
+
+INSERT INTO `sesi_pemotretan` (`id_sesi`, `jumlah_sesi`, `harga_sesi`) VALUES
+(1, 2, 10000),
+(2, 1, 5000);
 
 -- --------------------------------------------------------
 
@@ -237,6 +275,12 @@ ALTER TABLE `pemesanan`
   ADD PRIMARY KEY (`id_pemesanan`);
 
 --
+-- Indexes for table `sesi_pemotretan`
+--
+ALTER TABLE `sesi_pemotretan`
+  ADD PRIMARY KEY (`id_sesi`);
+
+--
 -- Indexes for table `ukuran`
 --
 ALTER TABLE `ukuran`
@@ -262,7 +306,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `dekorasi`
 --
 ALTER TABLE `dekorasi`
-  MODIFY `id_dekorasi` int(40) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dekorasi` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `galeri`
@@ -286,13 +330,13 @@ ALTER TABLE `kertas`
 -- AUTO_INCREMENT for table `konfirmasi_pembayaran`
 --
 ALTER TABLE `konfirmasi_pembayaran`
-  MODIFY `id_konfirmasi` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_konfirmasi` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pemesanan` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pemesanan` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `ukuran`
