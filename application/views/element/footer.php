@@ -92,7 +92,7 @@
 <!-- Footer Section End -->
 
 <!-- Js Plugins -->
-<script src="<?= base_url() ?>vendor/studio/js/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="<?= base_url() ?>vendor/studio/js/bootstrap.min.js"></script>
 <script src="<?= base_url() ?>vendor/studio/js/jquery.magnific-popup.min.js"></script>
 <script src="<?= base_url() ?>vendor/studio/js/jquery.slicknav.js"></script>
