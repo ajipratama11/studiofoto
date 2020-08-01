@@ -42,19 +42,24 @@ class Pemesanan extends CI_Controller
         $this->db->where('id_sesi', $post['id_sesi']);
         $sesi = $this->db->get('sesi_pemotretan')->row();
 
-        if( $post['jenis'] == "Studio"){
-            $sesi->jumlah_sesi*3;
+        if ($post['jenis'] == "Studio") {
+            $lama = $sesi->jumlah_sesi * 3;
+        } else if ($post['jenis'] == "Tempat Lain") {
+            $lama = $sesi->jumlah_sesi * 6;
         }
-       
+
 
         $this->db->where('id_dekorasi', $post['id_dekorasi']);
         $dekor = $this->db->get('dekorasi')->row();
-       
+
         $this->db->where('id_kategori', $post['id_kategori']);
         $kategori = $this->db->get('kategori')->row();
-        
+
+        $tes = strtotime('+1 minutes', strtotime($post['waktu']));
+
         $this->lokasi = $post['lokasi'];
-        $this->tgl_pemesanan = $post['tanggal'] . ' ' .  $post['waktu'];
+        $this->tgl_pemesanan = $post['tanggal'];
+        $this->waktu_pemesanan = $post['waktu'] . '-' . $tes;
         $this->total_biaya = $dekor->harga + $sesi->harga + $kategori->harga;
         $this->status = "Belum Checkout";
         $this->jenis_pembayaran = "Dp";

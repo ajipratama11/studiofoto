@@ -1,31 +1,29 @@
-<html>
+<?php
+$startTime = date("Y-m-d H:i:s");
 
-<head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type='text/javascript'>
-        $(window).load(function() {
-            $("#ktp").change(function() {
-                console.log($("#ktp option:selected").val());
-                if ($("#ktp option:selected").val() == 'Tidak Ada') {
-                    $('#no_ktp').prop('hidden', 'true');
-                } else {
-                    $('#no_ktp').prop('hidden', false);
-                }
-            });
-        });
-    </script>
-</head>
+//display the starting time
+echo 'Starting Time: '.$startTime;
 
-<body>
-    <label style="margin:20px;">
-        KTP : <br />
-        <select id="ktp" name="ktp" style="margin-left:20px;">
-            <option value="Tidak Ada">Tidak Ada</option>
-            <option value="Ada">Ada</option>
-        </select>
+//add 1 hour to time
+$cenvertedTime = date('Y-m-d H:i:s',strtotime('+1 hour',strtotime($startTime)));
 
-        <input type="text" name="no_ktp" id="no_ktp" value="" hidden />
-    </label>
-</body>
+//display the converted time
+echo 'Converted Time (added 1 hour): '.$cenvertedTime;
 
-</html>
+//add 1 hour and 30 minutes to time
+$cenvertedTime = date('Y-m-d H:i:s',strtotime('+1 hour +30 minutes',strtotime($startTime)));
+
+//display the converted time
+echo 'Converted Time (added 1 hour & 30 minutes): '.$cenvertedTime;
+
+//add 1 hour, 30 minutes and 45 seconds to time
+$cenvertedTime = date('Y-m-d H:i:s',strtotime('+1 hour +30 minutes +45 seconds',strtotime($startTime)));
+
+//display the converted time
+echo 'Converted Time (added 1 hour, 30 minutes & 45 seconds): '.$cenvertedTime;
+
+//add 1 day, 1 hour, 30 minutes and 45 seconds to time
+$cenvertedTime = date('Y-m-d H:i:s',strtotime('+1 day +1 hour +30 minutes +45 seconds',strtotime($startTime)));
+
+//display the converted time
+echo 'Converted Time (added 1 day, 1 hour, 30 minutes & 45 seconds): '.$cenvertedTime;
