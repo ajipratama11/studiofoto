@@ -18,8 +18,8 @@ class Kategori extends CI_Controller
 
     public function index()
     {
-
-        $this->load->view('Admin/v_kategori');
+        $data['kategori'] = $this->db->get('kategori')->result();
+        $this->load->view('Admin/v_kategori', $data);
     }
 
     public function tambahKategori(){

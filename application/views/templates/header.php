@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>vendor/admin/assets/images/logo_sd.png">
-    <title>SDN BADEAN 1 BONDOWOSO</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>vendor/studio/img/studio1.png">
+    <title>ADMIN | STUDIO</title>
     <!-- Custom CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 

@@ -11,16 +11,12 @@
                 <b class="logo-icon p-l-10">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="<?= base_url() ?>vendor/admin/assets/images/logos.png" width="40px" height="40px" alt="homepage" class="light-logo" />
+                    <img src="<?= base_url() ?>vendor/studio/img/studio2.png" width="40px" height="40px" alt="homepage" class="light-logo" />
 
                 </b>
                 <!--End Logo icon -->
                 <!-- Logo text -->
-                <span class="logo-text">
-                    <!-- dark Logo text -->
-                    <img src="<?= base_url() ?>vendor/admin/assets/images/SDN Badean 1.png" alt="homepage" class="light-logo" />
-
-                </span>
+               ADMIN STUDIO
                 <!-- Logo icon -->
                 <!-- <b class="logo-icon"> -->
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -95,9 +91,9 @@
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Pemesanan</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Data </span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="<?= base_url() ?>peserta_didik" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu">Kategori</span></a></li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>gtk" class="sidebar-link"><i class="mdi mdi-school"></i><span class="hide-menu">Galeri</span></a></li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>gtk" class="sidebar-link"><i class="mdi mdi-school"></i><span class="hide-menu">Dekorasi</span></a></li>
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Kategori" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu">Kategori</span></a></li>
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Galeri" class="sidebar-link"><i class="mdi mdi-school"></i><span class="hide-menu">Galeri</span></a></li>
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Dekorasi" class="sidebar-link"><i class="mdi mdi-school"></i><span class="hide-menu">Dekorasi</span></a></li>
                     </ul>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Akademik </span></a>
