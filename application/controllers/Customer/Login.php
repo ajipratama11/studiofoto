@@ -70,17 +70,16 @@ class Login extends CI_Controller
         $this->email_cus = $post['email_cus'];
         $this->username = $post['username'];
         $this->password = $post['password'];
-        $this->is_actived = 1;
-        $data = $this->db->insert('customer', $this);
+        $this->is_actived = 0;
+        
          // siapkan token
          $token = base64_encode(random_bytes(32));
          $user_token = [
-             'email' => $this->email_cus,
+             'email_cus' => $this->email_cus,
              'token' => $token,
              'date_created' => time()
          ];
-
-         $this->db->insert('user', $data);
+         $data = $this->db->insert('customer', $this);
          $this->db->insert('user_token', $user_token);
 
          $this->_sendEmail($token, 'verify');
@@ -110,14 +109,14 @@ class Login extends CI_Controller
         $this->email->initialize($config);
 
         $this->email->from('percetakankusukses@gmail.com', 'Studiofoto');
-        $this->email->to($this->input->post('email'));
+        $this->email->to($this->input->post('email_cus'));
 
         if ($type == 'verify') {
             $this->email->subject('Account Verification');
-            $this->email->message('Click this link to verify you account : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
+            $this->email->message('Click this link to verify you account : <a href="' . base_url() . 'Customer/Login/verify?email_cus=' . $this->input->post('email_cus') . '&token=' . urlencode($token) . '">Activate</a>');
         } else if ($type == 'forgot') {
             $this->email->subject('Reset Password');
-            $this->email->message('Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
+            $this->email->message('Click this link to reset your password : <a href="' . base_url() . 'Customer/Login/resetpassword?email=' . $this->input->post('email_cus') . '&token=' . urlencode($token) . '">Reset Password</a>');
         }
 
         if ($this->email->send()) {
@@ -131,25 +130,25 @@ class Login extends CI_Controller
 
     public function verify()
     {
-        $email = $this->input->get('email');
+        $email = $this->input->get('email_cus');
         $token = $this->input->get('token');
 
-        $user = $this->db->get_where('customer', ['email' => $email])->row_array();
+        $user = $this->db->get_where('customer', ['email_cus' => $email])->row_array();
 
         if ($user) {
             $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
             if ($user_token) {
                 if (time() - $user_token['date_created'] < (60 * 60 * 24)) {
                     $this->db->set('is_actived', 1);
-                    $this->db->where('email', $email);
+                    $this->db->where('email_cus', $email);
                     $this->db->update('customer');
-                    $this->db->delete('user_token', ['email' => $email]);
+                    $this->db->delete('user_token', ['email_cus' => $email]);
 
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">' . $email . ' has been activated! Please login.</div>');
                     redirect('Customer/Login');
                 } else {
-                    $this->db->delete('user', ['email' => $email]);
-                    $this->db->delete('user_token', ['email' => $email]);
+                    $this->db->delete('user', ['email_cus' => $email]);
+                    $this->db->delete('user_token', ['email_cus' => $email]);
 
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Account activation failed! Token expired.</div>');
                     redirect('Customer/Login');
