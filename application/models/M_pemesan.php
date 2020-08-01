@@ -44,6 +44,7 @@ class M_pemesan extends CI_Model
         $this->db->select('count(*) as allcount');
 
         $this->db->join('customer', 'customer.id_cus=pemesanan.id_cus');
+        $this->db->where('status_cus', "Sudah Checkout");
         $records  = $this->db->get('pemesanan')->result();
         $totalRecords = $records[0]->allcount;
 
@@ -53,6 +54,7 @@ class M_pemesan extends CI_Model
             $this->db->where($searchQuery);
 
         $this->db->join('customer', 'customer.id_cus=pemesanan.id_cus');
+        $this->db->where('status_cus', "Sudah Checkout");
         $records  = $this->db->get('pemesanan')->result();
         $totalRecordwithFilter = $records[0]->allcount;
 
@@ -64,6 +66,7 @@ class M_pemesan extends CI_Model
         $this->db->limit($rowperpage, $start);
 
         $this->db->join('customer', 'customer.id_cus=pemesanan.id_cus');
+        $this->db->where('status_cus', "Sudah Checkout");
         $records  = $this->db->get('pemesanan')->result();
 
         $data = array();

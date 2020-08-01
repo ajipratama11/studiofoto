@@ -21,9 +21,10 @@ class Keranjang extends CI_Controller
     {
         $id_cus = $this->session->userdata('id_cus');
         $this->db->join('kategori', 'kategori.id_kategori=pemesanan.id_kategori');
+        $this->db->join('customer', 'customer.id_cus=pemesanan.id_cus');
         $this->db->join('sesi_pemotretan', 'sesi_pemotretan.id_sesi=pemesanan.id_sesi');
         $this->db->join('dekorasi', 'dekorasi.id_dekorasi=pemesanan.id_dekorasi');
-        $this->db->where('id_cus', $id_cus);
+        $this->db->where('pemesanan.id_cus', $id_cus);
         $data['cus'] = $this->db->get('pemesanan')->result();
         $this->load->view('Customer/v_keranjang', $data);
     }

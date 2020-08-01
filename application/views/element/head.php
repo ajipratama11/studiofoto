@@ -15,12 +15,12 @@
 
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="<?= base_url() ?>vendor/studio/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<?= base_url() ?>vendor/studio/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="<?= base_url() ?>vendor/studio/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="<?= base_url() ?>vendor/studio/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="<?= base_url() ?>vendor/studio/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="<?= base_url() ?>vendor/studio/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="<?= base_url() ?>vendor/studio/css/style.css" type="text/css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/studio/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/studio/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/studio/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/studio/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/studio/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/studio/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/studio/css/style.css" type="text/css">
     <link href="<?= base_url() ?>vendor/admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
 </head>

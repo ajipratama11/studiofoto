@@ -58,21 +58,31 @@ class Pemesanan extends CI_Controller
 
         //add 1 hour to time
         $cenvertedTime = date('H:i', strtotime('+' . $lama . ' minutes', strtotime($post['waktu'])));
-
+        $date = date("d-m-Y", strtotime($post['tanggal']));
         $this->lokasi = $post['lokasi'];
-        $tgl = $this->tgl_pemesanan = $post['tanggal'];
+        $tgl = $this->tgl_pemesanan = $date;
         $mulai = $this->waktu_pemesanan = $post['waktu'];
         $selesai = $this->waktu_selesai = $cenvertedTime;
         $this->total_biaya = $dekor->harga_dekorasi + $sesi->harga_sesi + $kategori->harga;
-        $this->status = "Belum Checkout";
-        $this->jenis_pembayaran = "Dp";
+        $this->status_cus = "Belum Checkout";
+
 
         var_dump($mulai);
         var_dump($selesai);
         var_dump($tgl);
 
-        $cek_jadwal = $this->db->query("SELECT * FROM `pemesanan` WHERE '$mulai' >=  waktu_pemesanan   and '$mulai' <=  waktu_selesai AND  tgl_pemesanan =  '$tgl'  ")->row();
+        $cek_jadwal = $this->db->query("SELECT * FROM `pemesanan` WHERE '$mulai' >=  waktu_pemesanan   and '$mulai' <=  waktu_selesai AND  tgl_pemesanan =  '$tgl' AND status_cus='Sudah Checkout'  ")->row();
+        $cek_jadwal2 = $this->db->query("SELECT * FROM `pemesanan` WHERE '$selesai' >=  waktu_pemesanan   and '$selesai' <=  waktu_selesai AND  tgl_pemesanan =  '$tgl' AND status_cus='Sudah Checkout'  ")->row();
         if ($cek_jadwal) {
+            $this->session->set_flashdata(
+                'gagal',
+                '<div class="alert alert-danger col-md-12" >
+                    <p> Jadwal sudah ada yang memesan!!!</p>
+                  
+                </div>'
+            );
+            redirect('Customer/Pemesanan/pemesanan/' . $this->id_kategori);
+        } else if ($cek_jadwal2) {
             $this->session->set_flashdata(
                 'gagal',
                 '<div class="alert alert-danger col-md-12" >

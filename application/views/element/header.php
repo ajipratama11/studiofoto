@@ -19,12 +19,12 @@
       <div class="container-fluid">
           <div class="inner-header">
               <div class="logo">
-                  <a href="./index.html"><img src="<?= base_url() ?>vendor/studio/img/logo.png" alt=""></a>
+                  <a href="./index.html"><img style="width: 150px;height:60px;" src="<?= base_url() ?>assets/studio/img/logo2.png" alt=""></a>
               </div>
               <div class="header-right">
                   <img src="<?= base_url() ?>vendor/studio/img/icons/search.png" alt="" class="search-trigger">
                   <img src="<?= base_url() ?>vendor/studio/img/icons/man.png" alt="">
-                  <a href="#">
+                  <a href="<?= base_url('Customer/Keranjang/') ?>">
                       <img src="<?= base_url() ?>vendor/studio/img/icons/bag.png" alt="">
                       <span>2</span>
                   </a>
