@@ -42,7 +42,7 @@
                     <div class="col-12 d-flex no-block align-items-center">
                         <h4 class="page-title">Dashboard</h4>
                         <div class="ml-auto text-right">
-                            21212
+                        <?= $waktu; ?>
                         </div>
                     </div>
                 </div>
