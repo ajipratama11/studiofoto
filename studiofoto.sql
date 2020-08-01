@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2020 at 05:49 PM
+-- Generation Time: Aug 01, 2020 at 09:46 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -33,6 +33,13 @@ CREATE TABLE `admin` (
   `username` varchar(35) NOT NULL,
   `password` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
+(1, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -102,6 +109,25 @@ INSERT INTO `galeri` (`id_galeri`, `foto`, `id_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jenis_pengeluaran`
+--
+
+CREATE TABLE `jenis_pengeluaran` (
+  `id_jenis_pengeluaran` int(11) NOT NULL,
+  `jenis_pengeluaran` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jenis_pengeluaran`
+--
+
+INSERT INTO `jenis_pengeluaran` (`id_jenis_pengeluaran`, `jenis_pengeluaran`) VALUES
+(1, 'Dekorasi'),
+(2, 'Kamera');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kategori`
 --
 
@@ -149,15 +175,17 @@ CREATE TABLE `konfirmasi_pembayaran` (
   `opsi` varchar(30) NOT NULL,
   `dp` int(50) DEFAULT NULL,
   `total_bayar` int(50) NOT NULL,
-  `bukti_transfer` varchar(128) NOT NULL
+  `bukti_transfer` varchar(128) NOT NULL,
+  `tgl_checkout` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `konfirmasi_pembayaran`
 --
 
-INSERT INTO `konfirmasi_pembayaran` (`id_konfirmasi`, `id_pemesanan`, `opsi`, `dp`, `total_bayar`, `bukti_transfer`) VALUES
-(7, 35, 'DP', 65000, 130000, '0918194620X310.jpg');
+INSERT INTO `konfirmasi_pembayaran` (`id_konfirmasi`, `id_pemesanan`, `opsi`, `dp`, `total_bayar`, `bukti_transfer`, `tgl_checkout`) VALUES
+(9, 37, 'Lunas', 40000, 80000, 'alquran.jpg', 'Sabtu, 1 Agustus 2020'),
+(10, 43, 'Lunas', 40000, 80000, '0918194620X310.jpg', 'Sabtu, 1 Agustus 2020');
 
 -- --------------------------------------------------------
 
@@ -186,9 +214,9 @@ CREATE TABLE `pemesanan` (
 
 INSERT INTO `pemesanan` (`id_pemesanan`, `id_kategori`, `id_cus`, `id_dekorasi`, `id_sesi`, `jenis`, `lokasi`, `tgl_pemesanan`, `waktu_pemesanan`, `waktu_selesai`, `total_biaya`, `status_cus`) VALUES
 (35, 2, 1, 1, 1, 'Studio', '', '01-01-2020', '02:00', '02:06', 130000, 'Sudah Checkout'),
-(36, 5, 1, 1, 1, 'Studio', '', '01-01-2020', '03:01', '03:07', 80000, 'Belum Checkout'),
-(37, 5, 1, 1, 1, 'Studio', '', '01-01-2020', '03:02', '03:08', 80000, 'Belum Checkout'),
-(43, 5, 1, 1, 1, 'Studio', '', '01-01-2020', '02:07', '02:13', 80000, 'Belum Checkout');
+(36, 5, 1, 1, 1, 'Studio', '', '01-01-2020', '03:01', '03:07', 80000, 'Sudah Checkout'),
+(37, 5, 1, 1, 1, 'Studio', '', '01-01-2020', '03:02', '03:08', 80000, 'Sudah Checkout'),
+(43, 5, 1, 1, 1, 'Studio', '', '01-01-2020', '02:07', '02:13', 80000, 'Sudah Checkout');
 
 -- --------------------------------------------------------
 
@@ -209,6 +237,29 @@ CREATE TABLE `sesi_pemotretan` (
 INSERT INTO `sesi_pemotretan` (`id_sesi`, `jumlah_sesi`, `harga_sesi`) VALUES
 (1, 2, 10000),
 (2, 1, 5000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pengeluaran`
+--
+
+CREATE TABLE `tbl_pengeluaran` (
+  `id_pengeluaran` int(11) NOT NULL,
+  `nama_pengeluaran` varchar(30) NOT NULL,
+  `biaya_pengeluaran` int(11) NOT NULL,
+  `deskripsi_pengeluaran` text NOT NULL,
+  `tgl_pengeluaran` varchar(30) NOT NULL,
+  `id_jenis_pengeluaran` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_pengeluaran`
+--
+
+INSERT INTO `tbl_pengeluaran` (`id_pengeluaran`, `nama_pengeluaran`, `biaya_pengeluaran`, `deskripsi_pengeluaran`, `tgl_pengeluaran`, `id_jenis_pengeluaran`) VALUES
+(1, 'Menambah Dekorasi', 25000, 'Penambahan model dekorasi', 'Sabtu, 1 Agustus 2020', 1),
+(2, 'Membuat Bingkai', 50000, 'Lagi mahal nih kertasnya', 'Minggu, 2 Agustus 2020', 1);
 
 -- --------------------------------------------------------
 
@@ -251,6 +302,12 @@ ALTER TABLE `galeri`
   ADD PRIMARY KEY (`id_galeri`);
 
 --
+-- Indexes for table `jenis_pengeluaran`
+--
+ALTER TABLE `jenis_pengeluaran`
+  ADD PRIMARY KEY (`id_jenis_pengeluaran`);
+
+--
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -281,6 +338,12 @@ ALTER TABLE `sesi_pemotretan`
   ADD PRIMARY KEY (`id_sesi`);
 
 --
+-- Indexes for table `tbl_pengeluaran`
+--
+ALTER TABLE `tbl_pengeluaran`
+  ADD PRIMARY KEY (`id_pengeluaran`);
+
+--
 -- Indexes for table `ukuran`
 --
 ALTER TABLE `ukuran`
@@ -294,7 +357,7 @@ ALTER TABLE `ukuran`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -315,6 +378,12 @@ ALTER TABLE `galeri`
   MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `jenis_pengeluaran`
+--
+ALTER TABLE `jenis_pengeluaran`
+  MODIFY `id_jenis_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -330,13 +399,19 @@ ALTER TABLE `kertas`
 -- AUTO_INCREMENT for table `konfirmasi_pembayaran`
 --
 ALTER TABLE `konfirmasi_pembayaran`
-  MODIFY `id_konfirmasi` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_konfirmasi` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
   MODIFY `id_pemesanan` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
+-- AUTO_INCREMENT for table `tbl_pengeluaran`
+--
+ALTER TABLE `tbl_pengeluaran`
+  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ukuran`
