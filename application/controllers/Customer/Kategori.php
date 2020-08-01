@@ -16,10 +16,20 @@ class Kategori extends CI_Controller
         // }
     }
 
+    public function index()
+    {
+        
+    }
+
     public function detail_kategori($id_kategori = null)
     {
-        $this->db->where('id_kategori', $id_kategori);
+        $this->db->join('galeri', 'galeri.id_kategori=kategori.id_kategori');
+        $this->db->where('kategori.id_kategori', $id_kategori);
         $data['kategori'] = $this->db->get('kategori')->row_array();
+
+        $this->db->join('kategori', 'galeri.id_kategori=kategori.id_kategori');
+        $this->db->where('galeri.id_kategori', $id_kategori);
+        $data['galeri'] = $this->db->get('galeri')->result();
         $this->load->view('Customer/v_detail_kategori', $data);
     }
 }

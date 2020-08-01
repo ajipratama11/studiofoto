@@ -1,7 +1,7 @@
-  <!-- Page Preloder
+  <!-- Page Preloder -->
   <div id="preloder">
       <div class="loader"></div>
-  </div> -->
+  </div>
 
   <!-- Search model -->
   <div class="search-model">
@@ -30,23 +30,30 @@
                   </a>
               </div>
               <div class="user-access">
-                  <a href="#">Register</a>
-                  <a href="#" class="in">Sign in</a>
+                  <?php
+                    $id = $this->session->userdata('id_cus');
+                    if (!$id) { ?>
+                      <a href="#">Register</a>
+                      <a href="<?= base_url('Customer/Login') ?>" class="in">Sign in</a>
+                  <?php } else { ?>
+
+                      <a href="#" hidden>Register</a>
+                      <a href="<?= base_url('Customer/Login') ?>" hidden class="in">Sign in</a>
+                  <?php } ?>
               </div>
               <nav class="main-menu mobile-menu">
                   <ul>
-                      <li><a class="active" href="./index.html">Beranda</a></li>
+                      <li><a class="active" href="<?= base_url() ?>Customer/Beranda">Beranda</a></li>
                       <li><a href="./categories.html">Kategori Foto</a>
                           <ul class="sub-menu">
                               <?php $data = $this->db->get('kategori')->result();
                                 foreach ($data as $k) {
                                 ?>
-                                  <li><a href="product-page.html"><?= $k->nama_kategori ?></a></li>
+                                  <li><a href="<?= base_url('Customer/Kategori/detail_kategori/' . $k->id_kategori) ?>"><?= $k->nama_kategori ?></a></li>
                               <?php } ?>
                           </ul>
                       </li>
-                      <li><a href="./product-page.html">About</a></li>
-                      <li><a href="./check-out.html">Blog</a></li>
+                      <li><a href=" ./check-out.html">Blog </a> </li>
                       <li><a href="./contact.html">Contact</a></li>
                   </ul>
               </nav>
