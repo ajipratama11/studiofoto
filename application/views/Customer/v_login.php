@@ -38,9 +38,7 @@
                     <span class="login100-form-title p-b-34">
                         Masuk Sebagai Customer
                     </span>
-                    <?php echo $this->session->flashdata('daftar'); ?>
-                    <?php echo $this->session->flashdata('gagal'); ?>
-                    <?php echo $this->session->flashdata('login'); ?>
+                    <?php echo $this->session->flashdata('message'); ?>
                     <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
                         <input id="first-name" class="input100" type="text" name="username" placeholder="User name">
                         <span class="focus-input100"></span>
