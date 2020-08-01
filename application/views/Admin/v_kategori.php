@@ -34,7 +34,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Form GTK</h4>
+                        <h4 class="page-title">Kategori</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -60,14 +60,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">Data Guru & Tenaga Kependidikan (GTK)</h5><br>
+                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Kategori</h5><br>
 
-                                <form method="post" action="<?php echo base_url('Excel_import/import'); ?>" enctype="multipart/form-data">
-                                            
-                                                <input type="file" name="file" id="file"  required accept=".xls, .xlsx" /></p>
-                                            <input type="submit" name="import" value="Import" class="btn btn-info" />
-                                            <a class="btn btn-info"  href="<?php echo base_url(); ?>excel_import/export">Export</a>
-                                        </form>
+                               
                                         
                                 
 
@@ -75,17 +70,26 @@
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th><b>NIK</b></th>
-                                                <th><b>NIP</b></th>
-                                                <th><b>Nama GTK</b></th>
-                                                <th><b>Tempat Tanggal Lahir</b></th>
-                                                <th><b>Jenis Kelamin</b></th>
-                                                <th><b>Posisi di Sekolah</b></th>
+                                                <th><b>No</b></th>
+                                                <th><b>Nama Kategori</b></th>
+                                                <th><b>Harga</b></th>
+                                                <th><b>Deskripsi</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                            $no=1;
+                                             foreach($kategori as $k) { ?>
                                             
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $k->nama_kategori ?></td>
+                                                <td><?= $k->harga ?></td>
+                                                <td><?= $k->deskripsi ?></td>
+                                                <td><button class="btn btn-info">Galeri</button></td>
+                                            </tr>
+                                            <?php } ?>
                                         </tbody>
 
                                     </table>

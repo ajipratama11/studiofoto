@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>vendor/admin/assets/images/logo_sd.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>vendor/studio/img/studio1.png">
     <title>ADMIN | STUDIO FOTO</title>
     <!-- Custom CSS -->
     <link href="<?= base_url("vendor/admin/dist/css/style.min.css") ?>" rel="stylesheet">
