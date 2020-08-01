@@ -18,45 +18,43 @@
         <!-- Login box.scss -->
         <!-- ============================================================== -->
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
-                <div id="loginform">
-                    <div class="text-center p-t-20 p-b-20">
-                        <h4 class="text-center p-t-20 p-b-20" style="color:#fff;">SIM ONLINE SDN BADEAN 1 BONDOWOSO</h4>
-                        <span class="db"><img src="<?= base_url() ?>vendor/admin/assets/images/logos.png" alt="logo" width="125px" height="125px" /></span>
-                        <span class="db"><img src="<?= base_url() ?>vendor/admin/assets/images/logosd.png" alt="logo" width="125px" height="125px" /></span>
-                    </div>
-                    <!-- Form -->
-                    <form class="form-horizontal m-t-20" class="user" method="post" action="<?= base_url('Admin/Login/aksi_login'); ?>">
-                        <div class="row p-b-30">
-                            <div class="col-12">
-                                <?= $this->session->flashdata('message'); ?>
-                                <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Username..." value="<?= set_value('email'); ?>">
-                                </div>
-                                <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
-                                    </div>
-                                    <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Masukan Password..." value="<?= set_value('password'); ?>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row border-top border-secondary">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <div class="p-t-20">
-                                        <button class="btn btn-success float-right" type="submit">Login</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+            <div id="loginform">
+                <div class="text-center p-t-20 p-b-20">
+                    <span class="db"><img src="<?= base_url() ?>assets/studio/img/logo1.png" alt="logo" width="300" height="150px" /></span>
                 </div>
-                <!-- <div id="recoverform">
+                <!-- Form -->
+                <form class="form-horizontal m-t-20" class="user" method="post" action="<?= base_url('Admin/Login/aksi_login'); ?>">
+                    <div class="row p-b-30">
+                        <div class="col-12">
+                            <?= $this->session->flashdata('message'); ?>
+                            <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Username..." value="<?= set_value('email'); ?>">
+                            </div>
+                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                </div>
+                                <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Masukan Password..." value="<?= set_value('password'); ?>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border-top border-secondary">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <div class="p-t-20">
+                                    <button class="btn btn-success float-right" type="submit">Login</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- <div id="recoverform">
                     <div class="text-center">
                         <span class="text-white">Enter your e-mail address below and we will send you instructions how to recover a password.</span>
                     </div>
@@ -80,23 +78,23 @@
                         </form>
                     </div>
                 </div> -->
-            </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- Login box.scss -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper scss in scafholding.scss -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper scss in scafholding.scss -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right Sidebar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right Sidebar -->
-        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- Login box.scss -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper scss in scafholding.scss -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper scss in scafholding.scss -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right Sidebar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right Sidebar -->
+    <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- All Required js -->

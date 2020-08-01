@@ -12,12 +12,12 @@
                 <b class="logo-icon p-l-10">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="<?= base_url() ?>vendor/studio/img/studio2.png" width="40px" height="40px" alt="homepage" class="light-logo" />
+                    <img src="<?= base_url() ?>assets/studio/img/logo1.png" width="130px" height="60px" alt="homepage" class="light-logo" />
 
                 </b>
                 <!--End Logo icon -->
                 <!-- Logo text -->
-                ADMIN STUDIO
+
                 <!-- Logo icon -->
                 <!-- <b class="logo-icon"> -->
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -88,7 +88,7 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav" class="p-t-30">
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>Admin/Beranda" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Pemesanan</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Data </span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
@@ -100,8 +100,7 @@
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Laporan </span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/index" class="sidebar-link"><i class="mdi mdi-account-multiple"></i><span class="hide-menu"> Laporan Pemasukan </span></a></li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>mapel/mapel" class="sidebar-link"><i class="mdi mdi-library"></i><span class="hide-menu"> Daftar Mata Pelajaran </span></a></li>
-
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/pengeluaran" class="sidebar-link"><i class="mdi mdi-account-multiple"></i><span class="hide-menu"> Laporan Pengeluaran </span></a></li>
 
                     </ul>
                 </li>

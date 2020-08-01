@@ -25,7 +25,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Laporan Pemasukan</h4>
+                        <h4 class="page-title">Laporan Pengeluaran</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -47,10 +47,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-header" style="background:#2980b9; color:#fff;">Cetak Laporan</h5> <br>
-                                <form action="<?= base_url() ?>Admin/Laporan/laporan_pemasukan" method="POST">
+                                <form action="<?= base_url() ?>Admin/Laporan/laporan_pengeluaran" method="POST">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <select class="form-control" name="bulan" id="sel_bulan">
+
                                                 <option value="Januari">Januari</option>
                                                 <option value="Februari">Februari</option>
                                                 <option value="Maret">Maret</option>
@@ -86,10 +87,11 @@
 
                                         <thead>
                                             <tr>
-                                                <th>Id Cus</th>
-                                                <th>Nama Customner</th>
-                                                <th>Total Pembayaran</th>
-                                                <th>Tanggal Bayar</th>
+                                                <th>Id</th>
+                                                <th>Kebutuhan</th>
+                                                <th>Biaya</th>
+                                                <th>Tanggal</th>
+                                                <th>Jenis</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -105,20 +107,17 @@
         </div>
     </div>
     <?php foreach ($a as $b) { ?>
-        <div class="modal fade" id="modalDetail<?= $b->id_pemesanan ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalDetail<?= $b->id_pengeluaran ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><?= $b->nama_cus ?></h5>
+                        <h5 class="modal-title" id="exampleModalLabel"><?= $b->nama_pengeluaran ?></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        Kategori: <?= $b->nama_kategori . ' / Rp.' . number_format($b->harga)  ?><br>
-                        Dekorasi: <?= $b->nama_dekorasi . ' / Rp.' . number_format($b->harga_dekorasi)  ?><br>
-                        Sesi: <?= $b->jumlah_sesi . ' sesi / Rp.' . number_format($b->harga_sesi)  ?>
-                        <p style="float: right;">Tempat: <?= $b->jenis  ?></p>
+                        <?= $b->deskripsi_pengeluaran ?>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -157,7 +156,7 @@
                 'serverMethod': 'post',
                 //'searching': false, // Remove default Search Control
                 'ajax': {
-                    'url': '<?= base_url() ?>Admin/Laporan/pemasukanList',
+                    'url': '<?= base_url() ?>Admin/Laporan/pengeluaranList',
                     'data': function(data) {
                         data.searchBulan = $('#sel_bulan').val();
                         data.searchTahun = $('#sel_tahun').val();
@@ -167,16 +166,19 @@
 
                 },
                 'columns': [{
-                        data: 'id_pemesanan'
+                        data: 'id_pengeluaran'
                     },
                     {
-                        data: 'nama_cus'
+                        data: 'nama_pengeluaran'
                     },
                     {
-                        data: 'total_bayar'
+                        data: 'biaya_pengeluaran'
                     },
                     {
-                        data: 'tgl_pemesanan'
+                        data: 'tgl_pengeluaran'
+                    },
+                    {
+                        data: 'jenis_pengeluaran'
                     },
                     {
                         data: 'aksi'
