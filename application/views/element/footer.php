@@ -92,7 +92,12 @@
 <!-- Footer Section End -->
 
 <!-- Js Plugins -->
+<!-- jQuery Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- Datatable JS -->
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="<?= base_url() ?>vendor/studio/js/bootstrap.min.js"></script>
 <script src="<?= base_url() ?>vendor/studio/js/jquery.magnific-popup.min.js"></script>
 <script src="<?= base_url() ?>vendor/studio/js/jquery.slicknav.js"></script>
