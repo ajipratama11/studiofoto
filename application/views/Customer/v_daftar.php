@@ -47,11 +47,11 @@
                             <span class="focus-input100"></span>
                         </div>
                         <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 col-md-12" data-validate="Type user name">
-                            <input id="first-name" class="input100" type="text" name="no_hp" placeholder="Email">
+                            <input id="first-name" class="input100" type="text" name="email_cus" placeholder="Email">
                             <span class="focus-input100"></span>
                         </div>
                         <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 col-md-12" data-validate="Type user name">
-                            <input id="first-name" class="input100" type="number" name="email_cus" placeholder="No Hp">
+                            <input id="first-name" class="input100" type="number" name="no_hp" placeholder="No Hp">
                             <span class="focus-input100"></span>
                         </div>
                         <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
