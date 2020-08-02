@@ -50,5 +50,28 @@ class Dekorasi extends CI_Controller
         $data['sesi'] = $this->db->get('sesi_pemotretan')->result();
         $this->load->view('Admin/v_sesi', $data);
     }
+
+    public function tambahSesi(){
+        $post = $this->input->post();
+        $this->jumlah_sesi = $post['jumlah_sesi'];
+        $this->harga_sesi = $post['harga_sesi'];
+        $data = $this->db->insert('sesi_pemotretan', $this);
+        if($data){
+            echo "<script>
+                alert('Berhasil Tambah Sesi Pemotretan');
+                window.location.href = '".base_url('Admin/Dekorasi/sesi')."';
+            </script>";//Url Logi
+        }
+    }
+
+    public function editSesi($id_sesi = null){
+        $this->M_dekorasi->UpdateSesi($id_sesi);
+        redirect('Admin/Dekorasi/sesi');  
+
+    }
+    public function hapusSesi($id_sesi = null){
+        $this->M_dekorasi->deleteSesi($id_sesi);
+        redirect('Admin/Dekorasi/sesi');  
+    }
     
 }

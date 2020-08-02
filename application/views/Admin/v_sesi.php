@@ -34,7 +34,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Dekorasi</h4>
+                        <h4 class="page-title">Sesi Pemotretan</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -60,10 +60,10 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Dekorasi</h5><br>
+                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Sesi Pemotretan</h5><br>
 
 
-                                <button style="margin-bottom: 10px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Tambah Kategori</button>
+                                <button style="margin-bottom: 10px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Tambah Sesi</button>
                                         
 
 
@@ -72,7 +72,7 @@
                                         <thead>
                                             <tr>
                                                 <th><b>No</b></th>
-                                                <th><b>Nama Dekorasi</b></th>
+                                                <th><b>Jumlah Sesi</b></th>
                                                 <th><b>Harga</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
@@ -88,7 +88,7 @@
                                                     <td><?= $k->harga_sesi ?></td>
                                                     <td>
                                                     <a data-toggle="modal" data-target="#modal-edit<?= $k->id_sesi; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-warning">Edit</a>
-                                                    <a onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" href="<?php echo base_url('Admin/Dekorasi/hapusDekorasi/'.$k->id_sesi); ?>" class="btn btn-danger">Hapus</a>
+                                                    <a onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" href="<?php echo base_url('Admin/Dekorasi/hapusSesi/'.$k->id_sesi); ?>" class="btn btn-danger">Hapus</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
@@ -115,7 +115,7 @@
                                 </div>
                             
                                 <div class="modal-body">
-                                    <form action="<?php echo base_url('Admin/Dekorasi/editDekorasi/'.$row->id_sesi); ?>" method="post" enctype="multipart/form-data">
+                                    <form action="<?php echo base_url('Admin/Dekorasi/editSesi/'.$row->id_sesi); ?>" method="post" enctype="multipart/form-data">
                                         
                                         <div class="form-group row">
                                             <label for="fname" class="col-sm-4  control-label col-form-label">Jumlah Sesi</label>
@@ -158,24 +158,24 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Dekorasi</h5>
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Sesi</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo base_url('Admin/Dekorasi/tambahDekorasi'); ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo base_url('Admin/Dekorasi/tambahSesi'); ?>" method="post" enctype="multipart/form-data">
                              
                                 <div class="form-group row">
-                                    <label for="fname" class="col-sm-4  control-label col-form-label">Nama Dekorasi</label>
+                                    <label for="fname" class="col-sm-4  control-label col-form-label">Jumlah Sesi</label>
                                     <div class="col-sm-8">
-                                        <input type="text" style="border-radius: 10px;" name="nama_dekorasi" class="form-control" id="username" placeholder="Nama Kategori" required>
+                                        <input type="text" style="border-radius: 10px;" name="jumlah_sesi" class="form-control" id="username" placeholder="Nama Kategori" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-4  control-label col-form-label">Harga</label>
                                     <div class="col-sm-8">
-                                        <input type="number" style="border-radius: 10px;" name="harga" class="form-control" id="password" placeholder="Harga" required>
+                                        <input type="number" style="border-radius: 10px;" name="harga_sesi" class="form-control" id="password" placeholder="Harga" required>
                                     </div>
                                 </div>
                                 

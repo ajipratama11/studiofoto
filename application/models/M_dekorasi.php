@@ -5,12 +5,14 @@ class M_dekorasi extends CI_Model
 {
 
     private $_table = 'dekorasi';
+    private $_table2 = 'sesi_pemotretan';
 
 
 
     public $id_dekorasi;
     public $nama_dekorasi;
     public $harga_dekorasi;
+
 
 
 
@@ -72,5 +74,18 @@ class M_dekorasi extends CI_Model
     function deleteDekorasi($id_dekorasi)
     {
         return $this->db->delete($this->_table, array("id_dekorasi" => $id_dekorasi));
+    }
+    function updateSesi($id_sesi)
+    {
+        $post = $this->input->post();
+        $this->id_sesi = $post['id_sesi'];
+        $this->jumlah_sesi = $post['jumlah_sesi'];
+        $this->harga_sesi = $post['harga_sesi'];
+        $this->db->update($this->_table2, $this, array("id_sesi" => $id_sesi));
+    }
+
+    function deleteSesi($id_sesi)
+    {
+        return $this->db->delete($this->_table2, array("id_sesi" => $id_sesi));
     }
 }

@@ -34,7 +34,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Dekorasi</h4>
+                        <h4 class="page-title">Pemesanan</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -60,11 +60,10 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Dekorasi</h5><br>
+                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Pemesanan</h5><br>
 
 
-                                <button style="margin-bottom: 10px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Tambah Kategori</button>
-
+                                
 
 
                                 <div class="table-responsive">
@@ -92,13 +91,18 @@
                                                     <td><?= $k->nama_kategori ?></td>
                                                     <td><?= $k->jenis ?></td>
                                                     <td><?= $k->total_biaya ?></td>
-                                                    <td><?= $k->dp ?></td>
+                                                    <td><?php if ($k->opsi == 'DP') {
+                                                            echo $k->dp;
+                                                        }else{
+                                                           echo $k->opsi;
+                                                        }
+                                                        ?></td>
                                                     <td>
                                                         <?php
                                                         if ($k->status_cus == 'Sudah Checkout') {
-                                                            if($k->opsi == 'DP'){
+                                                            if ($k->opsi == 'DP') {
                                                                 echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusDP/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
-                                                            }else{
+                                                            } else {
                                                                 echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusSelesai/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
                                                             }
                                                         } else if ($k->status_cus == 'DP Terbayar') {
@@ -194,10 +198,10 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script type="text/javascript">
-  function confirm_alert(node) {
-      return confirm("Apakah anda yakin ingin mengganti status ?");
-  }
-</script>
+        function confirm_alert(node) {
+            return confirm("Apakah anda yakin ingin mengganti status ?");
+        }
+    </script>
     <script src="<?= base_url() ?>vendor/admin/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?= base_url() ?>vendor/admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>
