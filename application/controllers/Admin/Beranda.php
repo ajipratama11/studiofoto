@@ -20,6 +20,8 @@ class Beranda extends CI_Controller
     public function index()
     {
         $this->db->select('SUM(total_bayar) as total');
+        $this->db->join('pemesanan', 'pemesanan.id_pemesanan=konfirmasi_pembayaran.id_pemesanan');
+        $this->db->where('status_cus', 'Pesanan Selesai');
         $data['total'] = $this->db->get('konfirmasi_pembayaran')->row();
 
         $this->db->select('SUM(biaya_pengeluaran) as total');
@@ -31,20 +33,24 @@ class Beranda extends CI_Controller
         $this->load->view('Admin/v_beranda', $data);
     }
 
-    public function pemesanan(){
+    public function pemesanan()
+    {
         $data['pemesanan'] = $this->M_pemesan->tampil_pesan();
         $this->load->view('Admin/v_pemesanan', $data);
     }
-    public function statusDP(){
-		$idpesan = $this->uri->segment(4);
-		$status = 'DP Terbayar';
-		$this->M_pemesan->updatestatus($idpesan,$status);
-		redirect('Admin/Beranda/pemesanan');
+    public function statusDP()
+    {
+        $idpesan = $this->uri->segment(4);
+        $status = 'DP Terbayar';
+        $this->M_pemesan->updatestatus($idpesan, $status);
+        redirect('Admin/Beranda/pemesanan');
     }
-    public function statusSelesai(){
-		$idpesan = $this->uri->segment(4);
+
+    public function statusSelesai()
+    {
+        $idpesan = $this->uri->segment(4);
         $status = 'Pesanan Selesai';
-		$this->M_pemesan->updatestatus($idpesan,$status);
-		redirect('Admin/Beranda/pemesanan');
-	}
+        $this->M_pemesan->updatestatus($idpesan, $status);
+        redirect('Admin/Beranda/pemesanan');
+    }
 }

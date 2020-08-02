@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Login V17</title>
+    <title>Studio Foto</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="<?= base_url() ?>vendor/studio/login/images/icons/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>assets/studio/img/logo2.png">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>vendor/studio/login/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -36,10 +36,10 @@
             <div class="wrap-login100">
                 <form class="login100-form validate-form" method="post" action="<?= base_url() ?>Customer/Login/login_cus">
                     <span class="login100-form-title p-b-34">
-                        Masuk Sebagai Customer
+                        <img src="<?= base_url() ?>assets/studio/img/logo2.png" width="300px" height="150px">
                     </span>
                     <?php echo $this->session->flashdata('message'); ?>
-                    <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+                    <div class=" wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
                         <input id="first-name" class="input100" type="text" name="username" placeholder="User name">
                         <span class="focus-input100"></span>
                     </div>

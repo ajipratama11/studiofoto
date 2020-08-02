@@ -33,7 +33,13 @@ class Bayar extends CI_Controller
         $post = $this->input->post();
         $this->id_pemesanan = $post['id_pemesanan'];
         $this->opsi = $post['opsi'];
-        $this->dp = $post['dp'];
+
+        if ($post['opsi'] == 'DP') {
+            $this->dp = $post['dp'];
+        } else if ($post['opsi'] == 'Lunas') {
+            $this->dp = "0";
+        }
+
         $this->tgl_checkout = formatHariTanggal(date('d-m-Y'));
         $this->total_bayar = $post['total_bayar'];
         $this->bukti_transfer =  $this->_uploadImage();

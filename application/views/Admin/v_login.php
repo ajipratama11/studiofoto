@@ -18,24 +18,23 @@
         <!-- Login box.scss -->
         <!-- ============================================================== -->
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
-                <div id="loginform">
-                    <div class="text-center p-t-20 p-b-20">
-                        <h4 class="text-center p-t-20 p-b-20" style="color:#fff;">ADMIN | STUDIO FOTO</h4>
-                        <span class="db"><img src="<?= base_url() ?>vendor/studio/img/studio2.png" alt="logo" width="225px" height="225px" /></span>
-                    </div>
-                    <!-- Form -->
-                    <form class="form-horizontal m-t-10" class="user" method="post" action="<?= base_url('Admin/Login/aksi_login'); ?>">
-                        <div class="row p-b-30">
-                            <div class="col-12">
-                                <?= $this->session->flashdata('message'); ?>
-                                <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Username..." value="<?= set_value('email'); ?>">
+            <div id="loginform">
+                <div class="text-center p-t-20 p-b-20">
+                    <h4 class="text-center p-t-20 p-b-20" style="color:#fff;">ADMIN | STUDIO FOTO</h4>
+                    <span class="db"><img src="<?= base_url() ?>assets/studio/img/logo2.png" alt="logo" width="300" height="150px" /></span>
+                </div>
+                <!-- Form -->
+                <form class="form-horizontal m-t-10" class="user" method="post" action="<?= base_url('Admin/Login/aksi_login'); ?>">
+                    <div class="row p-b-30">
+                        <div class="col-12">
+                            <?= $this->session->flashdata('message'); ?>
+                            <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                 </div>
                                 <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Username..." value="<?= set_value('email'); ?>">
+
                             </div>
                             <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                             <div class="input-group mb-3">

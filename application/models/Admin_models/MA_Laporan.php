@@ -49,6 +49,7 @@ class MA_Laporan extends CI_Model
         ## Total number of records without filtering
         $this->db->select('count(*) as allcount');
         $this->db->join('customer', 'customer.id_cus=pemesanan.id_cus');
+        $this->db->where('status_cus', 'Pesanan Selesai');
         $this->db->join('konfirmasi_pembayaran', 'konfirmasi_pembayaran.id_pemesanan=pemesanan.id_pemesanan');
         $records  = $this->db->get('pemesanan')->result();
         $totalRecords = $records[0]->allcount;
@@ -59,6 +60,7 @@ class MA_Laporan extends CI_Model
             $this->db->where($searchQuery);
         $this->db->join('customer', 'customer.id_cus=pemesanan.id_cus');
         $this->db->join('konfirmasi_pembayaran', 'konfirmasi_pembayaran.id_pemesanan=pemesanan.id_pemesanan');
+        $this->db->where('status_cus', 'Pesanan Selesai');
         $records  = $this->db->get('pemesanan')->result();
         $totalRecordwithFilter = $records[0]->allcount;
 
@@ -71,6 +73,7 @@ class MA_Laporan extends CI_Model
 
         $this->db->join('customer', 'customer.id_cus=pemesanan.id_cus');
         $this->db->join('konfirmasi_pembayaran', 'konfirmasi_pembayaran.id_pemesanan=pemesanan.id_pemesanan');
+        $this->db->where('status_cus', 'Pesanan Selesai');
         $records  = $this->db->get('pemesanan')->result();
 
         $data = array();

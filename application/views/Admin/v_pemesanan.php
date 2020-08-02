@@ -63,7 +63,7 @@
                                 <h5 class="card-header" style="background:#2980b9; color:#fff;">List Pemesanan</h5><br>
 
 
-                                
+
 
 
                                 <div class="table-responsive">
@@ -75,7 +75,7 @@
                                                 <th><b>Nama Kategori</b></th>
                                                 <th><b>jenis</b></th>
                                                 <th><b>Total Biaya</b></th>
-                                                <th><b>DP</b></th>
+                                                <th><b>Dp</b></th>
                                                 <th><b>Status</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
@@ -93,8 +93,8 @@
                                                     <td><?= $k->total_biaya ?></td>
                                                     <td><?php if ($k->opsi == 'DP') {
                                                             echo $k->dp;
-                                                        }else{
-                                                           echo $k->opsi;
+                                                        } else {
+                                                            echo $k->opsi;
                                                         }
                                                         ?></td>
                                                     <td>
@@ -102,6 +102,7 @@
                                                         if ($k->status_cus == 'Sudah Checkout') {
                                                             if ($k->opsi == 'DP') {
                                                                 echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusDP/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
+                                                            } else  if ($k->opsi == 'Lunas') {
                                                             } else {
                                                                 echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusSelesai/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
                                                             }
@@ -126,7 +127,58 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="modalKeluar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Pengeluaran</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="<?= base_url() ?>Admin/Pengeluaran/tambah" method="post">
+                                <div class="modal-body">
 
+                                    <div class="col-md-12 row">
+                                        <div class="col-md-6">
+                                            <label>Jenis Pengeluaran</label>
+                                            <select name="id_jenis_pengeluaran" class="form-control">
+                                                <?php
+                                                $data = $this->db->get('jenis_pengeluaran')->result();
+                                                foreach ($data as $d) {
+                                                ?>
+                                                    <option value="<?= $d->id_jenis_pengeluaran ?>"><?= $d->jenis_pengeluaran ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Kebutuhan</label>
+                                            <input name="nama_pengeluaran" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Deskripsikan</label>
+                                        <textarea name="deskripsi_pengeluaran" class="form-control"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Biaya</label>
+                                        <input name="biaya_pengeluaran" class="form-control">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Tanggal</label>
+                                        <input type="date" name="tgl_pengeluaran" class="form-control">
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-info">Tambah</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->

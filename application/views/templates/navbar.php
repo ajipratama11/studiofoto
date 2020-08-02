@@ -105,6 +105,13 @@
 
                     </ul>
                 </li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-book"></i><span class="hide-menu">Akuntansi </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/index" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Jurnal Umum </span></a></li>
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/pengeluaran" class="sidebar-link"><i class="mdi mdi-account-multiple"></i><span class="hide-menu"> Laporan Pengeluaran </span></a></li>
+
+                    </ul>
+                </li>
                 <!-- 
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-pen"></i><span class="hide-menu">Penilaian </span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
@@ -120,7 +127,6 @@
                     </ul>
                 </li>  -->
                 <br>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url('Profile'); ?>" aria-expanded="false"><i class="mdi mdi-contacts"></i><span class="hide-menu">Profil Sekolah</span></a></li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->
