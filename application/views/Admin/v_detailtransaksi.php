@@ -18,18 +18,13 @@
     <div class="row invoice-header">
         <div class="invoice-col">
            
-            <h4>Kode Pesan : <?php echo $idpesan; ?></43>
+            <h4>Kode Pesan : 1</43>
         </div>
         
         <div class="invoice-col text-center">
              <div class="invoice-status">
                 <!-- <span class="paid">Paid</span> -->
-                <?php if ($status=='Terbayar') {
-                    echo '<span class="paid">'.$status.'</span>';
-                } else{
-                    echo '<span class="unpaid">'.$status.'</span>';
-                }
-                ?>
+                <span class="paid">'.$status.'</span>
             </div>
         </div>
     </div><hr>
@@ -50,12 +45,10 @@
         <div class="invoice-col">
             <strong>Ditujukan kepada:</strong>
             <address class="small-text">
-                <?php foreach($inv2 as $a){ 
                      echo $a->nama_pengirim; 
                 ?><br />                        
-                <?php echo $a->desa; ?>&nbsp;-&nbsp;<?php echo $a->kecamatan; ?>&nbsp;-&nbsp;<?php echo $a->kabupaten; ?>&nbsp;-&nbsp;<?php echo $a->provinsi; ?><br />
-                <?php echo $a->telp; ?><br />
-                <?php } ?>
+                Keting Jombang Jember
+                092018289238<br />
             </address>
         </div>
     </div>
@@ -82,12 +75,7 @@
         
         <!-- memberikan keterangan untuk yang di proses dan terbayar -->
         <div class="panel-body">
-            <?php if ($status=='Proses') {
-                echo 'Lakukan pembayaran dalam jangka waktu 24 jam setelah transaksi dilakukan.';
-            } else {
-                echo 'Pembayaran Telah Dilakukan, bisa Melanjutkan ke Tahap Selanjutnya.';
-            }
-            ?>
+        Lakukan pembayaran dalam jangka waktu 24 jam setelah transaksi dilakukan.
         </div>
     </div>
 
@@ -106,25 +94,23 @@
                         </tr>
                     </thead>
                     <tbody>    
-                        <?php foreach($inv as $a){ ?> 
+                        <?php foreach($pemesanan as $a){ ?> 
                         <tr>
-                            <td><?php echo $a->nama_produk; ?></td>
-                            <td><?php echo $a->jumlah; ?></td>
-                            <td class="text-center">Rp <?php $format_indonesia = number_format ($a->total, 0, ',', '.');
+                            <td><?php echo $a->nama_kategori; ?></td>
+                            <td><?php echo $a->nama_dekorasi; ?></td>
+                            <td class="text-center">Rp <?php $format_indonesia = number_format ($a->total_bayar, 0, ',', '.');
                                      echo $format_indonesia; ?></td>
                         </tr>
                         <?php } ?>
                         <tr>
-                            <td>Pengiriman</td>
+                            <td>Status pembayaran</td>
                             <td></td>
-                            <td class="text-center">Rp <?php $format_indonesia = number_format ($pengiriman, 0, ',', '.');
-                                     echo $format_indonesia; ?> </td>
+                            <td class="text-center"></td>
                         </tr>
                         <tr>
                             <td class="total-row text-right"></td>
                             <td class="total-row text-right"><strong>Total</strong></td>
-                            <td class="total-row text-center">Rp <?php $format_indonesia = number_format ($total2, 0, ',', '.');
-                                     echo $format_indonesia; ?></td>
+                            <td class="total-row text-center">Rp</td>
                         </tr>
                     </tbody>
                 </table>

@@ -113,7 +113,7 @@
                                                         ?>
                                                     </td>
                                                     <td>
-                                                        <a data-toggle="modal" data-target="#modal-edit<?= $k->id_dekorasi; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-warning">Detail Transaksi</a>
+                                                        <a href="<?= base_url('Admin/Beranda/detail_transaksi/'.$k->id_pemesanan); ?>" class="btn btn-warning">Detail Transaksi</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>

@@ -46,5 +46,10 @@ class Beranda extends CI_Controller
         $status = 'Pesanan Selesai';
 		$this->M_pemesan->updatestatus($idpesan,$status);
 		redirect('Admin/Beranda/pemesanan');
-	}
+    }
+    public function detail_transaksi(){
+		$idpesan = $this->uri->segment(4);
+        $data['pemesanan'] = $this->M_pemesan->tampil_pesan2($idpesan);
+        $this->load->view('Admin/v_detailtransaksi', $data);
+    }
 }
