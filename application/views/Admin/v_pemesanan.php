@@ -64,7 +64,7 @@
 
 
                                 <button style="margin-bottom: 10px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Tambah Kategori</button>
-                                        
+
 
 
                                 <div class="table-responsive">
@@ -72,23 +72,44 @@
                                         <thead>
                                             <tr>
                                                 <th><b>No</b></th>
-                                                <th><b>Nama Dekorasi</b></th>
-                                                <th><b>Harga</b></th>
+                                                <th><b>Nama Cus</b></th>
+                                                <th><b>Nama Kategori</b></th>
+                                                <th><b>jenis</b></th>
+                                                <th><b>Total Biaya</b></th>
+                                                <th><b>DP</b></th>
+                                                <th><b>Status</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             $no = 1;
-                                            foreach ($dekorasi as $k) { ?>
+                                            foreach ($pemesanan as $k) { ?>
 
                                                 <tr>
                                                     <td><?= $no++; ?></td>
-                                                    <td><?= $k->nama_dekorasi ?></td>
-                                                    <td><?= $k->harga_dekorasi ?></td>
+                                                    <td><?= $k->nama_cus ?></td>
+                                                    <td><?= $k->nama_kategori ?></td>
+                                                    <td><?= $k->jenis ?></td>
+                                                    <td><?= $k->total_biaya ?></td>
+                                                    <td><?= $k->dp ?></td>
                                                     <td>
-                                                    <a data-toggle="modal" data-target="#modal-edit<?= $k->id_dekorasi; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-warning">Edit</a>
-                                                    <a onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" href="<?php echo base_url('Admin/Dekorasi/hapusDekorasi/'.$k->id_dekorasi); ?>" class="btn btn-danger">Hapus</a>
+                                                        <?php
+                                                        if ($k->status_cus == 'Sudah Checkout') {
+                                                            if($k->opsi == 'DP'){
+                                                                echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusDP/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
+                                                            }else{
+                                                                echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusSelesai/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
+                                                            }
+                                                        } else if ($k->status_cus == 'DP Terbayar') {
+                                                            echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusSelesai/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-warning">' . $k->status_cus . '</button></a>';
+                                                        } else {
+                                                            echo '<button type="button" class="btn btn-success">' . $k->status_cus . '</button>';
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <a data-toggle="modal" data-target="#modal-edit<?= $k->id_dekorasi; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-warning">Detail Transaksi</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
@@ -101,47 +122,8 @@
                         </div>
                     </div>
                 </div>
-                
-                <?php  foreach($dekorasi as $row): ?>
-                    <div class="row">
-                    <div id="modal-edit<?=$row->id_dekorasi;?>" class="modal fade">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">   </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            
-                                <div class="modal-body">
-                                    <form action="<?php echo base_url('Admin/Dekorasi/editDekorasi/'.$row->id_dekorasi); ?>" method="post" enctype="multipart/form-data">
-                                        
-                                        <div class="form-group row">
-                                            <label for="fname" class="col-sm-4  control-label col-form-label">Nama Dekorasi</label>
-                                            <div class="col-sm-8">
-                                                <input type="hidden" style="border-radius: 10px;" name="id_dekorasi" class="form-control" id="username" value="<?php echo $row->id_dekorasi;  ?>" placeholder="Nama Penanggung Jawab" required>
-                                                <input type="text" style="border-radius: 10px;" name="nama_dekorasi" class="form-control" id="username" value="<?php echo $row->nama_dekorasi;  ?>" placeholder="Nama Penanggung Jawab" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="fname" class="col-sm-4  control-label col-form-label">Harga</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" style="border-radius: 10px;" name="harga_dekorasi" class="form-control" id="password" value="<?php echo $row->harga_dekorasi  ?>" placeholder="Nama Penanggung Jawab" required>
-                                            </div>
-                                        </div>
-                                    
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <?php endforeach; ?>
+
+
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -165,7 +147,7 @@
                         </div>
                         <div class="modal-body">
                             <form action="<?php echo base_url('Admin/Dekorasi/tambahDekorasi'); ?>" method="post" enctype="multipart/form-data">
-                             
+
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-4  control-label col-form-label">Nama Dekorasi</label>
                                     <div class="col-sm-8">
@@ -178,7 +160,7 @@
                                         <input type="number" style="border-radius: 10px;" name="harga_dekorasi" class="form-control" id="password" placeholder="Harga" required>
                                     </div>
                                 </div>
-                                
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -211,6 +193,11 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script type="text/javascript">
+  function confirm_alert(node) {
+      return confirm("Apakah anda yakin ingin mengganti status ?");
+  }
+</script>
     <script src="<?= base_url() ?>vendor/admin/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?= base_url() ?>vendor/admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>

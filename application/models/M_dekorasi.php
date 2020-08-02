@@ -10,7 +10,7 @@ class M_dekorasi extends CI_Model
 
     public $id_dekorasi;
     public $nama_dekorasi;
-    public $harga;
+    public $harga_dekorasi;
 
 
 
@@ -65,7 +65,7 @@ class M_dekorasi extends CI_Model
         $post = $this->input->post();
         $this->id_dekorasi = $post['id_dekorasi'];
         $this->nama_dekorasi = $post['nama_dekorasi'];
-        $this->harga = $post['harga'];
+        $this->harga_dekorasi = $post['harga_dekorasi'];
         $this->db->update($this->_table, $this, array("id_dekorasi" => $id_dekorasi));
     }
 

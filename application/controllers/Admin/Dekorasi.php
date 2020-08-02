@@ -25,7 +25,7 @@ class Dekorasi extends CI_Controller
     public function tambahDekorasi(){
         $post = $this->input->post();
         $this->nama_dekorasi = $post['nama_dekorasi'];
-        $this->harga = $post['harga'];
+        $this->harga_dekorasi = $post['harga_dekorasi'];
         $data = $this->db->insert('dekorasi', $this);
         if($data){
             echo "<script>
