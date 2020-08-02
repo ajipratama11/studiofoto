@@ -40,8 +40,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Galeri</h4>
+                        <h2 class="page-title">Galeri</h2>
                         <div class="ml-auto text-right">
+
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+                                            Tambah Galeri
+                                        </button>
                         </div>
                     </div>
                 </div>
@@ -59,12 +63,14 @@
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                 <!-- ============================================================== -->
-                <h3>Pilih Kategori</h3>
+                <h5>Pilih Kategori</h5>
                 <ul class="list-inline">
-                    <a class="btn btn-success list-inline-item">All</a>
-                    <a class="list-inline-item">Wedding</a>
-                    <a class="list-inline-item">Prewedding</a>
-                    <a class="list-inline-item">Hangout</a>
+
+                    <a href="<?php echo base_url('Admin/Galeri/'); ?>" class="list-inline-item <?php $url = $this->uri->segment(4); if ($url == null) echo " btn btn-success" ?>">All</a>
+                    <?php foreach ($data as $u) { ?>
+
+                        <a class="list-inline-item<?php $url = $this->uri->segment(4); if ($u->id_kategori == $url) echo " btn btn-success" ?>"  href="<?php echo base_url('Admin/Galeri/index/' . $u->id_kategori); ?>"><?php echo $u->nama_kategori; ?></a>
+                    <?php } ?>
                 </ul>
                 <div class="row">
                     <div class="col-md-12">
@@ -73,12 +79,10 @@
                                 <div class="row">
                                     <!-- column -->
                                     <div style="margin: 5%;">
-                                        <a href="<?= base_url() ?>vendor/studio/img/lookbok.jpg" target="_blank"><img style="width: 300px; padding: 10px;" src="<?= base_url() ?>vendor/studio/img/lookbok.jpg" alt=""><a>
-                                                <a href="<?= base_url() ?>vendor/studio/img/lookbok.jpg" target="_blank"><img style="width: 300px; padding: 10px;" src="<?= base_url() ?>vendor/studio/img/lookbok.jpg" alt=""><a>
-                                                        <a href="<?= base_url() ?>vendor/studio/img/lookbok.jpg" target="_blank"><img style="width: 300px; padding: 10px;" src="<?= base_url() ?>vendor/studio/img/lookbok.jpg" alt=""><a>
-                                                                <a href="<?= base_url() ?>vendor/studio/img/lookbok.jpg" target="_blank"><img style="width: 300px; padding: 10px;" src="<?= base_url() ?>vendor/studio/img/lookbok.jpg" alt=""><a>
-                                                                        <a href="<?= base_url() ?>vendor/studio/img/lookbok.jpg" target="_blank"><img style="width: 300px; padding: 10px;" src="<?= base_url() ?>vendor/studio/img/lookbok.jpg" alt=""><a>
-                                                                                <a href="<?= base_url() ?>vendor/studio/img/lookbok.jpg" target="_blank"><img style="width: 300px; padding: 10px;" src="<?= base_url() ?>vendor/studio/img/lookbok.jpg" alt=""><a>
+                                    <?php foreach($galeri as $g) { ?>
+                                        <a href="<?php echo base_url('./vendor/studio/img/'.$g->foto); ?>" target="_blank"><img style="width: 300px; padding: 10px;" src="<?php echo base_url('./vendor/studio/img/'.$g->foto); ?>" alt=""><a>
+                                      
+                                    <?php } ?>
                                     </div>
                                     <!-- column -->
                                 </div>
@@ -90,6 +94,46 @@
 
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
+                 <!-- Modal -->
+                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Galeri</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="<?php echo base_url('Admin/Galeri/tambahGaleri'); ?>" method="post" enctype="multipart/form-data">
+                                                            <div class="form-group row">
+                                                                <label for="fname" class="col-sm-4  control-label col-form-label">Foto Galeri</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="file" style="border-radius: 10px;" name="foto" class="form-control" id="nama_ekskul" placeholder="Nama Ekskul" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="fname" class="col-sm-4  control-label col-form-label">Kategori Foto</label>
+                                                                <div class="col-sm-8">
+                                                                    <select required class="custom-select" id="id_kategori" name="id_kategori">
+                                                                        <?php
+                                                                        foreach ($kategori as $kategori_select) { ?>
+                                                                            <option value="<?= $kategori_select->id_kategori ?>"><?= $kategori_select->nama_kategori ?></option>
+                                                                        <?php
+                                                                            $id_kategori = $kategori_select->id_kategori;
+                                                                        } ?>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
                 <!-- Recent comment and chats -->

@@ -20,12 +20,11 @@
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
                 <div id="loginform">
                     <div class="text-center p-t-20 p-b-20">
-                        <h4 class="text-center p-t-20 p-b-20" style="color:#fff;">SIM ONLINE SDN BADEAN 1 BONDOWOSO</h4>
-                        <span class="db"><img src="<?= base_url() ?>vendor/admin/assets/images/logos.png" alt="logo" width="125px" height="125px" /></span>
-                        <span class="db"><img src="<?= base_url() ?>vendor/admin/assets/images/logosd.png" alt="logo" width="125px" height="125px" /></span>
+                        <h4 class="text-center p-t-20 p-b-20" style="color:#fff;">ADMIN | STUDIO FOTO</h4>
+                        <span class="db"><img src="<?= base_url() ?>vendor/studio/img/studio2.png" alt="logo" width="225px" height="225px" /></span>
                     </div>
                     <!-- Form -->
-                    <form class="form-horizontal m-t-20" class="user" method="post" action="<?= base_url('Admin/Login/aksi_login'); ?>">
+                    <form class="form-horizontal m-t-10" class="user" method="post" action="<?= base_url('Admin/Login/aksi_login'); ?>">
                         <div class="row p-b-30">
                             <div class="col-12">
                                 <?= $this->session->flashdata('message'); ?>

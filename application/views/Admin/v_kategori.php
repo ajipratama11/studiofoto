@@ -1,5 +1,5 @@
 <?php $this->load->view('templates/header');
- ?>
+?>
 
 <body>
     <!-- ============================================================== -->
@@ -62,9 +62,10 @@
                             <div class="card-body">
                                 <h5 class="card-header" style="background:#2980b9; color:#fff;">List Kategori</h5><br>
 
-                               
+
+                                <button style="margin-bottom: 10px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Tambah Kategori</button>
                                         
-                                
+
 
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
@@ -79,16 +80,20 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $no=1;
-                                             foreach($kategori as $k) { ?>
-                                            
-                                            <tr>
-                                                <td><?= $no++; ?></td>
-                                                <td><?= $k->nama_kategori ?></td>
-                                                <td><?= $k->harga ?></td>
-                                                <td><?= $k->deskripsi ?></td>
-                                                <td><button class="btn btn-info">Galeri</button></td>
-                                            </tr>
+                                            $no = 1;
+                                            foreach ($kategori as $k) { ?>
+
+                                                <tr>
+                                                    <td><?= $no++; ?></td>
+                                                    <td><?= $k->nama_kategori ?></td>
+                                                    <td><?= $k->harga ?></td>
+                                                    <td><?= $k->deskripsi ?></td>
+                                                    <td>
+                                                    <a href="<?php echo base_url('Admin/Kategori/Galeri/'.$k->id_kategori); ?>" class="btn btn-success">Galeri</a>
+                                                    <a data-toggle="modal" data-target="#modal-edit<?= $k->id_kategori; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-warning">Edit</a>
+                                                    <a onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" href="<?php echo base_url('Admin/Kategori/hapusKategori/'.$k->id_kategori); ?>" class="btn btn-danger">Hapus</a>
+                                                    </td>
+                                                </tr>
                                             <?php } ?>
                                         </tbody>
 
@@ -99,6 +104,53 @@
                         </div>
                     </div>
                 </div>
+                
+                <?php  foreach($kategori as $row): ?>
+                    <div class="row">
+                    <div id="modal-edit<?=$row->id_kategori;?>" class="modal fade">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">   </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            
+                                <div class="modal-body">
+                                    <form action="<?php echo base_url('Admin/Kategori/editKategori/'.$row->id_kategori); ?>" method="post" enctype="multipart/form-data">
+                                        
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-4  control-label col-form-label">Nama Kategori</label>
+                                            <div class="col-sm-8">
+                                                <input type="hidden" style="border-radius: 10px;" name="id_kategori" class="form-control" id="username" value="<?php echo $row->id_kategori;  ?>" placeholder="Nama Penanggung Jawab" required>
+                                                <input type="text" style="border-radius: 10px;" name="nama_kategori" class="form-control" id="username" value="<?php echo $row->nama_kategori;  ?>" placeholder="Nama Penanggung Jawab" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-4  control-label col-form-label">Harga</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" style="border-radius: 10px;" name="harga" class="form-control" id="password" value="<?php echo $row->harga  ?>" placeholder="Nama Penanggung Jawab" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-4  control-label col-form-label">Deskripsi</label>
+                                            <div class="col-sm-8">
+                                                <textarea style="width: 300px; height:90px;" name="deskripsi"><?php echo $row->deskripsi  ?></textarea>
+                                            </div>
+                                        </div>
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <?php endforeach; ?>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -110,6 +162,46 @@
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Kategori</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?php echo base_url('Admin/Kategori/tambahKategori'); ?>" method="post" enctype="multipart/form-data">
+                             
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-4  control-label col-form-label">Nama Kategori</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" style="border-radius: 10px;" name="nama_kategori" class="form-control" id="username" placeholder="Nama Kategori" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-4  control-label col-form-label">Harga</label>
+                                    <div class="col-sm-8">
+                                        <input type="number" style="border-radius: 10px;" name="harga" class="form-control" id="password" placeholder="Harga" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-4  control-label col-form-label">Deskripsi</label>
+                                    <div class="col-sm-8">
+                                        <textarea style="width: 300px; height:90px;" name="deskripsi"></textarea>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -117,7 +209,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-            COPYRIGHT © BIKEA TECHNOCRAFT 2019 
+                COPYRIGHT © BIKEA TECHNOCRAFT 2019
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
