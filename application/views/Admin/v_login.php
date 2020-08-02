@@ -35,27 +35,29 @@
                                     </div>
                                     <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Username..." value="<?= set_value('email'); ?>">
                                 </div>
-                                <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
-                                    </div>
-                                    <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Masukan Password..." value="<?= set_value('password'); ?>">
+                                <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Username..." value="<?= set_value('email'); ?>">
+                            </div>
+                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                </div>
+                                <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Masukan Password..." value="<?= set_value('password'); ?>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border-top border-secondary">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <div class="p-t-20">
+                                    <button class="btn btn-success float-right" type="submit">Login</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="row border-top border-secondary">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <div class="p-t-20">
-                                        <button class="btn btn-success float-right" type="submit">Login</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- <div id="recoverform">
+                    </div>
+                </form>
+            </div>
+            <!-- <div id="recoverform">
                     <div class="text-center">
                         <span class="text-white">Enter your e-mail address below and we will send you instructions how to recover a password.</span>
                     </div>
@@ -79,23 +81,23 @@
                         </form>
                     </div>
                 </div> -->
-            </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- Login box.scss -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper scss in scafholding.scss -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper scss in scafholding.scss -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right Sidebar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right Sidebar -->
-        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- Login box.scss -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper scss in scafholding.scss -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper scss in scafholding.scss -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right Sidebar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right Sidebar -->
+    <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- All Required js -->

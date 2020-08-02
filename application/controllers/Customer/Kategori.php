@@ -18,7 +18,6 @@ class Kategori extends CI_Controller
 
     public function index()
     {
-        
     }
 
     public function detail_kategori($id_kategori = null)

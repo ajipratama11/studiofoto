@@ -34,7 +34,7 @@
                       <div class="product-slider owl-carousel">
                           <div class="product-img">
                               <figure>
-                                  <img src="<?= base_url() ?>vendor/studio/images/<?= $kategori['foto'] ?>" alt="">
+                                  <img src="<?= base_url() ?>assets/studio/images/<?= $kategori['foto'] ?>" alt="">
                                   <div class="p-status">new</div>
                               </figure>
                           </div>
@@ -82,7 +82,7 @@
                       <div class="col-lg-3 col-sm-6">
                           <div class="single-product-item">
                               <figure>
-                                  <a href="<?= base_url() ?>vendor/studio/images/<?= $i->foto ?>"><img src="<?= base_url() ?>vendor/studio/images/<?= $i->foto ?>" alt=""></a>
+                                  <a href="<?= base_url() ?>assets/studio/images/<?= $i->foto ?>"><img src="<?= base_url() ?>assets/studio/images/<?= $i->foto ?>" alt=""></a>
                                   <div class="p-status"><?= $i->nama_kategori ?></div>
                               </figure>
                           </div>

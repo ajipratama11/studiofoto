@@ -8,19 +8,19 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="header-item">
-                        <img src="<?= base_url() ?>vendor/studio/img/icons/delivery.png" alt="">
+                        <img src="<?= base_url() ?>assets/studio/img/icons/delivery.png" alt="">
                         <p>Pengambilan gambar yang memuaskan</p>
                     </div>
                 </div>
                 <div class="col-md-4 text-left text-lg-center">
                     <div class="header-item">
-                        <img src="<?= base_url() ?>vendor/studio/img/icons/voucher.png" alt="">
+                        <img src="<?= base_url() ?>assets/studio/img/icons/voucher.png" alt="">
                         <p>Pelayanan yang ramah</p>
                     </div>
                 </div>
                 <div class="col-md-4 text-left text-xl-right">
                     <div class="header-item">
-                        <img src="<?= base_url() ?>vendor/studio/img/icons/sales.png" alt="">
+                        <img src="<?= base_url() ?>assets/studio/img/icons/sales.png" alt="">
                         <p>Bisa booking tanpa harus datang ke studio</p>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
     <!-- Hero Slider Begin -->
     <section class="hero-slider">
         <div class="hero-items owl-carousel">
-            <div class="single-slider-item set-bg" data-setbg="<?= base_url() ?>vendor/studio/img/img-2.jpg">
+            <div class="single-slider-item set-bg" data-setbg="<?= base_url() ?>assets/studio/img/img-2.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single-slider-item set-bg" data-setbg="<?= base_url() ?>vendor/studio/img/img-1.jpg">
+            <div class="single-slider-item set-bg" data-setbg="<?= base_url() ?>assets/studio/img/img-1.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single-slider-item set-bg" data-setbg="<?= base_url() ?>vendor/studio/img/img-3.jpg">
+            <div class="single-slider-item set-bg" data-setbg="<?= base_url() ?>assets/studio/img/img-3.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
@@ -96,7 +96,7 @@
                     <div class="col-lg-3 col-sm-6 mix all dresses bags">
                         <div class="single-product-item">
                             <figure>
-                                <a href="#"><img src="<?= base_url() ?>vendor/studio/images/<?= $g->foto ?>" alt=""></a>
+                                <a href="#"><img src="<?= base_url() ?>assets/studio/images/<?= $g->foto ?>" alt=""></a>
                                 <div class="p-status"><?= $g->nama_kategori ?></div>
                             </figure>
                             <div class="product-text">
@@ -135,7 +135,7 @@
                 </div>
                 <div class="col-lg-5 offset-lg-1">
                     <div class="lookbok-pic">
-                        <img src="<?= base_url() ?>vendor/studio/img/lookbok.jpg" alt="">
+                        <img src="<?= base_url() ?>assets/studio/img/lookbok.jpg" alt="">
                         <div class="pic-text">fashion</div>
                     </div>
                 </div>
@@ -148,19 +148,19 @@
     <div class="logo-section spad">
         <div class="logo-items owl-carousel">
             <div class="logo-item">
-                <img src="<?= base_url() ?>vendor/studio/img/logos/logo-1.png" alt="">
+                <img src="<?= base_url() ?>assets/studio/img/logos/logo-1.png" alt="">
             </div>
             <div class="logo-item">
-                <img src="<?= base_url() ?>vendor/studio/img/logos/logo-2.png" alt="">
+                <img src="<?= base_url() ?>assets/studio/img/logos/logo-2.png" alt="">
             </div>
             <div class="logo-item">
-                <img src="<?= base_url() ?>vendor/studio/img/logos/logo-3.png" alt="">
+                <img src="<?= base_url() ?>assets/studio/img/logos/logo-3.png" alt="">
             </div>
             <div class="logo-item">
-                <img src="<?= base_url() ?>vendor/studio/img/logos/logo-4.png" alt="">
+                <img src="<?= base_url() ?>assets/studio/img/logos/logo-4.png" alt="">
             </div>
             <div class="logo-item">
-                <img src="<?= base_url() ?>vendor/studio/img/logos/logo-5.png" alt="">
+                <img src="<?= base_url() ?>assets/studio/img/logos/logo-5.png" alt="">
             </div>
         </div>
     </div>

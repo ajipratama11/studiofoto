@@ -42,7 +42,7 @@
                               <div class="col-lg-12">
                                   <select type="text" name="id_dekorasi" class="form-control" placeholder="First Name">
                                       <?php foreach ($dekorasi as $d) { ?>
-                                          <option value="<?= $d->id_dekorasi ?>"><?= $d->nama_dekorasi ?> (Rp. <?= number_format($d->harga, 0, ',', '.')  ?>)</option>
+                                          <option value="<?= $d->id_dekorasi ?>"><?= $d->nama_dekorasi ?> (Rp. <?= number_format($d->harga_dekorasi, 0, ',', '.')  ?>)</option>
                                       <?php } ?>
                                   </select>
                               </div>

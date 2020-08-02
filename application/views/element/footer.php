@@ -98,10 +98,10 @@
 
 <!-- Datatable JS -->
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="<?= base_url() ?>vendor/studio/js/bootstrap.min.js"></script>
-<script src="<?= base_url() ?>vendor/studio/js/jquery.magnific-popup.min.js"></script>
-<script src="<?= base_url() ?>vendor/studio/js/jquery.slicknav.js"></script>
-<script src="<?= base_url() ?>vendor/studio/js/owl.carousel.min.js"></script>
-<script src="<?= base_url() ?>vendor/studio/js/jquery.nice-select.min.js"></script>
-<script src="<?= base_url() ?>vendor/studio/js/mixitup.min.js"></script>
-<script src="<?= base_url() ?>vendor/studio/js/main.js"></script>
+<script src="<?= base_url() ?>assets/studio/js/bootstrap.min.js"></script>
+<script src="<?= base_url() ?>assets/studio/js/jquery.magnific-popup.min.js"></script>
+<script src="<?= base_url() ?>assets/studio/js/jquery.slicknav.js"></script>
+<script src="<?= base_url() ?>assets/studio/js/owl.carousel.min.js"></script>
+<script src="<?= base_url() ?>assets/studio/js/jquery.nice-select.min.js"></script>
+<script src="<?= base_url() ?>assets/studio/js/mixitup.min.js"></script>
+<script src="<?= base_url() ?>assets/studio/js/main.js"></script>

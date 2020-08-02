@@ -33,32 +33,46 @@ class Login extends CI_Controller
         $p = $this->password = $post['password'];
         $user = $this->db->get_where('customer', ['username' => $u])->row_array();
 
+        if ($user > 0) {
+            $data_session = array(
+                'id_cus' => $user['id_cus'],
+                'nama_cus' => $user['nama_cus'],
+                'status' => "login"
+            );
 
-        if ($user) {
-            // jika usernya aktif
-            if ($user['is_actived'] == 1) {
-                // cek password
-                if ($p == $user['password']) {
-                    $data_session = array(
-                        'id_cus' => $user['id_cus'],
-                        'nama_cus' => $user['nama_cus'],
-                        'status' => "login"
-                    );
-        
-                    $this->session->set_userdata($data_session);
-                    redirect('Customer/Beranda/');
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
-                    redirect('Customer/Login/');
-                }
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
-                redirect('Customer/Login/');
-            }
+            $this->session->set_userdata($data_session);
+            redirect('Customer/Beranda/');
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Yaaah, username atau password !</div>');
             redirect('Customer/Login/');
         }
+
+
+        // if ($user) {
+        //     // jika usernya aktif
+        //     if ($user['is_actived'] == 1) {
+        //         // cek password
+        //         if ($p == $user['password']) {
+        //             $data_session = array(
+        //                 'id_cus' => $user['id_cus'],
+        //                 'nama_cus' => $user['nama_cus'],
+        //                 'status' => "login"
+        //             );
+
+        //             $this->session->set_userdata($data_session);
+        //             redirect('Customer/Beranda/');
+        //         } else {
+        //             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
+        //             redirect('Customer/Login/');
+        //         }
+        //     } else {
+        //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
+        //         redirect('Customer/Login/');
+        //     }
+        // } else {
+        //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
+        //     redirect('Customer/Login/');
+        // }
 
     }
     public function daftar_cus()
@@ -71,18 +85,18 @@ class Login extends CI_Controller
         $this->username = $post['username'];
         $this->password = $post['password'];
         $this->is_actived = 0;
-        
-         // siapkan token
-         $token = base64_encode(random_bytes(32));
-         $user_token = [
-             'email_cus' => $this->email_cus,
-             'token' => $token,
-             'date_created' => time()
-         ];
-         $data = $this->db->insert('customer', $this);
-         $this->db->insert('user_token', $user_token);
 
-         $this->_sendEmail($token, 'verify');
+        // siapkan token
+        $token = base64_encode(random_bytes(32));
+        $user_token = [
+            'email_cus' => $this->email_cus,
+            'token' => $token,
+            'date_created' => time()
+        ];
+        $data = $this->db->insert('customer', $this);
+        $this->db->insert('user_token', $user_token);
+
+        $this->_sendEmail($token, 'verify');
         if ($data) {
             $this->session->set_flashdata(
                 'daftar',
