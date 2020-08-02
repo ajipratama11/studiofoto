@@ -61,6 +61,7 @@
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3 col-xlg-3">
                         <div class="card card-hover">
+                            <a style="float: right;" class="btn btn-info" href="<?= base_url() ?>Admin/Laporan/">+ Pemsaukkan</a>
                             <div style="height: 200px;" class="box bg-success text-center">
                                 <h1 class="font-light text-white"><i class="fa fa-credit-card m-b-5 font-24"></i></h1>
                                 <h6 class="text-white">Total Pendapatan</h6>
@@ -119,31 +120,6 @@
 
                                 <div class="row">
                                     <!-- column -->
-                                    <div class="col-lg-9">
-                                        <?php echo $this->session->flashdata('message'); ?>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="flot-chart">
-                                                    <div class="card text-center">
-                                                        <div class="card-header">
-                                                            Kelas
-                                                        </div>
-                                                        <form action="<?php echo base_url('Absensi_siswa/absenSiswa'); ?>" method="post" enctype="multipart/form-data">
-                                                            <div class="card-body">
-                                                                <h5 class="card-title">IAIS</h5>
-                                                                <p class="card-text">12.00 WIB</p>
-
-                                                                <a class="btn btn-success" href="" data-toggle="modal" data-target="#myModal"> Informasi</a>
-
-                                                            </div>
-                                                        </form>
-                                                        <div class="card-footer text-muted">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-lg-3">
                                         <div class="row">
                                             <div class="col-6">
