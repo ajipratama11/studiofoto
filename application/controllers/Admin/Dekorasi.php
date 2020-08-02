@@ -33,8 +33,6 @@ class Dekorasi extends CI_Controller
                 window.location.href = '".base_url('Admin/Dekorasi')."';
             </script>";//Url Logi
         }
-       
-
     }
 
     public function editDekorasi($id_dekorasi = null){
@@ -46,4 +44,11 @@ class Dekorasi extends CI_Controller
         $this->M_dekorasi->deleteDekorasi($id_dekorasi);
         redirect('Admin/Dekorasi');  
     }
+
+    public function sesi()
+    {
+        $data['sesi'] = $this->db->get('sesi_pemotretan')->result();
+        $this->load->view('Admin/v_sesi', $data);
+    }
+    
 }

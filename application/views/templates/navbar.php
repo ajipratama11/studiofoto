@@ -94,6 +94,7 @@
                         <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Kategori" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu">Kategori</span></a></li>
                         <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Galeri" class="sidebar-link"><i class="mdi mdi-school"></i><span class="hide-menu">Galeri</span></a></li>
                         <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Dekorasi" class="sidebar-link"><i class="mdi mdi-school"></i><span class="hide-menu">Dekorasi</span></a></li>
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Dekorasi/sesi" class="sidebar-link"><i class="mdi mdi-school"></i><span class="hide-menu">Sesi Pemotretan</span></a></li>
                     </ul>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Akademik </span></a>
