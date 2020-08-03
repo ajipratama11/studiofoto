@@ -114,7 +114,7 @@
                                                         ?>
                                                     </td>
                                                     <td>
-                                                        <a href="<?= base_url('Admin/Beranda/detail_transaksi/'.$k->id_pemesanan); ?>" class="btn btn-warning">Detail Transaksi</a>
+                                                        <a target="_blank" href="<?= base_url('Admin/Beranda/detail_transaksi/'.$k->id_pemesanan); ?>" class="btn btn-warning">Detail Transaksi</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>

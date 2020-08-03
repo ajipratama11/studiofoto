@@ -66,7 +66,11 @@
                                     <p style="text-align: center; margin-right:10px;"><?= $c->status_cus ?></p>
                                 </td>
                                 <td class="product-close">
+                                <?php if($c->status_cus == 'Pesanan Selesai') { ?>
+                                    <a target="_blank" href="<?= base_url('Customer/Keranjang/nota/'.$c->id_pemesanan); ?>" class="button btn-info form-control">Nota</a>
+                                <?php }else{ ?>
                                     <button class="button btn-info form-control" data-toggle="modal" data-target="#modalDetail<?= $c->id_pemesanan ?>" type="button">Detail</button>
+                                <?php } ?>
                                 </td>
 
                             </tr>
