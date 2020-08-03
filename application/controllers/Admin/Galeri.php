@@ -48,8 +48,10 @@ class Galeri extends CI_Controller
     public function editGaleri()
     {
     }
-    public function hapusGaleri()
+    public function hapusFoto($id_galeri)
     {
+        $this->M_galeri->deleteFoto($id_galeri);
+        redirect('Admin/Galeri/index/'.$id_galeri);
     }
 
     private function _uploadImage()

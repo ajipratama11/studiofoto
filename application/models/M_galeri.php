@@ -81,4 +81,22 @@ class M_galeri extends CI_Model
     {
         return $this->db->delete($this->_table, array("id_kategori" => $id_kategori));
     }
+    public function getById($id_galeri)
+	{
+		return $this->db->get_where($this->_table, ["id_galeri" => $id_galeri])->row();
+	}
+
+	function deleteFoto($id_galeri)
+	{
+		$this->_deleteImage($id_galeri);
+		return $this->db->delete($this->_table, array("id_galeri" => $id_galeri));
+	}
+	private function _deleteImage($id_galeri)
+	{
+		$product = $this->getById($id_galeri);
+		if ($product->foto != "camera.jpg") {
+			$filename = explode(".", $product->foto)[0];
+			return array_map('unlink', glob(FCPATH . "assets/images/$filename.*"));
+		}
+	}
 }

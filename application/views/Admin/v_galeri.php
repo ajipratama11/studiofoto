@@ -80,7 +80,7 @@
                                     <!-- column -->
                                     <div style="margin: 5%;">
                                     <?php foreach($galeri as $g) { ?>
-                                        <a href="<?php echo base_url('./vendor/studio/img/'.$g->foto); ?>" target="_blank"><img style="width: 300px; padding: 10px;" src="<?php echo base_url('./vendor/studio/img/'.$g->foto); ?>" alt=""><a>
+                                        <a data-toggle="modal" data-target="#modal-edit<?= $g->id_galeri; ?>" ><img style="width: 300px; padding: 10px;" src="<?php echo base_url('./vendor/studio/img/'.$g->foto); ?>" alt=""><a>
                                       
                                     <?php } ?>
                                     </div>
@@ -91,7 +91,33 @@
                         </div>
                     </div>
                 </div>
-
+                <?php  foreach($galeri as $row): ?>
+                    <div class="row">
+                    <div id="modal-edit<?=$row->id_galeri;?>" class="modal fade">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">   </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                        <div class="form-group row">
+                                            <div style="margin-left: 35px;" class="col-sm-12">
+                                            <img width="400px" height="400px" src="<?php echo base_url('./vendor/studio/img/'.$row->foto); ?>" alt="">
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="<?php echo base_url('Admin/Galeri/hapusFoto/'.$row->id_galeri ); ?>" class="btn btn-danger">Hapus Foto</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <?php endforeach; ?>
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                  <!-- Modal -->
