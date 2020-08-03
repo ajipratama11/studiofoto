@@ -43,6 +43,7 @@ class Bayar extends CI_Controller
         $this->tgl_checkout = formatHariTanggal(date('d-m-Y'));
         $this->total_bayar = $post['total_bayar'];
         $this->bukti_transfer =  $this->_uploadImage();
+        $this->jurnal =  "Belum";
         $total = $post['total_bayar'] / 2;
 
         if ($post['dp'] < $total) {

@@ -19,13 +19,22 @@ class Beranda extends CI_Controller
 
     public function index()
     {
+        $this->db->select('SUM(saldo) as total');
+        $this->db->where('no_reff', 'r4');
+        $data['adm'] = $this->db->get('transaksi')->row();
+
         $this->db->select('SUM(total_bayar) as total');
         $this->db->join('pemesanan', 'pemesanan.id_pemesanan=konfirmasi_pembayaran.id_pemesanan');
         $this->db->where('status_cus', 'Pesanan Selesai');
+        $this->db->where('jurnal', 'Belum');
         $data['total'] = $this->db->get('konfirmasi_pembayaran')->row();
 
         $this->db->select('SUM(biaya_pengeluaran) as total');
         $data['keluar'] = $this->db->get('tbl_pengeluaran')->row();
+
+        $this->db->select('COUNT(id_pemesanan) as total');
+        $this->db->where('status_cus', 'Sudah Bayar');
+        $data['status'] = $this->db->get('pemesanan')->row();
 
         $this->load->helper('tgl_indo');
         $waktu = date('Y-m-d');
@@ -50,11 +59,12 @@ class Beranda extends CI_Controller
     {
         $idpesan = $this->uri->segment(4);
         $status = 'Pesanan Selesai';
-		$this->M_pemesan->updatestatus($idpesan, $status);
-		redirect('Admin/Beranda/pemesanan');
+        $this->M_pemesan->updatestatus($idpesan, $status);
+        redirect('Admin/Beranda/pemesanan');
     }
-    public function detail_transaksi(){
-		$idpesan = $this->uri->segment(4);
+    public function detail_transaksi()
+    {
+        $idpesan = $this->uri->segment(4);
         $data['pemesanan'] = $this->M_pemesan->tampil_pesan2($idpesan);
         $this->load->view('Admin/v_detailtransaksi', $data);
     }

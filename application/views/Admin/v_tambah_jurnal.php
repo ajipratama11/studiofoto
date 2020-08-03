@@ -1,6 +1,10 @@
 <?php $this->load->view('templates/header');
-
 ?>
+<!-- jQuery Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Datatable JS -->
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
 <body>
     <!-- ============================================================== -->
@@ -19,14 +23,9 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <?php $this->load->view('templates/navbar'); ?>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-
+        <?php
+        $this->load->view('templates/navbar');
+        ?>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -40,9 +39,14 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">Pemesanan</h4>
                         <div class="ml-auto text-right">
-                            <?= $waktu; ?>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -55,81 +59,52 @@
             <!-- ============================================================== -->
             <div class="container-fluid">
                 <!-- ============================================================== -->
-                <!-- Sales Cards  -->
+                <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <a style="float: right;" class="btn btn-cyan" data-toggle="modal" href="" data-target="#modalJurnal<?= $total->total ?>">+ Jurnal</a>
-                            <div style="height: 200px;" class="box bg-success text-center">
-                                <h1 class="font-light text-white"><i class="fa fa-credit-card m-b-5 font-24"></i></h1>
-                                <h6 class="text-white">Total Pendapatan</h6>
-                                <h2 class="text-white">Rp. <?= number_format($total->total)  ?></h2>
-                                <p style="color: white;">Sampai tanggal <?= formatHariTanggal(date('d-m-Y')) ?></p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <a style="float: right;" class="btn btn-warning" href="<?= base_url() ?>Admin/Beranda/pemesanan">+ Pelanggan</a>
-                            <div style="height: 200px;" class="box bg-danger text-center">
-                                <h1 class="font-light text-white"><i class="fa fa-cart-plus m-b-5 font-24"></i></h1>
-                                <h6 class="text-white">Total Pesanan</h6>
-                                <h2 class="text-white"><?= $status->total ?></h2>
-                                <p style="color: white;">Sampai tanggal <?= formatHariTanggal(date('d-m-Y')) ?></p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <button style="float: right;" class="btn btn-success" data-toggle="modal" data-target="#modalKeluar">+ Pengeluaran</button>
-                            <div style="height: 200px;" class="box bg-cyan text-center">
-                                <h1 class="font-light text-white"><i class="fa fa-tag m-b-5 font-24"></i></h1>
-                                <h6 class="text-white">Total Pengeluaran</h6>
-                                <h2 class="text-white">Rp. <?= number_format($keluar->total)  ?></h2>
-                                <p style="color: white;">Sampai tanggal <?= formatHariTanggal(date('d-m-Y')) ?></p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-
-                    <!-- Column -->
-
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <div style="height: 235px;" class="box bg-warning text-center">
-                                <h1 class="font-light text-white"><i class="fa fa-microchip m-b-5 font-24"></i></h1>
-                                <h6 class="text-white">Kas</h6>
-                                <h2 class="text-white">Rp.<?= number_format($adm->total, 0, ',', '.')  ?></h2>
-                                <p style="color: white;">Sampai tanggal <?= formatHariTanggal(date('d-m-Y')) ?></p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- Sales chart -->
-                <!-- ============================================================== -->
-
-                <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12 grid-margin">
                         <div class="card">
-                            <div class="card-body" style="height: 200px;">
-
-                                <div class="row">
-                                    <!-- column -->
-                                    <div class="col-lg-3">
-                                        <div class="row">
-
+                            <div class="card-body">
+                                <h2 style="color: #1E7BCB;"> Tambah Jurnal Umum</h2><br>
+                                <form action="<?= base_url() ?>Admin/Laporan/tambahJurnal" method="POST">
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label>Tanggal </label>
+                                            <input class="form-control" id="datepicker" name="tgl_transaksi" type="date">
                                         </div>
                                     </div>
-                                    <!-- column -->
-                                </div>
 
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <label for="jenis_saldo">Jenis Saldo</label>
+
+                                            <select class="form-control" name="jenis_saldo" id="akun">
+                                                <option>Jenis Saldo</option>
+                                                <?php
+                                                $data =  $this->db->get('jenis_saldo')->result();
+                                                foreach ($data as $d) {
+                                                ?>
+                                                    <option value="<?= $d->id_jenis ?>"> <?= $d->nama_saldo ?></option>
+                                                <?php } ?>
+
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <label for="no_reff">Nama Akun</label>
+                                            <select id="jenis_saldo" class="form-control" name="no_reff">
+
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <label for="saldo">Saldo</label>
+                                            <input class="form-control" name="saldo">
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-success" type="submit">Tambah Jurnal</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -187,71 +162,52 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="modalJurnal<?= $total->total ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambah Jurnal Pendapatan</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form method="post" action="<?= base_url() ?>Admin/Laporan/tambahJurnal2">
-                                <div class="modal-body">
-                                    <div class="col-md-12 row">
-                                        <div class="col-md-6 ">
-                                            <label>Saldo</label>
-                                            <input name="saldo" value="<?= $total->total ?>" class="form-control">
-                                        </div>
-                                        <div class="col-md-6 ">
-                                            <label>Tanggal</label>
-                                            <input class="form-control" name="tgl_transaksi" type="date" value="">
-                                        </div>
-                                    </div>
-                                    <div class=" col-md-12 row">
-                                        <div class="col-md-6 ">
-                                            <label>Jenis Saldo</label>
-                                            <select class="form-control" name="jenis_saldo" id="akun">
-                                                <option>--Jenis Saldo--</option>
-                                                <?php
-                                                $data =  $this->db->get('jenis_saldo')->result();
-                                                foreach ($data as $d) {
-                                                ?>
-                                                    <option value="<?= $d->id_jenis ?>"> <?= $d->nama_saldo ?></option>
-                                                <?php } ?>
-
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6 ">
-                                            <label for="no_reff">Nama Akun</label>
-                                            <select id="jenis_saldo" class="form-control" name="no_reff">
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success">Simpan</button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
                 <!-- ============================================================== -->
-                <!-- Sales chart -->
+                <!-- End PAge Content -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
-                <!-- Recent comment and chats -->
+                <!-- Right sidebar -->
                 <!-- ============================================================== -->
-
+                <!-- .right-sidebar -->
                 <!-- ============================================================== -->
-                <!-- Recent comment and chats -->
+                <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Dekorasi</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?php echo base_url('Admin/Dekorasi/tambahDekorasi'); ?>" method="post" enctype="multipart/form-data">
 
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-4  control-label col-form-label">Nama Dekorasi</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" style="border-radius: 10px;" name="nama_dekorasi" class="form-control" id="username" placeholder="Nama Kategori" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-4  control-label col-form-label">Harga</label>
+                                    <div class="col-sm-8">
+                                        <input type="number" style="border-radius: 10px;" name="harga_dekorasi" class="form-control" id="password" placeholder="Harga" required>
+                                    </div>
+                                </div>
 
-
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -275,10 +231,16 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script type="text/javascript">
+        function confirm_alert(node) {
+            return confirm("Apakah anda yakin ingin mengganti status ?");
+        }
+    </script>
     <script src="<?= base_url() ?>vendor/admin/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?= base_url() ?>vendor/admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="<?= base_url() ?>vendor/admin/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
     <script src="<?= base_url() ?>vendor/admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
     <script src="<?= base_url() ?>vendor/admin/assets/extra-libs/sparkline/sparkline.js"></script>
     <!--Wave Effects -->
@@ -287,17 +249,53 @@
     <script src="<?= base_url() ?>vendor/admin/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?= base_url() ?>vendor/admin/dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
-    <!-- Charts js Files -->
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/excanvas.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/jquery.flot.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/jquery.flot.pie.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/jquery.flot.time.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/jquery.flot.stack.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/jquery.flot.crosshair.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/dist/js/pages/chart/chart-page-init.js"></script>
+    <!-- this page js -->
+    <script src="<?= base_url() ?>vendor/admin/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+    <script src="<?= base_url() ?>vendor/admin/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+    <script src="<?= base_url() ?>vendor/admin/assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>
+    <!-- Script -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var userDataTable = $('#userTable').DataTable({
+                //   'processing': true,
+                'serverSide': true,
+                'serverMethod': 'post',
+                //'searching': false, // Remove default Search Control
+                'ajax': {
+                    'url': '<?= base_url() ?>Admin/Laporan/jurnalList',
+                    'data': function(data) {
+                        data.searchTahun = $('#sel_tahun').val();
+                        // data.searchBulan = $('#sel_bulan').val();
+                        console.log(data);
+                    }
+
+                },
+                'columns': [{
+                        data: 'no'
+                    },
+                    {
+                        data: 'bulan'
+                    },
+                    {
+                        data: 'action'
+                    }
+                ]
+            });
+
+            $('#sel_tahun').change(function() {
+                userDataTable.draw();
+            });
+            $('#searchName').keyup(function() {
+                userDataTable.draw();
+            });
+        });
+    </script>
     <script type="text/javascript">
         $(document).ready(function() {
 

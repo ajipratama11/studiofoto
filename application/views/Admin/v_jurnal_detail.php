@@ -1,6 +1,10 @@
 <?php $this->load->view('templates/header');
-
 ?>
+<!-- jQuery Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Datatable JS -->
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
 <body>
     <!-- ============================================================== -->
@@ -19,14 +23,9 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <?php $this->load->view('templates/navbar'); ?>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-
+        <?php
+        $this->load->view('templates/navbar');
+        ?>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -40,9 +39,14 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">Pemesanan</h4>
                         <div class="ml-auto text-right">
-                            <?= $waktu; ?>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -55,81 +59,91 @@
             <!-- ============================================================== -->
             <div class="container-fluid">
                 <!-- ============================================================== -->
-                <!-- Sales Cards  -->
+                <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <a style="float: right;" class="btn btn-cyan" data-toggle="modal" href="" data-target="#modalJurnal<?= $total->total ?>">+ Jurnal</a>
-                            <div style="height: 200px;" class="box bg-success text-center">
-                                <h1 class="font-light text-white"><i class="fa fa-credit-card m-b-5 font-24"></i></h1>
-                                <h6 class="text-white">Total Pendapatan</h6>
-                                <h2 class="text-white">Rp. <?= number_format($total->total)  ?></h2>
-                                <p style="color: white;">Sampai tanggal <?= formatHariTanggal(date('d-m-Y')) ?></p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <a style="float: right;" class="btn btn-warning" href="<?= base_url() ?>Admin/Beranda/pemesanan">+ Pelanggan</a>
-                            <div style="height: 200px;" class="box bg-danger text-center">
-                                <h1 class="font-light text-white"><i class="fa fa-cart-plus m-b-5 font-24"></i></h1>
-                                <h6 class="text-white">Total Pesanan</h6>
-                                <h2 class="text-white"><?= $status->total ?></h2>
-                                <p style="color: white;">Sampai tanggal <?= formatHariTanggal(date('d-m-Y')) ?></p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <button style="float: right;" class="btn btn-success" data-toggle="modal" data-target="#modalKeluar">+ Pengeluaran</button>
-                            <div style="height: 200px;" class="box bg-cyan text-center">
-                                <h1 class="font-light text-white"><i class="fa fa-tag m-b-5 font-24"></i></h1>
-                                <h6 class="text-white">Total Pengeluaran</h6>
-                                <h2 class="text-white">Rp. <?= number_format($keluar->total)  ?></h2>
-                                <p style="color: white;">Sampai tanggal <?= formatHariTanggal(date('d-m-Y')) ?></p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-
-                    <!-- Column -->
-
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <div style="height: 235px;" class="box bg-warning text-center">
-                                <h1 class="font-light text-white"><i class="fa fa-microchip m-b-5 font-24"></i></h1>
-                                <h6 class="text-white">Kas</h6>
-                                <h2 class="text-white">Rp.<?= number_format($adm->total, 0, ',', '.')  ?></h2>
-                                <p style="color: white;">Sampai tanggal <?= formatHariTanggal(date('d-m-Y')) ?></p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- Sales chart -->
-                <!-- ============================================================== -->
-
-                <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12 grid-margin">
                         <div class="card">
-                            <div class="card-body" style="height: 200px;">
-
-                                <div class="row">
-                                    <!-- column -->
-                                    <div class="col-lg-3">
-                                        <div class="row">
-
-                                        </div>
+                            <div class="card-body">
+                                <h2 style="color: #1E7BCB;"> Jurnal Umum</h2><br>
+                                <?php echo $this->session->flashdata('sukses'); ?>
+                                <form action="<?= base_url() ?>Admin/Laporan/laporan_suplier" method="POST">
+                                    <div class="row">
                                     </div>
-                                    <!-- column -->
-                                </div>
+                                </form>
+                                <div class="form-group col-md-12">
+                                    <!-- Name -->
+                                    <div class="col-md-2 ">
+                                        <h4></h4><br>
 
+                                    </div>
+                                </div><br><br>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Tanggal
+                                                </th>
+                                                <th>
+                                                    Nama Akun
+                                                </th>
+                                                <th>
+                                                    Debit
+                                                </th>
+                                                <th>
+                                                    Kredit
+                                                </th>
+                                                <th>
+                                                    Aksi
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($jurnal as $j) {
+                                            ?>
+                                                <tr>
+                                                    <td><?= formatHariTanggal($j->tgl_transaksi) ?></td>
+                                                    <td><?= $j->nama_reff ?></td>
+                                                    <?php
+                                                    if ($j->jenis_saldo == '1') {
+                                                    ?>
+                                                        <td><?= $j->saldo ?></td>
+                                                        <td> 0</td>
+                                                    <?php } else { ?>
+                                                        <td> 0</td>
+                                                        <td><?= $j->saldo ?></td>
+                                                    <?php } ?>
+                                                    <td><button data-toggle="modal" data-target="#modalEdit<?= $j->id_transaksi ?>" class="btn btn-info">Edit</button>
+                                                        <button data-toggle="modal" data-target="#modalHapus<?= $j->id_transaksi ?>" class="btn btn-danger">Hapus</button>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+
+                                            <tr>
+                                                <td colspan="2" class="text-center"><b>Jumlah Total</b></td>
+                                                <td><b>
+                                                        Rp. <?= number_format($debit->total)  ?>
+                                                </td> </b>
+
+                                                <td><b>
+                                                        Rp. <?= number_format($kredit->total)  ?>
+                                                </td> </b>
+                                            </tr>
+                                            <tr>
+                                                <?php
+                                                if ($debit->total != $kredit->total) {
+                                                ?>
+                                                    <td colspan="5" style="background-color: red; color:aliceblue" class="text-center"><b>TIDAK SEIMBANG</b></td>
+                                                <?php } else { ?>
+                                                    <td colspan="5" style="background-color: #1E7BCB;color:aliceblue" class="text-center"><b>SEIMBANG</b></td>
+                                                <?php } ?>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -187,28 +201,71 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="modalJurnal<?= $total->total ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- Modal -->
+            <?php
+            foreach ($jurnal as $j) {
+            ?>
+                <div class="modal fade" id="modalHapus<?= $j->id_transaksi ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambah Jurnal Pendapatan</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Hapus Jurnal </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form method="post" action="<?= base_url() ?>Admin/Laporan/tambahJurnal2">
+                            <form method="post" action="<?= base_url() ?>Admin/Laporan/hapusJurnal">
+                                <div class="modal-body">
+
+                                    <label>Hapus jurnal Id Transaksi <?= $j->id_transaksi ?></label>
+                                    <input name="id_transaksi" hidden value="<?= $j->id_transaksi ?>">
+
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-danger">Hapus</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+            <?php
+            foreach ($jurnal as $j) {
+            ?>
+                <div class="modal fade" id="modalEdit<?= $j->id_transaksi ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ubah Jurnal </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form method="post" action="<?= base_url() ?>Admin/Laporan/ubahJurnal">
                                 <div class="modal-body">
                                     <div class="col-md-12 row">
                                         <div class="col-md-6 ">
-                                            <label>Saldo</label>
-                                            <input name="saldo" value="<?= $total->total ?>" class="form-control">
+                                            <label>Id Trans</label>
+                                            <input name="id_transaksi" readonly class="form-control" value="<?= $j->id_transaksi ?>">
                                         </div>
                                         <div class="col-md-6 ">
                                             <label>Tanggal</label>
-                                            <input class="form-control" name="tgl_transaksi" type="date" value="">
+                                            <input class="form-control" name="tgl_transaksi" type="date" value="<?= $j->tgl_transaksi ?>">
                                         </div>
                                     </div>
-                                    <div class=" col-md-12 row">
+                                    <div class="col-md-12 row">
                                         <div class="col-md-6 ">
                                             <label>Jenis Saldo</label>
                                             <select class="form-control" name="jenis_saldo" id="akun">
@@ -229,28 +286,20 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <label>Saldo</label>
+                                        <input name="saldo" value="<?= $j->saldo ?>" class="form-control">
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success">Simpan</button>
+                                    <button type="submit" class="btn btn-success">Ubah</button>
 
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- Sales chart -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Recent comment and chats -->
-                <!-- ============================================================== -->
-
-                <!-- ============================================================== -->
-                <!-- Recent comment and chats -->
-                <!-- ============================================================== -->
-            </div>
-
-
+            <?php } ?>
 
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -275,10 +324,16 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script type="text/javascript">
+        function confirm_alert(node) {
+            return confirm("Apakah anda yakin ingin mengganti status ?");
+        }
+    </script>
     <script src="<?= base_url() ?>vendor/admin/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?= base_url() ?>vendor/admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="<?= base_url() ?>vendor/admin/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
     <script src="<?= base_url() ?>vendor/admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
     <script src="<?= base_url() ?>vendor/admin/assets/extra-libs/sparkline/sparkline.js"></script>
     <!--Wave Effects -->
@@ -287,17 +342,18 @@
     <script src="<?= base_url() ?>vendor/admin/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?= base_url() ?>vendor/admin/dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
-    <!-- Charts js Files -->
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/excanvas.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/jquery.flot.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/jquery.flot.pie.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/jquery.flot.time.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/jquery.flot.stack.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot/jquery.flot.crosshair.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script src="<?= base_url() ?>vendor/admin/dist/js/pages/chart/chart-page-init.js"></script>
+    <!-- this page js -->
+    <script src="<?= base_url() ?>vendor/admin/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+    <script src="<?= base_url() ?>vendor/admin/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+    <script src="<?= base_url() ?>vendor/admin/assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>
+    <!-- Script -->
+
     <script type="text/javascript">
         $(document).ready(function() {
 
