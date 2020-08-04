@@ -50,7 +50,7 @@
                                 <form action="<?= base_url() ?>Admin/Laporan/laporan_pemasukan" method="POST">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <select class="form-control" name="bulan" id="sel_bulan">
+                                            <select class="form-control" name="bulan" id="sel_bulan" required>
                                                 <option value="Januari">Januari</option>
                                                 <option value="Februari">Februari</option>
                                                 <option value="Maret">Maret</option>
@@ -66,7 +66,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-4">
-                                            <select class="form-control" name="tahun" id="sel_tahun">
+                                            <select class="form-control" name="tahun" id="sel_tahun" required>
                                                 <option value="2020">2020</option>
                                                 <option value="2021">2021</option>
                                             </select>

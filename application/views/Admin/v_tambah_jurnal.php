@@ -78,7 +78,7 @@
                                         <div class="col">
                                             <label for="jenis_saldo">Jenis Saldo</label>
 
-                                            <select class="form-control" name="jenis_saldo" id="akun">
+                                            <select class="form-control" name="jenis_saldo" id="akun" required>
                                                 <option>Jenis Saldo</option>
                                                 <?php
                                                 $data =  $this->db->get('jenis_saldo')->result();
@@ -91,13 +91,13 @@
                                         </div>
                                         <div class="col">
                                             <label for="no_reff">Nama Akun</label>
-                                            <select id="jenis_saldo" class="form-control" name="no_reff">
+                                            <select id="jenis_saldo" class="form-control" name="no_reff" required>
 
                                             </select>
                                         </div>
                                         <div class="col">
                                             <label for="saldo">Saldo</label>
-                                            <input class="form-control" name="saldo">
+                                            <input class="form-control" name="saldo" required>
                                         </div>
 
                                     </div>
@@ -124,7 +124,7 @@
                                     <div class="col-md-12 row">
                                         <div class="col-md-6">
                                             <label>Jenis Pengeluaran</label>
-                                            <select name="id_jenis_pengeluaran" class="form-control">
+                                            <select name="id_jenis_pengeluaran" class="form-control" required>
                                                 <?php
                                                 $data = $this->db->get('jenis_pengeluaran')->result();
                                                 foreach ($data as $d) {
@@ -135,20 +135,20 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label>Kebutuhan</label>
-                                            <input name="nama_pengeluaran" class="form-control">
+                                            <input name="nama_pengeluaran" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Deskripsikan</label>
-                                        <textarea name="deskripsi_pengeluaran" class="form-control"></textarea>
+                                        <textarea name="deskripsi_pengeluaran" class="form-control" required></textarea>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Biaya</label>
-                                        <input name="biaya_pengeluaran" class="form-control">
+                                        <input name="biaya_pengeluaran" class="form-control" required>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Tanggal</label>
-                                        <input type="date" name="tgl_pengeluaran" class="form-control">
+                                        <input type="date" name="tgl_pengeluaran" class="form-control" required>
                                     </div>
 
                                 </div>

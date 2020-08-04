@@ -136,7 +136,7 @@
                                         <div class="form-group row">
                                             <label for="fname" class="col-sm-4  control-label col-form-label">Deskripsi</label>
                                             <div class="col-sm-8">
-                                                <textarea style="width: 300px; height:90px;" name="deskripsi" placeholder="Deskripsi"><?php echo $row->deskripsi  ?></textarea>
+                                                <textarea style="width: 300px; height:90px;" name="deskripsi" placeholder="Deskripsi" required><?php echo $row->deskripsi  ?></textarea>
                                             </div>
                                         </div>
                                     
@@ -190,7 +190,7 @@
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-4  control-label col-form-label">Deskripsi</label>
                                     <div class="col-sm-8">
-                                        <textarea style="width: 300px; height:90px;" name="deskripsi" placeholder="Deskripsi"></textarea>
+                                        <textarea style="width: 300px; height:90px;" name="deskripsi" placeholder="Deskripsi" required></textarea>
                                     </div>
                                 </div>
                         </div>

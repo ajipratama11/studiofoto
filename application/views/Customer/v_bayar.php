@@ -130,19 +130,19 @@
 
                                 <div>
                                     <li class=" mt-4">Opsi Pembayaran </li>
-                                    <input type="radio" name="opsi" id="rad1" value="Lunas" class="rad" /> Bayar Lunas
-                                    <input type="radio" name="opsi" id="rad2" value="DP" class="rad ml-5" /> Bayar DP
+                                    <input type="radio" name="opsi" id="rad1" value="Lunas" class="rad" required /> Bayar Lunas
+                                    <input type="radio" name="opsi" id="rad2" value="DP" class="rad ml-5" required /> Bayar DP
                                     <input type="text" name="id_pemesanan" value="<?= $bayar->id_pemesanan ?>" hidden />
                                     <input name="total_bayar" value="<?= $bayar->harga + $bayar->harga_sesi + $bayar->harga_dekorasi  ?>" hidden></input>
                                     <!-- <div id="form1" style="display:none">
                                     Input1: <input name="input" type="text" />
                                 </div> -->
                                     <div id="form2" class="mt-3" style="display:none">
-                                        <input name="dp" type="text" style="font-size: 20px;" placeholder="DP harus 50%" value=" <?= ($bayar->harga + $bayar->harga_sesi + $bayar->harga_dekorasi) * (50 / 100) ?>" />
+                                        <input name="dp" type="text" style="font-size: 20px;" placeholder="DP harus 50%" required value=" <?= ($bayar->harga + $bayar->harga_sesi + $bayar->harga_dekorasi) * (50 / 100) ?>" />
                                     </div>
                                 </div> <br>
                                 <li>Upload Bukti Transfer <img src="img/paypal.jpg" alt=""></li>
-                                <input type="file" name="bukti_transfer">
+                                <input type="file" name="bukti_transfer" required>
                             </ul>
                             <button type="submit">Bayar Sekarang!</button>
                         </div>

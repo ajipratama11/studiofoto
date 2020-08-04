@@ -70,7 +70,7 @@
                                 <div class="col-md-12 row">
                                     <form class="col-md-4" action="<?= base_url() ?>Admin/Laporan/laporan_suplier" method="POST">
                                         <div class="">
-                                            <select class="form-control" name="nama_suplier" id="sel_reff">
+                                            <select class="form-control" name="nama_suplier" id="sel_reff" required>
                                                 <?php
                                                 $this->db->group_by('akun.no_reff');
                                                 $this->db->join('transaksi', 'transaksi.no_reff=akun.no_reff', 'right');
@@ -139,7 +139,7 @@
                                     <div class="col-md-12 row">
                                         <div class="col-md-6">
                                             <label>Jenis Pengeluaran</label>
-                                            <select name="id_jenis_pengeluaran" class="form-control">
+                                            <select name="id_jenis_pengeluaran" class="form-control" required>
                                                 <?php
                                                 $data = $this->db->get('jenis_pengeluaran')->result();
                                                 foreach ($data as $d) {
@@ -150,20 +150,20 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label>Kebutuhan</label>
-                                            <input name="nama_pengeluaran" class="form-control">
+                                            <input name="nama_pengeluaran" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Deskripsikan</label>
-                                        <textarea name="deskripsi_pengeluaran" class="form-control"></textarea>
+                                        <textarea name="deskripsi_pengeluaran" class="form-control" required></textarea>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Biaya</label>
-                                        <input name="biaya_pengeluaran" class="form-control">
+                                        <input name="biaya_pengeluaran" class="form-control" required>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Tanggal</label>
-                                        <input type="date" name="tgl_pengeluaran" class="form-control">
+                                        <input type="date" name="tgl_pengeluaran" class="form-control" required>
                                     </div>
 
                                 </div>

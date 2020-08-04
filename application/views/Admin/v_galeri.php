@@ -143,7 +143,7 @@
                                     <div class="form-group row">
                                         <label for="fname" class="col-sm-4  control-label col-form-label">Kategori Foto</label>
                                         <div class="col-sm-8">
-                                            <select required class="custom-select" id="id_kategori" name="id_kategori">
+                                            <select required class="custom-select" id="id_kategori" name="id_kategori" required>
                                                 <?php
                                                 foreach ($kategori as $kategori_select) { ?>
                                                     <option value="<?= $kategori_select->id_kategori ?>"><?= $kategori_select->nama_kategori ?></option>
