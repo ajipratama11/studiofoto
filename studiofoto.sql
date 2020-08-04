@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2020 at 08:58 PM
+-- Generation Time: Aug 04, 2020 at 09:09 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -100,17 +100,18 @@ INSERT INTO `customer` (`id_cus`, `nama_cus`, `alamat_cus`, `no_hp`, `email_cus`
 CREATE TABLE `dekorasi` (
   `id_dekorasi` int(40) NOT NULL,
   `nama_dekorasi` varchar(50) NOT NULL,
-  `harga_dekorasi` int(30) NOT NULL
+  `harga_dekorasi` int(30) NOT NULL,
+  `deskripsi_dekorasi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `dekorasi`
 --
 
-INSERT INTO `dekorasi` (`id_dekorasi`, `nama_dekorasi`, `harga_dekorasi`) VALUES
-(1, 'Minimal', 20000),
-(2, 'Sedang', 30000),
-(3, 'Mewah', 50000);
+INSERT INTO `dekorasi` (`id_dekorasi`, `nama_dekorasi`, `harga_dekorasi`, `deskripsi_dekorasi`) VALUES
+(2, 'Minimalis', 750000, 'Dekorasi minimalis dapat di tempatkan di ruangan kecil/sempit dengan harga yang terjangkau'),
+(3, 'Sedang', 5000000, 'Dekorasi yang tidak terlalu besar dengan kualitas memuaskan'),
+(4, 'Mewah', 10000000, 'Dekorasi yang besar dengan barang-barang yang mewah.');
 
 -- --------------------------------------------------------
 
@@ -131,7 +132,14 @@ CREATE TABLE `galeri` (
 INSERT INTO `galeri` (`id_galeri`, `foto`, `id_kategori`) VALUES
 (1, 'gallery-4.jpg', '5'),
 (2, 'gallery-5.jpg', '2'),
-(4, '06627c8c-6b87-4f60-b151-00a359', '2');
+(4, '06627c8c-6b87-4f60-b151-00a359', '2'),
+(6, 'cople.jpeg', '3'),
+(7, 'grup.jpeg', '7'),
+(8, 'kids.jpeg', '4'),
+(9, 'single.jpeg', '5'),
+(10, 'wedding.jpeg', '2'),
+(11, 'wisuda.jpeg', '6'),
+(12, 'prewedding.jpeg', '8');
 
 -- --------------------------------------------------------
 
@@ -189,13 +197,13 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `harga`, `deskripsi`) VALUES
-(1, 'PreWedding', 22000, '0'),
 (2, 'Wedding', 100000, 'Baju couple dan serasi'),
-(3, 'Couple', 0, '0'),
+(3, 'Couple', 100000, 'uwuw'),
 (4, 'Kids', 0, '0'),
 (5, 'Single', 50000, 'Dapat Konsumsi'),
 (6, 'Wisuda', 0, '0'),
-(7, 'Grup', 0, '0');
+(7, 'Grup', 0, '0'),
+(8, 'Prewedding', 20000, 'Bensin Gratis');
 
 -- --------------------------------------------------------
 
@@ -465,13 +473,13 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `dekorasi`
 --
 ALTER TABLE `dekorasi`
-  MODIFY `id_dekorasi` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_dekorasi` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `galeri`
 --
 ALTER TABLE `galeri`
-  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `jenis_pengeluaran`
@@ -489,7 +497,7 @@ ALTER TABLE `jenis_saldo`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_kategori` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `kertas`
