@@ -42,11 +42,11 @@
                         <?php echo $this->session->flashdata('message'); ?>
                     </div>
                     <div class=" wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-                        <input id="first-name" class="input100" type="text" name="username" placeholder="User name">
+                        <input id="first-name" class="input100" type="text" name="username" placeholder="User name" required>
                         <span class="focus-input100"></span>
                     </div>
                     <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <input class="input100" type="password" name="password" placeholder="Password" required>
                         <span class="focus-input100"></span>
                     </div>
 

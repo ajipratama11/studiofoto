@@ -40,7 +40,7 @@
                                   <label><b>Pilih Dekorasi : </b></label>
                               </div><br>
                               <div class="col-lg-12">
-                                  <select type="text" name="id_dekorasi" class="form-control" placeholder="First Name">
+                                  <select type="text" name="id_dekorasi" class="form-control" placeholder="First Name" required>
                                       <?php foreach ($dekorasi as $d) { ?>
                                           <option value="<?= $d->id_dekorasi ?>"><?= $d->nama_dekorasi ?> (Rp. <?= number_format($d->harga_dekorasi, 0, ',', '.')  ?>)</option>
                                       <?php } ?>
@@ -50,21 +50,21 @@
                                   <label><b>Pilih Tempat :</b> </label>
                               </div><br>
                               <div class="col-lg-12">
-                                  <select id="tempat" name="jenis" type="text" class="form-control" placeholder="First Name">
+                                  <select id="tempat" name="jenis" type="text" class="form-control" placeholder="First Name" required>
                                       <option value="Studio">Studio</option>
                                       <option value="Tempat Lain">Tempat lain</option>
                                   </select>
                               </div>
                               <div id="lain" hidden class="col-lg-12" style="margin-top: 15px;">
                                   <label><b>Masukkan Alamat Lengkap :</b> </label>
-                                  <textarea class="form-control" style="height: 50px;" name="lokasi"></textarea>
+                                  <textarea class="form-control" style="height: 50px;" name="lokasi" required></textarea>
                               </div><br>
                               <input name="id_kategori" value="<?= $pemesan['id_kategori'] ?>" hidden>
                               <div class="col-lg-12" style="margin-top: 15px;">
                                   <label><b>Pilih Sesi :</b> </label>
                               </div><br>
                               <div class="col-lg-12">
-                                  <select id="tempat" name="id_sesi" type="text" class="form-control" placeholder="First Name">
+                                  <select id="tempat" name="id_sesi" type="text" class="form-control" placeholder="First Name" required>
                                       <?php foreach ($sesi as $s) { ?>
                                           <option value="<?= $s->id_sesi ?>"><?= $s->jumlah_sesi ?> Kali (Rp.<?= number_format($s->harga_sesi, 0, ',', '.')  ?>)</option>
                                       <?php  } ?>
@@ -75,10 +75,10 @@
                               </div><br>
                               <div class=" row col-lg-12">
                                   <div class="col-md-6">
-                                      <input type="date" name="tanggal" class="form-control">
+                                      <input type="date" name="tanggal" class="form-control" required>
                                   </div>
                                   <div class="col-md-6">
-                                      <input type="time" name="waktu" class="form-control">
+                                      <input type="time" name="waktu" class="form-control" required>
                                   </div>
                               </div>
 

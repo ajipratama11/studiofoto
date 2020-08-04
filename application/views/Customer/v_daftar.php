@@ -39,27 +39,27 @@
                         Daftar Sebagai Customer </span>
                     <div class="row">
                         <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 col-md-12" data-validate="Type user name">
-                            <input id="first-name" class="input100" type="text" name="nama_cus" placeholder="Nama Lengkap">
+                            <input id="first-name" class="input100" type="text" name="nama_cus" placeholder="Nama Lengkap" required>
                             <span class="focus-input100"></span>
                         </div>
                         <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 col-md-12" data-validate="Type password">
-                            <textarea style="height: 100px;margin-top:20px;" class="input100" type="password" name="alamat_cus" placeholder="Alamat Lengkap"></textarea>
+                            <textarea style="height: 100px;margin-top:20px;" class="input100" type="password" name="alamat_cus" placeholder="Alamat Lengkap" required></textarea>
                             <span class="focus-input100"></span>
                         </div>
                         <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 col-md-12" data-validate="Type user name">
-                            <input id="first-name" class="input100" type="text" name="email_cus" placeholder="Email">
+                            <input id="first-name" class="input100" type="text" name="email_cus" placeholder="Email" required>
                             <span class="focus-input100"></span>
                         </div>
                         <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 col-md-12" data-validate="Type user name">
-                            <input id="first-name" class="input100" type="number" name="no_hp" placeholder="No Hp">
+                            <input id="first-name" class="input100" type="number" name="no_hp" placeholder="No Hp" required>
                             <span class="focus-input100"></span>
                         </div>
                         <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-                            <input id="first-name" class="input100" type="text" name="username" placeholder="User name">
+                            <input id="first-name" class="input100" type="text" name="username" placeholder="User name" required>
                             <span class="focus-input100"></span>
                         </div>
                         <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-                            <input class="input100" type="password" name="password" placeholder="Password">
+                            <input class="input100" type="password" name="password" placeholder="Password" required>
                             <span class="focus-input100"></span>
                         </div>
                     </div>

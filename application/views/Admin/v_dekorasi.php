@@ -74,6 +74,7 @@
                                                 <th><b>No</b></th>
                                                 <th><b>Nama Dekorasi</b></th>
                                                 <th><b>Harga</b></th>
+                                                <th><b>Deskripsi</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
                                         </thead>
@@ -86,6 +87,7 @@
                                                     <td><?= $no++; ?></td>
                                                     <td><?= $k->nama_dekorasi ?></td>
                                                     <td><?= $k->harga_dekorasi ?></td>
+                                                    <td><?= $k->deskripsi_dekorasi ?></td>
                                                     <td>
                                                     <a data-toggle="modal" data-target="#modal-edit<?= $k->id_dekorasi; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-warning">Edit</a>
                                                     <a onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" href="<?php echo base_url('Admin/Dekorasi/hapusDekorasi/'.$k->id_dekorasi); ?>" class="btn btn-danger">Hapus</a>
@@ -121,13 +123,19 @@
                                             <label for="fname" class="col-sm-4  control-label col-form-label">Nama Dekorasi</label>
                                             <div class="col-sm-8">
                                                 <input type="hidden" style="border-radius: 10px;" name="id_dekorasi" class="form-control" id="username" value="<?php echo $row->id_dekorasi;  ?>" placeholder="Nama Penanggung Jawab" required>
-                                                <input type="text" style="border-radius: 10px;" name="nama_dekorasi" class="form-control" id="username" value="<?php echo $row->nama_dekorasi;  ?>" placeholder="Nama Penanggung Jawab" required>
+                                                <input type="text" style="border-radius: 10px;" name="nama_dekorasi" class="form-control" id="username" value="<?php echo $row->nama_dekorasi;  ?>" placeholder="Nama Dekorasi" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="fname" class="col-sm-4  control-label col-form-label">Harga</label>
                                             <div class="col-sm-8">
-                                                <input type="text" style="border-radius: 10px;" name="harga_dekorasi" class="form-control" id="password" value="<?php echo $row->harga_dekorasi  ?>" placeholder="Nama Penanggung Jawab" required>
+                                                <input type="number" style="border-radius: 10px;" name="harga_dekorasi" class="form-control" id="password" value="<?php echo $row->harga_dekorasi  ?>" placeholder="Harga Dekorasi" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-4  control-label col-form-label">Deskripsi</label>
+                                            <div class="col-sm-8">
+                                                <textarea type="text" style="border-radius: 10px; height:120px;" name="deskripsi_dekorasi" class="form-control" id="password"  placeholder="Deskripsi" required><?php echo $row->deskripsi_dekorasi  ?></textarea>
                                             </div>
                                         </div>
                                     
@@ -169,13 +177,19 @@
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-4  control-label col-form-label">Nama Dekorasi</label>
                                     <div class="col-sm-8">
-                                        <input type="text" style="border-radius: 10px;" name="nama_dekorasi" class="form-control" id="username" placeholder="Nama Kategori" required>
+                                        <input type="text" style="border-radius: 10px;" name="nama_dekorasi" class="form-control" id="username" placeholder="Nama Dekorasi" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-4  control-label col-form-label">Harga</label>
                                     <div class="col-sm-8">
                                         <input type="number" style="border-radius: 10px;" name="harga_dekorasi" class="form-control" id="password" placeholder="Harga" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-4  control-label col-form-label">Deskripsi</label>
+                                    <div class="col-sm-8">
+                                        <textarea type="text" style="border-radius: 10px; height:120px;" name="deskripsi_dekorasi" class="form-control" id="password" placeholder="Deskripsi" required></textarea>
                                     </div>
                                 </div>
                                 

@@ -115,7 +115,8 @@
                                                         ?>
                                                     </td>
                                                     <td>
-                                                        <a target="_blank" href="<?= base_url('Admin/Beranda/detail_transaksi/' . $k->id_pemesanan); ?>" class="btn btn-warning">Detail Transaksi</a>
+                                                        <a target="_blank" href="<?= base_url('Admin/Beranda/detail_transaksi/'.$k->id_pemesanan); ?>" class="btn btn-warning">Detail Transaksi</a><br>
+                                                        <button style="margin-left: 10px; margin-top: 5px;" data-toggle="modal" data-target="#modal-edit<?= $k->id_pemesanan; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-info">Bukti Bayar</button>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
@@ -143,7 +144,7 @@
                                     <div class="col-md-12 row">
                                         <div class="col-md-6">
                                             <label>Jenis Pengeluaran</label>
-                                            <select name="id_jenis_pengeluaran" class="form-control">
+                                            <select name="id_jenis_pengeluaran" class="form-control" required>
                                                 <?php
                                                 $data = $this->db->get('jenis_pengeluaran')->result();
                                                 foreach ($data as $d) {
@@ -154,20 +155,20 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label>Kebutuhan</label>
-                                            <input name="nama_pengeluaran" class="form-control">
+                                            <input name="nama_pengeluaran" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Deskripsikan</label>
-                                        <textarea name="deskripsi_pengeluaran" class="form-control"></textarea>
+                                        <textarea name="deskripsi_pengeluaran" class="form-control" required></textarea>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Biaya</label>
-                                        <input name="biaya_pengeluaran" class="form-control">
+                                        <input name="biaya_pengeluaran" class="form-control" required>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Tanggal</label>
-                                        <input type="date" name="tgl_pengeluaran" class="form-control">
+                                        <input type="date" name="tgl_pengeluaran" class="form-control" required>
                                     </div>
 
                                 </div>
@@ -180,6 +181,68 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                <?php foreach ($pemesanan as $row) : ?>
+    <div class="row">
+      <div id="modal-edit<?= $row->id_pemesanan; ?>" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle"> </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+
+
+              <div class="form-group row">
+                <label for="fname" class="col-sm-4  control-label col-form-label">Tanggal Checkout</label>
+                <div class="col-sm-8">
+                  <h5><?php echo $row->tgl_checkout  ?></h5>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="fname" class="col-sm-4  control-label col-form-label">Total Bayar</label>
+                <div class="col-sm-8">
+                  <?php echo $row->total_bayar  ?>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="fname" class="col-sm-4  control-label col-form-label">DP</label>
+                <div class="col-sm-8">
+                <?php if ($row->opsi == 'DP') { ?>
+                    <?php echo $row->dp  ?>
+                  <?php } else { ?>
+                    LUNAS
+                  <?php } ?>
+                </div>
+
+
+              </div>
+              <div class="form-group row">
+                <label for="fname" class="col-sm-4  control-label col-form-label">Bukti Transfer</label>
+                <div class="col-sm-8">
+
+                    <img width="200px" height="200px" src="<?= base_url('assets/' . $row->bukti_transfer) ?>">
+                  
+                </div>
+
+
+              </div>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endforeach; ?>
 
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->

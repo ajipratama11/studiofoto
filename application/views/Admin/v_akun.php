@@ -34,7 +34,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Dekorasi</h4>
+                        <h4 class="page-title">Akun</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -60,7 +60,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Dekorasi</h5><br>
+                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Akun</h5><br>
                                 <button style="margin-bottom: 10px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAkun">Tambah Akun</button>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
@@ -114,11 +114,11 @@
                                     <label>Id Reff</label>
                                     <input name="no_reff" readonly class="form-control" value="r<?= $str[1] + 1 ?>">
                                     <label>Nama Reff</label>
-                                    <input name="nama_reff" class="form-control">
+                                    <input name="nama_reff" class="form-control" required>
                                     <label>Keterangan Reff</label>
-                                    <textarea name="keterangan_reff" class="form-control"></textarea>
+                                    <textarea name="keterangan_reff" class="form-control" required></textarea>
                                     <label>Jenis Saldo</label>
-                                    <select name="id_jenis" class="form-control">
+                                    <select name="id_jenis" class="form-control" required>
                                         <?php
                                         $saldo = $this->db->get('jenis_saldo')->result();
                                         foreach ($saldo as $s) {
