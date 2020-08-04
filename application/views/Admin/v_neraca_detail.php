@@ -81,7 +81,7 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    Tanggal
+                                                    No Akun
                                                 </th>
                                                 <th>
                                                     Nama Akun
@@ -99,16 +99,16 @@
                                             foreach ($jurnal as $j) {
                                             ?>
                                                 <tr>
-                                                    <td><?= formatHariTanggal($j->tgl_transaksi) ?></td>
+                                                    <td><?= $j->no_reff ?></td>
                                                     <td><?= $j->nama_reff ?></td>
                                                     <?php
                                                     if ($j->jenis_saldo == '1') {
                                                     ?>
-                                                        <td><?= $j->saldo ?></td>
-                                                        <td> 0</td>
+                                                        <td><?= number_format($j->total) ?></td>
+                                                        <td> - </td>
                                                     <?php } else { ?>
-                                                        <td> 0</td>
-                                                        <td><?= $j->saldo ?></td>
+                                                        <td> - </td>
+                                                        <td><?= number_format($j->total) ?></td>
                                                     <?php } ?>
                                                 </tr>
                                             <?php } ?>

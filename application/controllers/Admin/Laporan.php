@@ -76,6 +76,15 @@ class Laporan extends CI_Controller
 
         echo json_encode($data);
     }
+    public function labaList()
+    {
+        // POST data
+        $postData = $this->input->post();
+        // Get data
+        $data = $this->MA_Laporan->getLaba($postData);
+
+        echo json_encode($data);
+    }
     public function laporan_pemasukan()
     {
         $post = $this->input->post();
@@ -202,6 +211,79 @@ class Laporan extends CI_Controller
 
         $this->load->view('Admin/v_jurnal_detail', $data);
     }
+    public function detail_laba()
+    {
+        $bulan = $this->input->post('bulan');
+        $data['bulan'] = $this->input->post('bulan');
+        $tahun = $this->input->post('tahun');
+
+
+        $this->db->select('sum(saldo) as total,transaksi.*,akun.*');
+        $this->db->order_by('id_transaksi', 'ASC');
+        $this->db->join('akun', 'akun.no_reff=transaksi.no_reff');
+        $this->db->where('month(transaksi.tgl_transaksi)', $bulan);
+        $this->db->group_by('transaksi.no_reff');
+        $this->db->where('transaksi.no_reff !=', 'r5');
+        $this->db->where('transaksi.no_reff !=', 'r4');
+        $this->db->where('transaksi.no_reff !=', 'r7');
+        $this->db->where('transaksi.jenis_saldo', '1');
+        $this->db->where('year(transaksi.tgl_transaksi)', $tahun);
+        $data['jurnal'] = $this->db->get('transaksi')->result();
+
+
+        $this->db->select('sum(saldo) as total,transaksi.*,akun.*');
+        $this->db->order_by('id_transaksi', 'ASC');
+        $this->db->join('akun', 'akun.no_reff=transaksi.no_reff');
+        $this->db->where('month(transaksi.tgl_transaksi)', $bulan);
+        $this->db->group_by('transaksi.no_reff');
+        $this->db->where('transaksi.no_reff !=', 'r5');
+        $this->db->where('transaksi.no_reff !=', 'r4');
+        $this->db->where('transaksi.no_reff !=', 'r7');
+        $this->db->where('transaksi.jenis_saldo', '2');
+        $this->db->where('year(transaksi.tgl_transaksi)', $tahun);
+        $data['biaya'] = $this->db->get('transaksi')->result();
+
+
+        $this->db->select('sum(saldo) as total,transaksi.*,akun.*');
+        $this->db->order_by('id_transaksi', 'ASC');
+        $this->db->join('akun', 'akun.no_reff=transaksi.no_reff');
+        $this->db->where('month(transaksi.tgl_transaksi)', $bulan);
+        $this->db->group_by('transaksi.jenis_saldo');
+        $this->db->where('transaksi.no_reff !=', 'r5');
+        $this->db->where('transaksi.no_reff !=', 'r4');
+        $this->db->where('transaksi.no_reff !=', 'r7');
+        $this->db->where('transaksi.jenis_saldo', '1');
+        $this->db->where('year(transaksi.tgl_transaksi)', $tahun);
+        $data['total1'] = $this->db->get('transaksi')->row();
+
+        $this->db->select('sum(saldo) as total,transaksi.*,akun.*');
+        $this->db->order_by('id_transaksi', 'ASC');
+        $this->db->join('akun', 'akun.no_reff=transaksi.no_reff');
+        $this->db->where('month(transaksi.tgl_transaksi)', $bulan);
+        $this->db->group_by('transaksi.jenis_saldo');
+        $this->db->where('transaksi.no_reff !=', 'r5');
+        $this->db->where('transaksi.no_reff !=', 'r4');
+        $this->db->where('transaksi.no_reff !=', 'r7');
+        $this->db->where('transaksi.jenis_saldo', '2');
+        $this->db->where('year(transaksi.tgl_transaksi)', $tahun);
+        $data['total2'] = $this->db->get('transaksi')->row();
+
+
+
+        // $this->db->select('SUM(saldo) as total');
+        // $this->db->where('jenis_saldo', 1);
+        // $this->db->where('month(transaksi.tgl_transaksi)', $bulan);
+        // $this->db->where('year(transaksi.tgl_transaksi)', $tahun);
+        // $data['debit'] = $this->db->get('transaksi')->row();
+
+        // $this->db->select('SUM(saldo) as total');
+        // $this->db->where('jenis_saldo', 2);
+        // $this->db->where('month(transaksi.tgl_transaksi)', $bulan);
+        // $this->db->where('year(transaksi.tgl_transaksi)', $tahun);
+        // $data['kredit'] = $this->db->get('transaksi')->row();
+
+        $this->load->view('Admin/v_detail_laba', $data);
+    }
     function getJenis()
     {
         $id_jenis = $this->input->post('id', TRUE);
@@ -225,33 +307,35 @@ class Laporan extends CI_Controller
             $this->load->view('Admin/v_neraca_saldo', $data);
         }
     }
-    public function semua_neraca()
-    {
-
-        $data['jurnal'] = $this->db->get('transaksi')->result();
-        $cek = $this->db->get('transaksi')->row();
-        if (!$cek) {
-            echo "<script>
-            alert('Neraca saldo masih kosong, buat jurnal dulu ya!!');
-            window.location.href = '" . base_url('Admin/Laporan/tambah_jurnal') . "';
-        </script>"; //Url tujuan
-        } else {
-            $this->load->view('Admin/v_semua_neraca', $data);
-        }
-    }
+    // public function semua_neraca()
+    // {
+    //     $this->db->join('akun', 'akun.no_reff=transaksi.no_reff');
+    //     $data['jurnal'] = $this->db->get('transaksi')->result();
+    //     $cek = $this->db->get('transaksi')->row();
+    //     if (!$cek) {
+    //         echo "<script>
+    //         alert('Neraca saldo masih kosong, buat jurnal dulu ya!!');
+    //         window.location.href = '" . base_url('Admin/Laporan/tambah_jurnal') . "';
+    //     </script>"; //Url tujuan
+    //     } else {
+    //         $this->load->view('Admin/v_semua_neraca', $data);
+    //     }
+    // }
     public function detail_neraca_saldo()
     {
         $bulan = $this->input->post('bulan');
         $tahun = $this->input->post('tahun');
 
+
+        $this->db->select('sum(saldo) as total,transaksi.*,akun.*');
         $this->db->order_by('id_transaksi', 'ASC');
         $this->db->join('akun', 'akun.no_reff=transaksi.no_reff');
         $this->db->where('month(transaksi.tgl_transaksi)', $bulan);
+        $this->db->group_by('transaksi.no_reff');
         $this->db->where('year(transaksi.tgl_transaksi)', $tahun);
         $data['jurnal'] = $this->db->get('transaksi')->result();
 
         $this->db->select('SUM(saldo) as total');
-
         $this->db->where('jenis_saldo', 1);
         $this->db->where('month(transaksi.tgl_transaksi)', $bulan);
         $this->db->where('year(transaksi.tgl_transaksi)', $tahun);
@@ -302,6 +386,21 @@ class Laporan extends CI_Controller
                 </div>'
             );
             redirect('Admin/Laporan/jurnal');
+        }
+    }
+
+    public function laba_rugi()
+    {
+        $this->db->group_by('year(tgl_transaksi)');
+        $data['jurnal'] = $this->db->get('transaksi')->result();
+        $cek = $this->db->get('transaksi')->row();
+        if (!$cek) {
+            echo "<script>
+            alert('Jurnal masih kosong, buat dulu ya!!');
+            window.location.href = '" . base_url('Admin/Laporan/tambah_jurnal') . "';
+        </script>"; //Url tujuan
+        } else {
+            $this->load->view('Admin/v_laba_rugi', $data);
         }
     }
 }
