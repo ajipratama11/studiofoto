@@ -105,12 +105,12 @@
                                                 <tr>
                                                     <td><?= $j->no_reff ?></td>
                                                     <td><?= $j->nama_reff ?></td>
-                                                    <td><?= $j->total ?></td>
+                                                    <td>Rp. <?= number_format($j->total)  ?></td>
                                                 </tr>
                                             <?php } ?>
                                             <tr>
                                                 <td colspan="2" style="background-color: #70a1ff; color:aliceblue">Total Pendapatan</td>
-                                                <td colspan="1" style="background-color: #70a1ff; color:aliceblue"><?= number_format($total1->total)  ?></td>
+                                                <td colspan="1" style="background-color: #70a1ff; color:aliceblue">Rp.<?= number_format($total1->total)  ?></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4" style="background-color: gray; color:aliceblue">Biaya-biaya</td>
@@ -121,12 +121,12 @@
                                                 <tr>
                                                     <td><?= $j->no_reff ?></td>
                                                     <td><?= $j->nama_reff ?></td>
-                                                    <td><?= $j->total ?></td>
+                                                    <td>Rp. <?= number_format($j->total) ?></td>
                                                 </tr>
                                             <?php } ?>
                                             <tr>
                                                 <td colspan="2" style="background-color: #ff4757; color:aliceblue">Total Biaya</td>
-                                                <td colspan="1" style="background-color: #ff4757; color:aliceblue"><?= number_format($total2->total) ?></td>
+                                                <td colspan="1" style="background-color: #ff4757; color:aliceblue">Rp.<?= number_format($total2->total) ?></td>
                                             </tr>
                                             <tr>
                                                 <?php
