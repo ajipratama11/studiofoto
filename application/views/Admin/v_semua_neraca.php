@@ -61,97 +61,66 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="card">
-                    <div class="card-body">
-                        <h2 style="color: #1E7BCB;"> Neraca Saldo</h2><br>
-                        <?php echo $this->session->flashdata('sukses'); ?>
-                        <div class="col-md-12 row">
-                            <form class="col-md-4" action="<?= base_url() ?>Admin/Laporan/laporan_suplier" method="POST">
-                                <div class="">
-                                    <select class="form-control" name="nama_suplier" id="sel_tahun">
-                                        <!--<option value=''>-- Pilih Tahun --</option>-->
-                                        <!-- <option value="0">Semua Suplier</option> -->
-                                        <?php
-                                        foreach ($jurnal as $j) {
-                                            $bulan = date('m', strtotime($j->tgl_transaksi));
-                                            $tahun = date('Y', strtotime($j->tgl_transaksi));
-                                        ?>
-                                            <option value="<?= $tahun ?>"> <?= $tahun ?> </option><?php } ?>
-                                    </select>
+                <div class="row">
+                    <div class="col-lg-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 style="color: #1E7BCB;"> Semua Neraca Saldo</h2><br>
+                                <?php echo $this->session->flashdata('sukses'); ?>
+                                <div class="col-md-12 row">
+                                    <!-- <form class="col-md-4" action="<?= base_url() ?>Admin/Laporan/laporan_suplier" method="POST">
+                                        <div class="">
+                                            <select class="form-control" name="nama_suplier" id="sel_reff">
+                                                <?php
+                                                $this->db->group_by('akun.no_reff');
+                                                $this->db->join('transaksi', 'transaksi.no_reff=akun.no_reff', 'right');
+                                                $data = $this->db->get('akun')->result();
+                                                foreach ($data as $j) {
+
+                                                ?>
+                                                    <option value="<?= $j->no_reff ?>"> <?= $j->nama_reff ?> </option><?php } ?>
+                                            </select>
+                                        </div>
+                                    </form> -->
                                 </div>
-                            </form>
-                            <div>
-                                <a class="btn btn-success" href="">Semua Neraca Saldo</a>
+
+
+                                <div class="form-group col-md-12">
+                                    <!-- Name -->
+                                    <div class="col-md-2 ">
+                                        <h4></h4><br>
+
+                                    </div>
+                                </div><br><br>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id='userTable'>
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Tanggal
+                                                </th>
+                                                <th>
+                                                    Keterangan
+                                                </th>
+                                                <th>
+                                                    Debit
+                                                </th>
+                                                <th>
+                                                    Kredit
+                                                </th>
+                                                <th>
+                                                    Total Semua
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
                             </div>
-                        </div>
-
-
-                        <div class="form-group col-md-12">
-                            <!-- Name -->
-                            <div class="col-md-2 ">
-                                <h4></h4><br>
-
-                            </div>
-                        </div><br><br>
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id='userTable'>
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Tanggal
-                                        </th>
-                                        <th>
-                                            Nama Akun
-                                        </th>
-                                        <th>
-                                            Debit
-                                        </th>
-                                        <th>
-                                            Kredit
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    foreach ($jurnal as $j) {
-                                    ?>
-                                        <tr>
-                                            <td><?= formatHariTanggal($j->tgl_transaksi) ?></td>
-                                            <td><?= $j->nama_reff ?></td>
-                                            <?php
-                                            if ($j->jenis_saldo == '1') {
-                                            ?>
-                                                <td><?= $j->saldo ?></td>
-                                                <td> 0</td>
-                                            <?php } else { ?>
-                                                <td> 0</td>
-                                                <td><?= $j->saldo ?></td>
-                                            <?php } ?>
-                                        </tr>
-                                    <?php } ?>
-
-                                    <tr>
-                                        <td colspan="2" class="text-center"><b>Jumlah Total</b></td>
-                                        <td><b>
-                                                Rp. <?= number_format($debit->total)  ?>
-                                        </td> </b>
-
-                                        <td><b>
-                                                Rp. <?= number_format($kredit->total)  ?>
-                                        </td> </b>
-                                    </tr>
-                                    <tr>
-                                        <?php
-                                        if ($debit->total != $kredit->total) {
-                                        ?>
-                                            <td colspan="4" style="background-color: red; color:aliceblue" class="text-center"><b>TIDAK SEIMBANG</b></td>
-                                        <?php } else { ?>
-                                            <td colspan="4" style="background-color: #1E7BCB;color:aliceblue" class="text-center"><b>SEIMBANG</b></td>
-                                        <?php } ?>
-                                    </tr>
-                                </tbody>
-
-                            </table>
                         </div>
                     </div>
                 </div>
@@ -314,27 +283,34 @@
                 'serverMethod': 'post',
                 //'searching': false, // Remove default Search Control
                 'ajax': {
-                    'url': '<?= base_url() ?>Admin/Laporan/neracaList',
+                    'url': '<?= base_url() ?>Admin/Laporan/reffList',
                     'data': function(data) {
-                        data.searchTahun = $('#sel_tahun').val();
+                        data.searchReff = $('#sel_reff').val();
                         // data.searchBulan = $('#sel_bulan').val();
                         console.log(data);
                     }
 
                 },
                 'columns': [{
-                        data: 'no'
+                        data: 'tanggal'
                     },
                     {
-                        data: 'bulan'
+                        data: 'keterangan'
                     },
                     {
-                        data: 'action'
+                        data: 'debit'
+                    },
+                    {
+                        data: 'kredit'
+                    },
+                    {
+                        data: 'total'
                     }
+
                 ]
             });
 
-            $('#sel_tahun').change(function() {
+            $('#sel_reff').change(function() {
                 userDataTable.draw();
             });
             $('#searchName').keyup(function() {

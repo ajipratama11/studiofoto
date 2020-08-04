@@ -33,7 +33,7 @@ class Beranda extends CI_Controller
         $data['keluar'] = $this->db->get('tbl_pengeluaran')->row();
 
         $this->db->select('COUNT(id_pemesanan) as total');
-        $this->db->where('status_cus', 'Sudah Bayar');
+        $this->db->where('status_cus', 'Pesanan Selesai');
         $data['status'] = $this->db->get('pemesanan')->row();
 
         $this->load->helper('tgl_indo');

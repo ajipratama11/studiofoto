@@ -1,10 +1,5 @@
 <?php $this->load->view('templates/header');
 ?>
-<!-- jQuery Library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<!-- Datatable JS -->
-<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
 <body>
     <!-- ============================================================== -->
@@ -39,7 +34,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Pemesanan</h4>
+                        <h4 class="page-title">Dekorasi</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -61,146 +56,81 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="card">
-                    <div class="card-body">
-                        <h2 style="color: #1E7BCB;"> Neraca Saldo</h2><br>
-                        <?php echo $this->session->flashdata('sukses'); ?>
-                        <div class="col-md-12 row">
-                            <form class="col-md-4" action="<?= base_url() ?>Admin/Laporan/laporan_suplier" method="POST">
-                                <div class="">
-                                    <select class="form-control" name="nama_suplier" id="sel_tahun">
-                                        <!--<option value=''>-- Pilih Tahun --</option>-->
-                                        <!-- <option value="0">Semua Suplier</option> -->
-                                        <?php
-                                        foreach ($jurnal as $j) {
-                                            $bulan = date('m', strtotime($j->tgl_transaksi));
-                                            $tahun = date('Y', strtotime($j->tgl_transaksi));
-                                        ?>
-                                            <option value="<?= $tahun ?>"> <?= $tahun ?> </option><?php } ?>
-                                    </select>
-                                </div>
-                            </form>
-                            <div>
-                                <a class="btn btn-success" href="">Semua Neraca Saldo</a>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group col-md-12">
-                            <!-- Name -->
-                            <div class="col-md-2 ">
-                                <h4></h4><br>
-
-                            </div>
-                        </div><br><br>
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id='userTable'>
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Tanggal
-                                        </th>
-                                        <th>
-                                            Nama Akun
-                                        </th>
-                                        <th>
-                                            Debit
-                                        </th>
-                                        <th>
-                                            Kredit
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    foreach ($jurnal as $j) {
-                                    ?>
-                                        <tr>
-                                            <td><?= formatHariTanggal($j->tgl_transaksi) ?></td>
-                                            <td><?= $j->nama_reff ?></td>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Dekorasi</h5><br>
+                                <button style="margin-bottom: 10px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAkun">Tambah Akun</button>
+                                <div class="table-responsive">
+                                    <table id="zero_config" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th><b>No Reff</b></th>
+                                                <th><b>Nama Reff</b></th>
+                                                <th><b>Keterangan</b></th>
+                                                <th><b>Jenis</b></th>
+                                                <th><b>Aksi</b></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                             <?php
-                                            if ($j->jenis_saldo == '1') {
+                                            foreach ($akun as $a) {
                                             ?>
-                                                <td><?= $j->saldo ?></td>
-                                                <td> 0</td>
-                                            <?php } else { ?>
-                                                <td> 0</td>
-                                                <td><?= $j->saldo ?></td>
+                                                <tr>
+                                                    <th> <?= $a->no_reff  ?></th>
+                                                    <th> <?= $a->nama_reff  ?></th>
+                                                    <th> <?= $a->keterangan_reff  ?></th>
+                                                    <th> <?= $a->nama_saldo  ?></th>
+                                                    <th> <a onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" href="<?php echo base_url('Admin/Akun/hapusAkun/' . $a->no_reff); ?>" class="btn btn-danger">Hapus</a></th>
+                                                    
+                                                </tr>
                                             <?php } ?>
-                                        </tr>
-                                    <?php } ?>
+                                        </tbody>
 
-                                    <tr>
-                                        <td colspan="2" class="text-center"><b>Jumlah Total</b></td>
-                                        <td><b>
-                                                Rp. <?= number_format($debit->total)  ?>
-                                        </td> </b>
+                                    </table>
+                                </div>
 
-                                        <td><b>
-                                                Rp. <?= number_format($kredit->total)  ?>
-                                        </td> </b>
-                                    </tr>
-                                    <tr>
-                                        <?php
-                                        if ($debit->total != $kredit->total) {
-                                        ?>
-                                            <td colspan="4" style="background-color: red; color:aliceblue" class="text-center"><b>TIDAK SEIMBANG</b></td>
-                                        <?php } else { ?>
-                                            <td colspan="4" style="background-color: #1E7BCB;color:aliceblue" class="text-center"><b>SEIMBANG</b></td>
-                                        <?php } ?>
-                                    </tr>
-                                </tbody>
-
-                            </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="modalKeluar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modalAkun" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambah Pengeluaran</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Akun</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="<?= base_url() ?>Admin/Pengeluaran/tambah" method="post">
+                            <form method="post" action="<?= base_url() ?>Admin/Akun/tambahAkun">
                                 <div class="modal-body">
+                                    <?php
+                                    $this->db->order_by('no_reff', 'DESC');
+                                    $reff = $this->db->get('akun')->row();
+                                    $str = str_split($reff->no_reff);
+                                    ?>
+                                    <label>Id Reff</label>
+                                    <input name="no_reff" readonly class="form-control" value="r<?= $str[1] + 1 ?>">
+                                    <label>Nama Reff</label>
+                                    <input name="nama_reff" class="form-control">
+                                    <label>Keterangan Reff</label>
+                                    <textarea name="keterangan_reff" class="form-control"></textarea>
+                                    <label>Jenis Saldo</label>
+                                    <select name="id_jenis" class="form-control">
+                                        <?php
+                                        $saldo = $this->db->get('jenis_saldo')->result();
+                                        foreach ($saldo as $s) {
 
-                                    <div class="col-md-12 row">
-                                        <div class="col-md-6">
-                                            <label>Jenis Pengeluaran</label>
-                                            <select name="id_jenis_pengeluaran" class="form-control">
-                                                <?php
-                                                $data = $this->db->get('jenis_pengeluaran')->result();
-                                                foreach ($data as $d) {
-                                                ?>
-                                                    <option value="<?= $d->id_jenis_pengeluaran ?>"><?= $d->jenis_pengeluaran ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Kebutuhan</label>
-                                            <input name="nama_pengeluaran" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label>Deskripsikan</label>
-                                        <textarea name="deskripsi_pengeluaran" class="form-control"></textarea>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label>Biaya</label>
-                                        <input name="biaya_pengeluaran" class="form-control">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label>Tanggal</label>
-                                        <input type="date" name="tgl_pengeluaran" class="form-control">
-                                    </div>
 
+                                        ?>
+                                            <option value="<?= $s->id_jenis ?>"><?= $s->nama_saldo ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-info">Tambah</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-success">Tambah</button>
 
                                 </div>
                             </form>
@@ -277,11 +207,6 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script type="text/javascript">
-        function confirm_alert(node) {
-            return confirm("Apakah anda yakin ingin mengganti status ?");
-        }
-    </script>
     <script src="<?= base_url() ?>vendor/admin/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?= base_url() ?>vendor/admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>
@@ -304,43 +229,6 @@
          *       Basic Table                   *
          ****************************************/
         $('#zero_config').DataTable();
-    </script>
-    <!-- Script -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var userDataTable = $('#userTable').DataTable({
-                //   'processing': true,
-                'serverSide': true,
-                'serverMethod': 'post',
-                //'searching': false, // Remove default Search Control
-                'ajax': {
-                    'url': '<?= base_url() ?>Admin/Laporan/neracaList',
-                    'data': function(data) {
-                        data.searchTahun = $('#sel_tahun').val();
-                        // data.searchBulan = $('#sel_bulan').val();
-                        console.log(data);
-                    }
-
-                },
-                'columns': [{
-                        data: 'no'
-                    },
-                    {
-                        data: 'bulan'
-                    },
-                    {
-                        data: 'action'
-                    }
-                ]
-            });
-
-            $('#sel_tahun').change(function() {
-                userDataTable.draw();
-            });
-            $('#searchName').keyup(function() {
-                userDataTable.draw();
-            });
-        });
     </script>
 
 </body>

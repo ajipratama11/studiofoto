@@ -43,9 +43,9 @@
                         <h2 class="page-title">Galeri</h2>
                         <div class="ml-auto text-right">
 
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                                            Tambah Galeri
-                                        </button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+                                Tambah Galeri
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -66,10 +66,12 @@
                 <h5>Pilih Kategori</h5>
                 <ul class="list-inline">
 
-                    <a href="<?php echo base_url('Admin/Galeri/'); ?>" class="list-inline-item <?php $url = $this->uri->segment(4); if ($url == null) echo " btn btn-success" ?>">All</a>
+                    <a href="<?php echo base_url('Admin/Galeri/'); ?>" class="list-inline-item <?php $url = $this->uri->segment(4);
+                                                                                                if ($url == null) echo " btn btn-success" ?>">All</a>
                     <?php foreach ($data as $u) { ?>
 
-                        <a class="list-inline-item<?php $url = $this->uri->segment(4); if ($u->id_kategori == $url) echo " btn btn-success" ?>"  href="<?php echo base_url('Admin/Galeri/index/' . $u->id_kategori); ?>"><?php echo $u->nama_kategori; ?></a>
+                        <a class="list-inline-item<?php $url = $this->uri->segment(4);
+                                                    if ($u->id_kategori == $url) echo " btn btn-success" ?>" href="<?php echo base_url('Admin/Galeri/index/' . $u->id_kategori); ?>"><?php echo $u->nama_kategori; ?></a>
                     <?php } ?>
                 </ul>
                 <div class="row">
@@ -79,10 +81,10 @@
                                 <div class="row">
                                     <!-- column -->
                                     <div style="margin: 5%;">
-                                    <?php foreach($galeri as $g) { ?>
-                                        <a data-toggle="modal" data-target="#modal-edit<?= $g->id_galeri; ?>" ><img style="width: 300px; padding: 10px;" src="<?php echo base_url('./vendor/studio/img/'.$g->foto); ?>" alt=""><a>
-                                      
-                                    <?php } ?>
+                                        <?php foreach ($galeri as $g) { ?>
+                                            <a data-toggle="modal" data-target="#modal-edit<?= $g->id_galeri; ?>"><img style="width: 300px; padding: 10px;" src="<?php echo base_url('./vendor/studio/img/' . $g->foto); ?>" alt=""><a>
+
+                                                <?php } ?>
                                     </div>
                                     <!-- column -->
                                 </div>
@@ -91,75 +93,75 @@
                         </div>
                     </div>
                 </div>
-                <?php  foreach($galeri as $row): ?>
+                <?php foreach ($galeri as $row) : ?>
                     <div class="row">
-                    <div id="modal-edit<?=$row->id_galeri;?>" class="modal fade">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">   </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
+                        <div id="modal-edit<?= $row->id_galeri; ?>" class="modal fade">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle"> </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
                                         <div class="form-group row">
                                             <div style="margin-left: 35px;" class="col-sm-12">
-                                            <img width="400px" height="400px" src="<?php echo base_url('./vendor/studio/img/'.$row->foto); ?>" alt="">
+                                                <img width="400px" height="400px" src="<?php echo base_url('./vendor/studio/img/' . $row->foto); ?>" alt="">
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="<?php echo base_url('Admin/Galeri/hapusFoto/' . $row->id_galeri); ?>" class="btn btn-danger">Hapus Foto</a>
+                                    </div>
+
                                 </div>
-                                <div class="modal-footer">
-                                    <a href="<?php echo base_url('Admin/Galeri/hapusFoto/'.$row->id_galeri ); ?>" class="btn btn-danger">Hapus Foto</a>
-                                </div>
-                                
                             </div>
                         </div>
                     </div>
-                    </div>
-                    <?php endforeach; ?>
+                <?php endforeach; ?>
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
-                 <!-- Modal -->
-                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Galeri</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="<?php echo base_url('Admin/Galeri/tambahGaleri'); ?>" method="post" enctype="multipart/form-data">
-                                                            <div class="form-group row">
-                                                                <label for="fname" class="col-sm-4  control-label col-form-label">Foto Galeri</label>
-                                                                <div class="col-sm-8">
-                                                                    <input type="file" style="border-radius: 10px;" name="foto" class="form-control" id="nama_ekskul" placeholder="Nama Ekskul" required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label for="fname" class="col-sm-4  control-label col-form-label">Kategori Foto</label>
-                                                                <div class="col-sm-8">
-                                                                    <select required class="custom-select" id="id_kategori" name="id_kategori">
-                                                                        <?php
-                                                                        foreach ($kategori as $kategori_select) { ?>
-                                                                            <option value="<?= $kategori_select->id_kategori ?>"><?= $kategori_select->nama_kategori ?></option>
-                                                                        <?php
-                                                                            $id_kategori = $kategori_select->id_kategori;
-                                                                        } ?>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Save changes</button>
-                                                    </div>
-                                                    </form>
-                                                </div>
-                                            </div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Galeri</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="<?php echo base_url('Admin/Galeri/tambahGaleri'); ?>" method="post" enctype="multipart/form-data">
+                                    <div class="form-group row">
+                                        <label for="fname" class="col-sm-4  control-label col-form-label">Foto Galeri</label>
+                                        <div class="col-sm-8">
+                                            <input type="file" style="border-radius: 10px;" name="foto" class="form-control" id="nama_ekskul" placeholder="Nama Ekskul" required>
                                         </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="fname" class="col-sm-4  control-label col-form-label">Kategori Foto</label>
+                                        <div class="col-sm-8">
+                                            <select required class="custom-select" id="id_kategori" name="id_kategori">
+                                                <?php
+                                                foreach ($kategori as $kategori_select) { ?>
+                                                    <option value="<?= $kategori_select->id_kategori ?>"><?= $kategori_select->nama_kategori ?></option>
+                                                <?php
+                                                    $id_kategori = $kategori_select->id_kategori;
+                                                } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
                 <!-- Recent comment and chats -->

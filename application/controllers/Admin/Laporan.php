@@ -112,7 +112,15 @@ class Laporan extends CI_Controller
 
         $this->db->group_by('year(tgl_transaksi)');
         $data['jurnal'] = $this->db->get('transaksi')->result();
-        $this->load->view('Admin/v_jurnal_umum', $data);
+        $cek = $this->db->get('transaksi')->row();
+        if (!$cek) {
+            echo "<script>
+            alert('Jurnal masih kosong, buat dulu ya!!');
+            window.location.href = '" . base_url('Admin/Laporan/tambah_jurnal') . "';
+        </script>"; //Url tujuan
+        } else {
+            $this->load->view('Admin/v_jurnal_umum', $data);
+        }
     }
     public function tambah_jurnal()
     {
@@ -207,7 +215,29 @@ class Laporan extends CI_Controller
 
         $this->db->group_by('year(tgl_transaksi)');
         $data['jurnal'] = $this->db->get('transaksi')->result();
-        $this->load->view('Admin/v_neraca_saldo', $data);
+        $cek = $this->db->get('transaksi')->row();
+        if (!$cek) {
+            echo "<script>
+            alert('Neraca saldo masih kosong, buat jurnal dulu ya!!');
+            window.location.href = '" . base_url('Admin/Laporan/tambah_jurnal') . "';
+        </script>"; //Url tujuan
+        } else {
+            $this->load->view('Admin/v_neraca_saldo', $data);
+        }
+    }
+    public function semua_neraca()
+    {
+
+        $data['jurnal'] = $this->db->get('transaksi')->result();
+        $cek = $this->db->get('transaksi')->row();
+        if (!$cek) {
+            echo "<script>
+            alert('Neraca saldo masih kosong, buat jurnal dulu ya!!');
+            window.location.href = '" . base_url('Admin/Laporan/tambah_jurnal') . "';
+        </script>"; //Url tujuan
+        } else {
+            $this->load->view('Admin/v_semua_neraca', $data);
+        }
     }
     public function detail_neraca_saldo()
     {
