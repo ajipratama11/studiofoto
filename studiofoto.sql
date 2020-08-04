@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2020 at 03:35 PM
+-- Generation Time: Aug 04, 2020 at 08:58 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -60,10 +60,12 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`no_reff`, `nama_reff`, `keterangan_reff`, `id_admin`, `id_jenis`) VALUES
-('r1', 'Beban Produk', 'Membeli pupuk ke suplier', '1', '2'),
+('r1', 'Beban Gaji', 'Gaji pegawai', '1', '2'),
 ('r2', 'Pendapatan', 'Pendapatan dari penjualan pupuk', '1', '1'),
-('r3', 'Piutang', 'Piutang pembelian pupuk', '1', '1'),
-('r4', 'Kas', 'Kas dari pemasukan penjualan pupuk', '1', '1');
+('r4', 'Kas', 'Kas dari pemasukan penjualan pupuk', '1', '1'),
+('r5', 'Modal', 'Modal awal', '1', '2'),
+('r6', 'Peralatan', 'Pembelian atau perawatan', '1', '2'),
+('r7', 'Persediaan', 'Persediaan', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -128,7 +130,8 @@ CREATE TABLE `galeri` (
 
 INSERT INTO `galeri` (`id_galeri`, `foto`, `id_kategori`) VALUES
 (1, 'gallery-4.jpg', '5'),
-(2, 'gallery-5.jpg', '2');
+(2, 'gallery-5.jpg', '2'),
+(4, '06627c8c-6b87-4f60-b151-00a359', '2');
 
 -- --------------------------------------------------------
 
@@ -228,7 +231,10 @@ CREATE TABLE `konfirmasi_pembayaran` (
 --
 
 INSERT INTO `konfirmasi_pembayaran` (`id_konfirmasi`, `id_pemesanan`, `opsi`, `dp`, `total_bayar`, `bukti_transfer`, `tgl_checkout`, `jurnal`) VALUES
-(16, 50, 'Lunas', 0, 130000, '0918194620X310.jpg', 'Senin, 3 Agustus 2020', 'Ya');
+(16, 50, 'Lunas', 0, 130000, '0918194620X310.jpg', 'Senin, 3 Agustus 2020', 'Ya'),
+(17, 52, 'Lunas', 0, 130000, '0918194620X310.jpg', 'Selasa, 4 Agustus 2020', 'Ya'),
+(18, 53, 'DP', 40000, 80000, '0918194620X310.jpg', 'Selasa, 4 Agustus 2020', 'Ya'),
+(19, 54, 'Lunas', 0, 130000, '0918194620X310.jpg', 'Selasa, 4 Agustus 2020', 'Ya');
 
 -- --------------------------------------------------------
 
@@ -256,8 +262,10 @@ CREATE TABLE `pemesanan` (
 --
 
 INSERT INTO `pemesanan` (`id_pemesanan`, `id_kategori`, `id_cus`, `id_dekorasi`, `id_sesi`, `jenis`, `lokasi`, `tgl_pemesanan`, `waktu_pemesanan`, `waktu_selesai`, `total_biaya`, `status_cus`) VALUES
-(50, 2, 1, 1, 1, 'Studio', '', '03-08-2020', '18:55', '19:01', 130000, 'Pesanan Selesai'),
-(51, 2, 5, 1, 1, 'Studio', '', '03-08-2020', '20:11', '20:17', 130000, 'Belum Checkout');
+(51, 2, 5, 1, 1, 'Studio', '', '03-08-2020', '20:11', '20:17', 130000, 'Belum Checkout'),
+(52, 2, 1, 1, 1, 'Studio', '', '04-08-2020', '15:02', '15:08', 130000, 'Pesanan Selesai'),
+(53, 5, 1, 1, 1, 'Studio', '', '04-08-2020', '15:06', '15:12', 80000, 'Pesanan Selesai'),
+(54, 2, 1, 1, 1, 'Studio', '', '04-08-2020', '15:16', '15:22', 130000, 'Pesanan Selesai');
 
 -- --------------------------------------------------------
 
@@ -300,7 +308,8 @@ CREATE TABLE `tbl_pengeluaran` (
 
 INSERT INTO `tbl_pengeluaran` (`id_pengeluaran`, `nama_pengeluaran`, `biaya_pengeluaran`, `deskripsi_pengeluaran`, `tgl_pengeluaran`, `id_jenis_pengeluaran`) VALUES
 (1, 'Menambah Dekorasi', 25000, 'Penambahan model dekorasi', 'Sabtu, 1 Agustus 2020', 1),
-(2, 'Membuat Bingkai', 50000, 'Lagi mahal nih kertasnya', 'Minggu, 2 Agustus 2020', 1);
+(2, 'Membuat Bingkai', 50000, 'Lagi mahal nih kertasnya', 'Minggu, 2 Agustus 2020', 1),
+(3, 'Membuat Bingkai', 50000, 'Asa', 'Selasa, 4 Agustus 2020', 1);
 
 -- --------------------------------------------------------
 
@@ -323,12 +332,12 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_admin`, `no_reff`, `tgl_input`, `tgl_transaksi`, `jenis_saldo`, `saldo`) VALUES
-(23, '', 'r4', '03-08-2020 11:52:51', '2020-08-03', 1, 150000),
-(24, '', 'r1', '03-08-2020 11:53:14', '2020-08-04', 2, 135000),
-(25, '', 'r4', '03-08-2020 12:06:59', '2020-02-03', 1, 150000),
-(26, '', 'r2', '03-08-2020 02:17:19', '2020-08-03', 1, 130000),
-(27, '', 'r2', '03-08-2020 02:17:53', '2020-08-03', 1, 130000),
-(28, '', 'r2', '03-08-2020 02:18:21', '2020-08-03', 1, 130000);
+(34, '1', 'r5', '04-08-2020 05:21:26', '2020-08-04', 2, 1500000),
+(35, '', 'r1', '04-08-2020 06:04:15', '2020-08-05', 2, 150000),
+(37, '', 'r2', '04-08-2020 07:14:18', '2020-08-06', 1, 150000),
+(39, '', 'r2', '04-08-2020 07:15:44', '2020-08-21', 1, 150000),
+(40, '', 'r6', '04-08-2020 08:24:16', '2020-08-13', 2, 50000),
+(41, '', 'r2', '04-08-2020 08:32:23', '2020-08-05', 1, 135000);
 
 -- --------------------------------------------------------
 
@@ -462,7 +471,7 @@ ALTER TABLE `dekorasi`
 -- AUTO_INCREMENT for table `galeri`
 --
 ALTER TABLE `galeri`
-  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `jenis_pengeluaran`
@@ -492,25 +501,25 @@ ALTER TABLE `kertas`
 -- AUTO_INCREMENT for table `konfirmasi_pembayaran`
 --
 ALTER TABLE `konfirmasi_pembayaran`
-  MODIFY `id_konfirmasi` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_konfirmasi` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pemesanan` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_pemesanan` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `tbl_pengeluaran`
 --
 ALTER TABLE `tbl_pengeluaran`
-  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `ukuran`
