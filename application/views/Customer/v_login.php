@@ -38,7 +38,9 @@
                     <span class="login100-form-title p-b-34">
                         <img src="<?= base_url() ?>assets/studio/img/logo2.png" width="300px" height="150px">
                     </span>
-                    <?php echo $this->session->flashdata('message'); ?>
+                    <div class="container-login100-form-btn">
+                        <?php echo $this->session->flashdata('message'); ?>
+                    </div>
                     <div class=" wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
                         <input id="first-name" class="input100" type="text" name="username" placeholder="User name">
                         <span class="focus-input100"></span>
@@ -50,7 +52,7 @@
 
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" type="submit">
-                            Sign in
+                            Login
                         </button>
                     </div>
 
@@ -65,8 +67,8 @@
                     </div>
 
                     <div class="w-full text-center">
-                        <a href="#" class="txt3">
-                            Sign Up
+                        <a href="<?= base_url() ?>Customer/Login/daftar" class="txt3">
+                            Daftar
                         </a>
                     </div>
                 </form>

@@ -1,5 +1,10 @@
 <?php $this->load->view('templates/header');
 ?>
+<!-- jQuery Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Datatable JS -->
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
 <body>
     <!-- ============================================================== -->
@@ -56,76 +61,97 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Pemesanan</h5><br>
-
-
-
-
-
-                                <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th><b>No</b></th>
-                                                <th><b>Nama Cus</b></th>
-                                                <th><b>Nama Kategori</b></th>
-                                                <th><b>jenis</b></th>
-                                                <th><b>Total Biaya</b></th>
-                                                <th><b>Dp</b></th>
-                                                <th><b>Status</b></th>
-                                                <th><b>Aksi</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $no = 1;
-                                            foreach ($pemesanan as $k) { ?>
-
-                                                <tr>
-                                                    <td><?= $no++; ?></td>
-                                                    <td><?= $k->nama_cus ?></td>
-                                                    <td><?= $k->nama_kategori ?></td>
-                                                    <td><?= $k->jenis ?></td>
-                                                    <td><?= $k->total_biaya ?></td>
-                                                    <td><?php if ($k->opsi == 'DP') {
-                                                            echo $k->dp;
-                                                        } else {
-                                                            echo $k->opsi;
-                                                        }
-                                                        ?></td>
-                                                    <td>
-                                                        <?php
-                                                        if ($k->status_cus == 'Sudah Checkout') {
-                                                            if ($k->opsi == 'DP') {
-                                                                echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusDP/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
-                                                            } else  if ($k->opsi == 'Lunas') {
-                                                                echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusSelesai/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
-                                                            } else {
-                                                                echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusSelesai/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
-                                                            }
-                                                        } else if ($k->status_cus == 'DP Terbayar') {
-                                                            echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusSelesai/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-warning">' . $k->status_cus . '</button></a>';
-                                                        } else {
-                                                            echo '<button type="button" class="btn btn-success">' . $k->status_cus . '</button>';
-                                                        }
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <a target="_blank" href="<?= base_url('Admin/Beranda/detail_transaksi/'.$k->id_pemesanan); ?>" class="btn btn-warning">Detail Transaksi</a><br>
-                                                        <button style="margin-left: 10px; margin-top: 5px;" data-toggle="modal" data-target="#modal-edit<?= $k->id_pemesanan; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-info">Bukti Bayar</button>
-                                                    </td>
-                                                </tr>
-                                            <?php } ?>
-                                        </tbody>
-
-                                    </table>
+                <div class="card">
+                    <div class="card-body">
+                        <h2 style="color: #1E7BCB;"> Neraca Saldo</h2><br>
+                        <?php echo $this->session->flashdata('sukses'); ?>
+                        <div class="col-md-12 row">
+                            <form class="col-md-4" action="<?= base_url() ?>Admin/Laporan/laporan_suplier" method="POST">
+                                <div class="">
+                                    <select class="form-control" name="nama_suplier" id="sel_tahun">
+                                        <!--<option value=''>-- Pilih Tahun --</option>-->
+                                        <!-- <option value="0">Semua Suplier</option> -->
+                                        <?php
+                                        foreach ($jurnal as $j) {
+                                            $bulan = date('m', strtotime($j->tgl_transaksi));
+                                            $tahun = date('Y', strtotime($j->tgl_transaksi));
+                                        ?>
+                                            <option value="<?= $tahun ?>"> <?= $tahun ?> </option><?php } ?>
+                                    </select>
                                 </div>
+                            </form>
+                            <div>
+                                <a class="btn btn-success" href="">Semua Neraca Saldo</a>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-md-12">
+                            <!-- Name -->
+                            <div class="col-md-2 ">
+                                <h4></h4><br>
 
                             </div>
+                        </div><br><br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id='userTable'>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Tanggal
+                                        </th>
+                                        <th>
+                                            Nama Akun
+                                        </th>
+                                        <th>
+                                            Debit
+                                        </th>
+                                        <th>
+                                            Kredit
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach ($jurnal as $j) {
+                                    ?>
+                                        <tr>
+                                            <td><?= formatHariTanggal($j->tgl_transaksi) ?></td>
+                                            <td><?= $j->nama_reff ?></td>
+                                            <?php
+                                            if ($j->jenis_saldo == '1') {
+                                            ?>
+                                                <td><?= $j->saldo ?></td>
+                                                <td> 0</td>
+                                            <?php } else { ?>
+                                                <td> 0</td>
+                                                <td><?= $j->saldo ?></td>
+                                            <?php } ?>
+                                        </tr>
+                                    <?php } ?>
+
+                                    <tr>
+                                        <td colspan="2" class="text-center"><b>Jumlah Total</b></td>
+                                        <td><b>
+                                                Rp. <?= number_format($debit->total)  ?>
+                                        </td> </b>
+
+                                        <td><b>
+                                                Rp. <?= number_format($kredit->total)  ?>
+                                        </td> </b>
+                                    </tr>
+                                    <tr>
+                                        <?php
+                                        if ($debit->total != $kredit->total) {
+                                        ?>
+                                            <td colspan="4" style="background-color: red; color:aliceblue" class="text-center"><b>TIDAK SEIMBANG</b></td>
+                                        <?php } else { ?>
+                                            <td colspan="4" style="background-color: #1E7BCB;color:aliceblue" class="text-center"><b>SEIMBANG</b></td>
+                                        <?php } ?>
+                                    </tr>
+                                </tbody>
+
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -181,68 +207,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-                <?php foreach ($pemesanan as $row) : ?>
-    <div class="row">
-      <div id="modal-edit<?= $row->id_pemesanan; ?>" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle"> </h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <div class="modal-body">
-
-
-              <div class="form-group row">
-                <label for="fname" class="col-sm-4  control-label col-form-label">Tanggal Checkout</label>
-                <div class="col-sm-8">
-                  <h5><?php echo $row->tgl_checkout  ?></h5>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="fname" class="col-sm-4  control-label col-form-label">Total Bayar</label>
-                <div class="col-sm-8">
-                  <?php echo $row->total_bayar  ?>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="fname" class="col-sm-4  control-label col-form-label">DP</label>
-                <div class="col-sm-8">
-                <?php if ($row->opsi == 'DP') { ?>
-                    <?php echo $row->dp  ?>
-                  <?php } else { ?>
-                    LUNAS
-                  <?php } ?>
-                </div>
-
-
-              </div>
-              <div class="form-group row">
-                <label for="fname" class="col-sm-4  control-label col-form-label">Bukti Transfer</label>
-                <div class="col-sm-8">
-
-                    <img width="200px" height="200px" src="<?= base_url('assets/' . $row->bukti_transfer) ?>">
-                  
-                </div>
-
-
-              </div>
-
-            </div>
-            <div class="modal-footer">
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php endforeach; ?>
 
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
@@ -340,6 +304,43 @@
          *       Basic Table                   *
          ****************************************/
         $('#zero_config').DataTable();
+    </script>
+    <!-- Script -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var userDataTable = $('#userTable').DataTable({
+                //   'processing': true,
+                'serverSide': true,
+                'serverMethod': 'post',
+                //'searching': false, // Remove default Search Control
+                'ajax': {
+                    'url': '<?= base_url() ?>Admin/Laporan/neracaList',
+                    'data': function(data) {
+                        data.searchTahun = $('#sel_tahun').val();
+                        // data.searchBulan = $('#sel_bulan').val();
+                        console.log(data);
+                    }
+
+                },
+                'columns': [{
+                        data: 'no'
+                    },
+                    {
+                        data: 'bulan'
+                    },
+                    {
+                        data: 'action'
+                    }
+                ]
+            });
+
+            $('#sel_tahun').change(function() {
+                userDataTable.draw();
+            });
+            $('#searchName').keyup(function() {
+                userDataTable.draw();
+            });
+        });
     </script>
 
 </body>

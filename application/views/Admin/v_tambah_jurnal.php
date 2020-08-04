@@ -1,5 +1,10 @@
 <?php $this->load->view('templates/header');
 ?>
+<!-- jQuery Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Datatable JS -->
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
 <body>
     <!-- ============================================================== -->
@@ -57,74 +62,49 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-lg-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Pemesanan</h5><br>
+                                <h2 style="color: #1E7BCB;"> Tambah Jurnal Umum</h2><br>
+                                <form action="<?= base_url() ?>Admin/Laporan/tambahJurnal" method="POST">
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label>Tanggal </label>
+                                            <input class="form-control" id="datepicker" name="tgl_transaksi" type="date">
+                                        </div>
+                                    </div>
 
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <label for="jenis_saldo">Jenis Saldo</label>
 
+                                            <select class="form-control" name="jenis_saldo" id="akun">
+                                                <option>Jenis Saldo</option>
+                                                <?php
+                                                $data =  $this->db->get('jenis_saldo')->result();
+                                                foreach ($data as $d) {
+                                                ?>
+                                                    <option value="<?= $d->id_jenis ?>"> <?= $d->nama_saldo ?></option>
+                                                <?php } ?>
 
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <label for="no_reff">Nama Akun</label>
+                                            <select id="jenis_saldo" class="form-control" name="no_reff">
 
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <label for="saldo">Saldo</label>
+                                            <input class="form-control" name="saldo">
+                                        </div>
 
-                                <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th><b>No</b></th>
-                                                <th><b>Nama Cus</b></th>
-                                                <th><b>Nama Kategori</b></th>
-                                                <th><b>jenis</b></th>
-                                                <th><b>Total Biaya</b></th>
-                                                <th><b>Dp</b></th>
-                                                <th><b>Status</b></th>
-                                                <th><b>Aksi</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $no = 1;
-                                            foreach ($pemesanan as $k) { ?>
-
-                                                <tr>
-                                                    <td><?= $no++; ?></td>
-                                                    <td><?= $k->nama_cus ?></td>
-                                                    <td><?= $k->nama_kategori ?></td>
-                                                    <td><?= $k->jenis ?></td>
-                                                    <td><?= $k->total_biaya ?></td>
-                                                    <td><?php if ($k->opsi == 'DP') {
-                                                            echo $k->dp;
-                                                        } else {
-                                                            echo $k->opsi;
-                                                        }
-                                                        ?></td>
-                                                    <td>
-                                                        <?php
-                                                        if ($k->status_cus == 'Sudah Checkout') {
-                                                            if ($k->opsi == 'DP') {
-                                                                echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusDP/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
-                                                            } else  if ($k->opsi == 'Lunas') {
-                                                                echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusSelesai/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
-                                                            } else {
-                                                                echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusSelesai/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-info">' . $k->status_cus . '</button></a>';
-                                                            }
-                                                        } else if ($k->status_cus == 'DP Terbayar') {
-                                                            echo '<a onclick="return confirm_alert(this);" href="' . base_url('Admin/Beranda/statusSelesai/' . $k->id_pemesanan) . '"><button type="button" class="btn btn-warning">' . $k->status_cus . '</button></a>';
-                                                        } else {
-                                                            echo '<button type="button" class="btn btn-success">' . $k->status_cus . '</button>';
-                                                        }
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <a target="_blank" href="<?= base_url('Admin/Beranda/detail_transaksi/'.$k->id_pemesanan); ?>" class="btn btn-warning">Detail Transaksi</a><br>
-                                                        <button style="margin-left: 10px; margin-top: 5px;" data-toggle="modal" data-target="#modal-edit<?= $k->id_pemesanan; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-info">Bukti Bayar</button>
-                                                    </td>
-                                                </tr>
-                                            <?php } ?>
-                                        </tbody>
-
-                                    </table>
-                                </div>
-
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-success" type="submit">Tambah Jurnal</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -181,68 +161,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-                <?php foreach ($pemesanan as $row) : ?>
-    <div class="row">
-      <div id="modal-edit<?= $row->id_pemesanan; ?>" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle"> </h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <div class="modal-body">
-
-
-              <div class="form-group row">
-                <label for="fname" class="col-sm-4  control-label col-form-label">Tanggal Checkout</label>
-                <div class="col-sm-8">
-                  <h5><?php echo $row->tgl_checkout  ?></h5>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="fname" class="col-sm-4  control-label col-form-label">Total Bayar</label>
-                <div class="col-sm-8">
-                  <?php echo $row->total_bayar  ?>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="fname" class="col-sm-4  control-label col-form-label">DP</label>
-                <div class="col-sm-8">
-                <?php if ($row->opsi == 'DP') { ?>
-                    <?php echo $row->dp  ?>
-                  <?php } else { ?>
-                    LUNAS
-                  <?php } ?>
-                </div>
-
-
-              </div>
-              <div class="form-group row">
-                <label for="fname" class="col-sm-4  control-label col-form-label">Bukti Transfer</label>
-                <div class="col-sm-8">
-
-                    <img width="200px" height="200px" src="<?= base_url('assets/' . $row->bukti_transfer) ?>">
-                  
-                </div>
-
-
-              </div>
-
-            </div>
-            <div class="modal-footer">
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php endforeach; ?>
 
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
@@ -340,6 +258,72 @@
          *       Basic Table                   *
          ****************************************/
         $('#zero_config').DataTable();
+    </script>
+    <!-- Script -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var userDataTable = $('#userTable').DataTable({
+                //   'processing': true,
+                'serverSide': true,
+                'serverMethod': 'post',
+                //'searching': false, // Remove default Search Control
+                'ajax': {
+                    'url': '<?= base_url() ?>Admin/Laporan/jurnalList',
+                    'data': function(data) {
+                        data.searchTahun = $('#sel_tahun').val();
+                        // data.searchBulan = $('#sel_bulan').val();
+                        console.log(data);
+                    }
+
+                },
+                'columns': [{
+                        data: 'no'
+                    },
+                    {
+                        data: 'bulan'
+                    },
+                    {
+                        data: 'action'
+                    }
+                ]
+            });
+
+            $('#sel_tahun').change(function() {
+                userDataTable.draw();
+            });
+            $('#searchName').keyup(function() {
+                userDataTable.draw();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#akun').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    url: "<?php echo site_url('Admin/Laporan/getJenis'); ?>",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        var html = '';
+                        var i;
+                        for (i = 0; i < data.length; i++) {
+                            html += '<option value=' + data[i].no_reff + '>' + data[i].nama_reff + '</option>';
+                        }
+                        $('#jenis_saldo').html(html);
+
+                    }
+                });
+                return false;
+            });
+
+        });
     </script>
 
 </body>

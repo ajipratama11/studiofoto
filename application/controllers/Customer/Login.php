@@ -25,7 +25,12 @@ class Login extends CI_Controller
     {
         $this->load->view('Customer/v_daftar');
     }
+    function logout()
+    {
+        $this->session->sess_destroy();
 
+        redirect('Customer/Login');
+    }
     public function login_cus()
     {
         $post = $this->input->post();
@@ -84,22 +89,23 @@ class Login extends CI_Controller
         $this->email_cus = $post['email_cus'];
         $this->username = $post['username'];
         $this->password = $post['password'];
-        $this->is_actived = 0;
+        // $this->is_actived = 0;
 
-        // siapkan token
-        $token = base64_encode(random_bytes(32));
-        $user_token = [
-            'email_cus' => $this->email_cus,
-            'token' => $token,
-            'date_created' => time()
-        ];
+        // // siapkan token
+        // $token = base64_encode(random_bytes(32));
+        // $user_token = [
+        //     'email_cus' => $this->email_cus,
+        //     'token' => $token,
+        //     'date_created' => time()
+        // ];
+        // $data = $this->db->insert('customer', $this);
+        // $this->db->insert('user_token', $user_token);
+
+        // $this->_sendEmail($token, 'verify');
         $data = $this->db->insert('customer', $this);
-        $this->db->insert('user_token', $user_token);
-
-        $this->_sendEmail($token, 'verify');
         if ($data) {
             $this->session->set_flashdata(
-                'daftar',
+                'message',
                 '<div class="alert alert-success col-md-12" >
                     <p> Yeay, pendaftaran berhasil!!!</p>
                 </div>'

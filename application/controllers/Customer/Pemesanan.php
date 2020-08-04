@@ -73,27 +73,33 @@ class Pemesanan extends CI_Controller
 
         $cek_jadwal = $this->db->query("SELECT * FROM `pemesanan` WHERE '$mulai' >=  waktu_pemesanan   and '$mulai' <=  waktu_selesai AND  tgl_pemesanan =  '$tgl' AND status_cus='Sudah Checkout'  ")->row();
         $cek_jadwal2 = $this->db->query("SELECT * FROM `pemesanan` WHERE '$selesai' >=  waktu_pemesanan   and '$selesai' <=  waktu_selesai AND  tgl_pemesanan =  '$tgl' AND status_cus='Sudah Checkout'  ")->row();
-        if ($cek_jadwal) {
-            $this->session->set_flashdata(
-                'gagal',
-                '<div class="alert alert-danger col-md-12" >
-                    <p> Jadwal sudah ada yang memesan!!!</p>
-                  
-                </div>'
-            );
-            redirect('Customer/Pemesanan/pemesanan/' . $this->id_kategori);
-        } else if ($cek_jadwal2) {
-            $this->session->set_flashdata(
-                'gagal',
-                '<div class="alert alert-danger col-md-12" >
-                    <p> Jadwal sudah ada yang memesan!!!</p>
-                  
-                </div>'
-            );
-            redirect('Customer/Pemesanan/pemesanan/' . $this->id_kategori);
+        if (!$this->session->userdata('id_cus')) {
+
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Login dulu yaaa !</div><br>');
+            redirect('Customer/Login');
         } else {
-            $data = $this->db->insert('pemesanan', $this);
-            redirect('Customer/Keranjang/');
+            if ($cek_jadwal) {
+                $this->session->set_flashdata(
+                    'gagal',
+                    '<div class="alert alert-danger col-md-12" >
+                    <p> Jadwal sudah ada yang memesan!!!</p>
+                  
+                </div>'
+                );
+                redirect('Customer/Pemesanan/pemesanan/' . $this->id_kategori);
+            } else if ($cek_jadwal2) {
+                $this->session->set_flashdata(
+                    'gagal',
+                    '<div class="alert alert-danger col-md-12" >
+                    <p> Jadwal sudah ada yang memesan!!!</p>
+                  
+                </div>'
+                );
+                redirect('Customer/Pemesanan/pemesanan/' . $this->id_kategori);
+            } else {
+                $data = $this->db->insert('pemesanan', $this);
+                redirect('Customer/Keranjang/');
+            }
         }
 
 
