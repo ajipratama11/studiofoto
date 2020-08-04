@@ -68,6 +68,7 @@ class M_dekorasi extends CI_Model
         $this->id_dekorasi = $post['id_dekorasi'];
         $this->nama_dekorasi = $post['nama_dekorasi'];
         $this->harga_dekorasi = $post['harga_dekorasi'];
+        $this->deskripsi_dekorasi = $post['deskripsi_dekorasi'];
         $this->db->update($this->_table, $this, array("id_dekorasi" => $id_dekorasi));
     }
 
