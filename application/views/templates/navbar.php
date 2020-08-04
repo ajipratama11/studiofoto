@@ -111,23 +111,11 @@
                         <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/jurnal" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Jurnal Umum </span></a></li>
                         <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/buku_besar" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Buku Besar </span></a></li>
                         <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/neraca_saldo" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Neraca Saldo </span></a></li>
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/laba_rugi" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Laba Rugi </span></a></li>
 
                     </ul>
                 </li>
-                <!-- 
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-pen"></i><span class="hide-menu">Penilaian </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Penilaian/show_nilai" class="sidebar-link"><i class="mdi mdi-calendar-check"></i><span class="hide-menu"> Hasil Penilaian </span></a></li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Penilaian/cek_rombel" class="sidebar-link"><i class="mdi mdi-calendar-check"></i><span class="hide-menu"> Penilaian </span></a></li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Penilaian/kd" class="sidebar-link"><i class="mdi mdi-calendar-check"></i><span class="hide-menu"> Kompetensi Dasar </span></a></li>
-                    </ul>
-                </li>
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-printer"></i><span class="hide-menu">Cetak </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="<?= base_url() ?>laporan/rekapNilai" class="sidebar-link"><i class="mdi mdi-printer"></i><span class="hide-menu"> Raport </span></a></li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Laporan/index" class="sidebar-link"><i class="mdi mdi-printer"></i><span class="hide-menu"> Laporan Abasensi </span></a></li>
-                    </ul>
-                </li>  -->
+
                 <br>
             </ul>
         </nav>

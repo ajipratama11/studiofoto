@@ -65,26 +65,12 @@
                     <div class="col-lg-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
-                                <h2 style="color: #1E7BCB;"> Semua Neraca Saldo</h2><br>
+
                                 <?php echo $this->session->flashdata('sukses'); ?>
-                                <div class="col-md-12 row">
-                                    <!-- <form class="col-md-4" action="<?= base_url() ?>Admin/Laporan/laporan_suplier" method="POST">
-                                        <div class="">
-                                            <select class="form-control" name="nama_suplier" id="sel_reff">
-                                                <?php
-                                                $this->db->group_by('akun.no_reff');
-                                                $this->db->join('transaksi', 'transaksi.no_reff=akun.no_reff', 'right');
-                                                $data = $this->db->get('akun')->result();
-                                                foreach ($data as $j) {
-
-                                                ?>
-                                                    <option value="<?= $j->no_reff ?>"> <?= $j->nama_reff ?> </option><?php } ?>
-                                            </select>
-                                        </div>
-                                    </form> -->
-                                </div>
-
-
+                                <form action="<?= base_url() ?>Admin/Laporan/laporan_suplier" method="POST">
+                                    <div class="row">
+                                    </div>
+                                </form>
                                 <div class="form-group col-md-12">
                                     <!-- Name -->
                                     <div class="col-md-2 ">
@@ -92,43 +78,70 @@
 
                                     </div>
                                 </div><br><br>
+                                <h1 style="text-align: center;">Laba Rugi Bulan <?= bulan($bulan)  ?></h1><br>
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id='userTable'>
+                                    <table class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    No Reff
+                                                    Kode
                                                 </th>
                                                 <th>
                                                     Keterangan
                                                 </th>
                                                 <th>
-                                                    Debit
+                                                    Total
                                                 </th>
-                                                <th>
-                                                    Kredit
-                                                </th>
+
                                             </tr>
                                         </thead>
-
                                         <tbody>
+                                            <tr>
+                                                <td colspan="4" style="background-color: gray; color:aliceblue; ">Pendapatan</td>
+                                            </tr>
                                             <?php
                                             foreach ($jurnal as $j) {
                                             ?>
                                                 <tr>
-                                                    <td><?= formatHariTanggal($j->tgl_transaksi) ?></td>
+                                                    <td><?= $j->no_reff ?></td>
                                                     <td><?= $j->nama_reff ?></td>
-                                                    <?php
-                                                    if ($j->jenis_saldo == '1') {
-                                                    ?>
-                                                        <td><?= $j->saldo ?></td>
-                                                        <td> 0</td>
-                                                    <?php } else { ?>
-                                                        <td> 0</td>
-                                                        <td><?= $j->saldo ?></td>
-                                                    <?php } ?>
+                                                    <td>Rp. <?= number_format($j->total)  ?></td>
                                                 </tr>
                                             <?php } ?>
+                                            <tr>
+                                                <td colspan="2" style="background-color: #70a1ff; color:aliceblue">Total Pendapatan</td>
+                                                <td colspan="1" style="background-color: #70a1ff; color:aliceblue">Rp.<?= number_format($total1->total)  ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" style="background-color: gray; color:aliceblue">Biaya-biaya</td>
+                                            </tr>
+                                            <?php
+                                            foreach ($biaya as $j) {
+                                            ?>
+                                                <tr>
+                                                    <td><?= $j->no_reff ?></td>
+                                                    <td><?= $j->nama_reff ?></td>
+                                                    <td>Rp. <?= number_format($j->total) ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                            <tr>
+                                                <td colspan="2" style="background-color: #ff4757; color:aliceblue">Total Biaya</td>
+                                                <td colspan="1" style="background-color: #ff4757; color:aliceblue">Rp.<?= number_format($total2->total) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <?php
+                                                if ($total1->total > $total2->total) {
+                                                ?>
+                                                    <td colspan="2" style="background-color:  #1E7BCB; color:aliceblue" class="text-center"><b>UNTUNG</b></td>
+                                                    <td colspan="1" style=""><b>Laba bersih : Rp.<?= number_format($total1->total - $total2->total)  ?></b></td>
+                                                <?php } else  if ($total1->total == $total2->total) {  ?>
+                                                    <td colspan="4" style="background-color: #2c3e50;color:aliceblue" class="text-center"><b>SEIMBANG</b></td>
+                                                    <td colspan="1" style=""><b>Laba bersih : Rp.<?= number_format($total1->total - $total2->total)  ?></b></td>
+                                                <?php } else { ?>
+                                                    <td colspan="4" style="background-color:red;color:aliceblue" class="text-center"><b>RUGI</b></td>
+                                                    <td colspan="1" style=""><b>Laba bersih : Rp.<?= number_format($total1->total - $total2->total)  ?></b></td>
+                                                <?php } ?>
+                                            </tr>
                                         </tbody>
 
                                     </table>
@@ -152,7 +165,7 @@
                                     <div class="col-md-12 row">
                                         <div class="col-md-6">
                                             <label>Jenis Pengeluaran</label>
-                                            <select name="id_jenis_pengeluaran" class="form-control" required>
+                                            <select name="id_jenis_pengeluaran" class="form-control">
                                                 <?php
                                                 $data = $this->db->get('jenis_pengeluaran')->result();
                                                 foreach ($data as $d) {
@@ -163,20 +176,20 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label>Kebutuhan</label>
-                                            <input name="nama_pengeluaran" class="form-control" required>
+                                            <input name="nama_pengeluaran" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Deskripsikan</label>
-                                        <textarea name="deskripsi_pengeluaran" class="form-control" required></textarea>
+                                        <textarea name="deskripsi_pengeluaran" class="form-control"></textarea>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Biaya</label>
-                                        <input name="biaya_pengeluaran" class="form-control" required>
+                                        <input name="biaya_pengeluaran" class="form-control">
                                     </div>
                                     <div class="col-md-12">
                                         <label>Tanggal</label>
-                                        <input type="date" name="tgl_pengeluaran" class="form-control" required>
+                                        <input type="date" name="tgl_pengeluaran" class="form-control">
                                     </div>
 
                                 </div>
@@ -202,40 +215,94 @@
                 <!-- ============================================================== -->
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Dekorasi</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="<?php echo base_url('Admin/Dekorasi/tambahDekorasi'); ?>" method="post" enctype="multipart/form-data">
+            <?php
+            foreach ($jurnal as $j) {
+            ?>
+                <div class="modal fade" id="modalHapus<?= $j->id_transaksi ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Hapus Jurnal </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form method="post" action="<?= base_url() ?>Admin/Laporan/hapusJurnal">
+                                <div class="modal-body">
 
-                                <div class="form-group row">
-                                    <label for="fname" class="col-sm-4  control-label col-form-label">Nama Dekorasi</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" style="border-radius: 10px;" name="nama_dekorasi" class="form-control" id="username" placeholder="Nama Kategori" required>
+                                    <label>Hapus jurnal Id Transaksi <?= $j->id_transaksi ?></label>
+                                    <input name="id_transaksi" hidden value="<?= $j->id_transaksi ?>">
+
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-danger">Hapus</button>
+
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="fname" class="col-sm-4  control-label col-form-label">Harga</label>
-                                    <div class="col-sm-8">
-                                        <input type="number" style="border-radius: 10px;" name="harga_dekorasi" class="form-control" id="password" placeholder="Harga" required>
-                                    </div>
-                                </div>
-
+                            </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                        </div>
-                        </form>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
+            <?php
+            foreach ($jurnal as $j) {
+            ?>
+                <div class="modal fade" id="modalEdit<?= $j->id_transaksi ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ubah Jurnal </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form method="post" action="<?= base_url() ?>Admin/Laporan/ubahJurnal">
+                                <div class="modal-body">
+                                    <div class="col-md-12 row">
+                                        <div class="col-md-6 ">
+                                            <label>Id Trans</label>
+                                            <input name="id_transaksi" readonly class="form-control" value="<?= $j->id_transaksi ?>">
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <label>Tanggal</label>
+                                            <input class="form-control" name="tgl_transaksi" type="date" value="<?= $j->tgl_transaksi ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 row">
+                                        <div class="col-md-6 ">
+                                            <label>Jenis Saldo</label>
+                                            <select class="form-control" name="jenis_saldo" id="akun">
+                                                <option>--Jenis Saldo--</option>
+                                                <?php
+                                                $data =  $this->db->get('jenis_saldo')->result();
+                                                foreach ($data as $d) {
+                                                ?>
+                                                    <option value="<?= $d->id_jenis ?>"> <?= $d->nama_saldo ?></option>
+                                                <?php } ?>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <label for="no_reff">Nama Akun</label>
+                                            <select id="jenis_saldo" class="form-control" name="no_reff">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Saldo</label>
+                                        <input name="saldo" value="<?= $j->saldo ?>" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success">Ubah</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -288,6 +355,36 @@
         $('#zero_config').DataTable();
     </script>
     <!-- Script -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#akun').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    url: "<?php echo site_url('Admin/Laporan/getJenis'); ?>",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        var html = '';
+                        var i;
+                        for (i = 0; i < data.length; i++) {
+                            html += '<option value=' + data[i].no_reff + '>' + data[i].nama_reff + '</option>';
+                        }
+                        $('#jenis_saldo').html(html);
+
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
 
 </body>
 
