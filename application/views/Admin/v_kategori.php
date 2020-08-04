@@ -89,7 +89,7 @@
                                                     <td><?= $k->harga ?></td>
                                                     <td><?= $k->deskripsi ?></td>
                                                     <td>
-                                                    <a href="<?php echo base_url('Admin/Kategori/Galeri/'.$k->id_kategori); ?>" class="btn btn-success">Galeri</a>
+                                                    <a href="<?php echo base_url('Admin/Galeri/index/'.$k->id_kategori); ?>" class="btn btn-success">Galeri</a>
                                                     <a data-toggle="modal" data-target="#modal-edit<?= $k->id_kategori; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-warning">Edit</a>
                                                     <a onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" href="<?php echo base_url('Admin/Kategori/hapusKategori/'.$k->id_kategori); ?>" class="btn btn-danger">Hapus</a>
                                                     </td>
@@ -136,7 +136,7 @@
                                         <div class="form-group row">
                                             <label for="fname" class="col-sm-4  control-label col-form-label">Deskripsi</label>
                                             <div class="col-sm-8">
-                                                <textarea style="width: 300px; height:90px;" name="deskripsi"><?php echo $row->deskripsi  ?></textarea>
+                                                <textarea style="width: 300px; height:90px;" name="deskripsi" placeholder="Deskripsi"><?php echo $row->deskripsi  ?></textarea>
                                             </div>
                                         </div>
                                     
@@ -190,7 +190,7 @@
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-4  control-label col-form-label">Deskripsi</label>
                                     <div class="col-sm-8">
-                                        <textarea style="width: 300px; height:90px;" name="deskripsi"></textarea>
+                                        <textarea style="width: 300px; height:90px;" name="deskripsi" placeholder="Deskripsi"></textarea>
                                     </div>
                                 </div>
                         </div>

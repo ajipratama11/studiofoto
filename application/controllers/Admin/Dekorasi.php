@@ -70,12 +70,16 @@ class Dekorasi extends CI_Controller
 
     public function editSesi($id_sesi = null)
     {
-        $this->M_dekorasi->UpdateSesi($id_sesi);
+        $post = $this->input->post();
+        $this->id_sesi = $post['id_sesi'];
+        $this->jumlah_sesi = $post['jumlah_sesi'];
+        $this->harga_sesi = $post['harga_sesi'];
+        $this->db->update('sesi_pemotretan', $this, array("id_sesi" => $id_sesi));
         redirect('Admin/Dekorasi/sesi');
     }
     public function hapusSesi($id_sesi = null)
     {
-        $this->M_dekorasi->deleteSesi($id_sesi);
+        $this->db->delete('sesi_pemotretan', array("id_sesi" => $id_sesi));
         redirect('Admin/Dekorasi/sesi');
     }
 }

@@ -121,13 +121,13 @@
                                             <label for="fname" class="col-sm-4  control-label col-form-label">Jumlah Sesi</label>
                                             <div class="col-sm-8">
                                                 <input type="hidden" style="border-radius: 10px;" name="id_sesi" class="form-control" id="username" value="<?php echo $row->id_sesi;  ?>" placeholder="Nama Penanggung Jawab" required>
-                                                <input type="text" style="border-radius: 10px;" name="jumlah_sesi" class="form-control" id="username" value="<?php echo $row->jumlah_sesi;  ?>" placeholder="Nama Penanggung Jawab" required>
+                                                <input type="text" style="border-radius: 10px;" name="jumlah_sesi" class="form-control" id="username" value="<?php echo $row->jumlah_sesi;  ?>" placeholder="Jumlah Sesi" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="fname" class="col-sm-4  control-label col-form-label">Harga</label>
                                             <div class="col-sm-8">
-                                                <input type="text" style="border-radius: 10px;" name="harga_sesi" class="form-control" id="password" value="<?php echo $row->harga_sesi  ?>" placeholder="Nama Penanggung Jawab" required>
+                                                <input type="text" style="border-radius: 10px;" name="harga_sesi" class="form-control" id="password" value="<?php echo $row->harga_sesi  ?>" placeholder="Harga" required>
                                             </div>
                                         </div>
                                     
@@ -169,7 +169,7 @@
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-4  control-label col-form-label">Jumlah Sesi</label>
                                     <div class="col-sm-8">
-                                        <input type="text" style="border-radius: 10px;" name="jumlah_sesi" class="form-control" id="username" placeholder="Nama Kategori" required>
+                                        <input type="text" style="border-radius: 10px;" name="jumlah_sesi" class="form-control" id="username" placeholder="Jumlah Sesi" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
