@@ -92,7 +92,7 @@
                     <div class="col-lg-3 col-sm-6 mix all dresses bags">
                         <div class="single-product-item">
                             <figure>
-                                <a href="#"><img src="<?php echo base_url('./vendor/studio/img/' . $g->foto); ?>" alt=""></a>
+                                <a href="#"><img src="<?php echo base_url('./assets/studio/img/' . $g->foto); ?>" alt=""></a>
                                 <div class="p-status"><?= $g->nama_kategori ?></div>
                             </figure>
                             <div class="product-text">

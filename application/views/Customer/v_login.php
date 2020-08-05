@@ -73,7 +73,7 @@
                     </div>
                 </form>
 
-                <div class="login100-more" style="background-image: url('<?= base_url() ?>vendor/studio/login/images/bg-01.jpg');"></div>
+                <div class="login100-more" style="background-image: url('<?= base_url() ?>assets/studio/login/images/bg-01.jpg');"></div>
             </div>
         </div>
     </div>

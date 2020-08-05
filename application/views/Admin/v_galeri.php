@@ -82,7 +82,7 @@
                                     <!-- column -->
                                     <div style="margin: 5%;">
                                         <?php foreach ($galeri as $g) { ?>
-                                            <a data-toggle="modal" data-target="#modal-edit<?= $g->id_galeri; ?>"><img style="width: 300px; padding: 10px;" src="<?php echo base_url('./vendor/studio/img/' . $g->foto); ?>" alt=""><a>
+                                            <a data-toggle="modal" data-target="#modal-edit<?= $g->id_galeri; ?>"><img style="width: 300px; padding: 10px;" src="<?php echo base_url('./assets/studio/img/' . $g->foto); ?>" alt=""><a>
 
                                                 <?php } ?>
                                     </div>
@@ -107,7 +107,7 @@
                                     <div class="modal-body">
                                         <div class="form-group row">
                                             <div style="margin-left: 35px;" class="col-sm-12">
-                                                <img width="400px" height="400px" src="<?php echo base_url('./vendor/studio/img/' . $row->foto); ?>" alt="">
+                                                <img width="400px" height="400px" src="<?php echo base_url('./assets/studio/img/' . $row->foto); ?>" alt="">
                                             </div>
                                         </div>
                                     </div>

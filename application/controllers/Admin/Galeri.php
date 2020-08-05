@@ -56,7 +56,7 @@ class Galeri extends CI_Controller
 
     private function _uploadImage()
     {
-        $config['upload_path']          =  './vendor/studio/img';
+        $config['upload_path']          =  './assets/studio/img';
         $config['allowed_types']        = 'gif|jpg|png|JPG|jpeg';
         $config['max_size']             = 9048;
         $config['overwrite']            = true;
