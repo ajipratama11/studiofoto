@@ -34,7 +34,7 @@
 
                           </div>
                       </div>
-                      <form action="<?= base_url() ?>Customer/Pemesanan/keranjang" class="contact-form" method="post">
+                      <form action="<?= base_url('Customer/Pemesanan/keranjang'); ?>" class="contact-form" method="post">
                           <div class="row">
                               <div class="col-lg-12 mt-5">
                                   <label><b>Pilih Dekorasi : </b></label>
