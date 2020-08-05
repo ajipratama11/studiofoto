@@ -34,7 +34,7 @@
 
                           </div>
                       </div>
-                      <form action="<?= base_url() ?>Customer/Pemesanan/keranjang" class="contact-form" method="post">
+                      <form action="<?= base_url('Customer/Pemesanan/keranjang'); ?>" class="contact-form" method="post">
                           <div class="row">
                               <div class="col-lg-12 mt-5">
                                   <label><b>Pilih Dekorasi : </b></label>
@@ -57,7 +57,7 @@
                               </div>
                               <div id="lain" hidden class="col-lg-12" style="margin-top: 15px;">
                                   <label><b>Masukkan Alamat Lengkap :</b> </label>
-                                  <textarea class="form-control" style="height: 50px;" name="lokasi" required></textarea>
+                                  <textarea class="form-control" style="height: 50px;" name="lokasi"></textarea>
                               </div><br>
                               <input name="id_kategori" value="<?= $pemesan['id_kategori'] ?>" hidden>
                               <div class="col-lg-12" style="margin-top: 15px;">
@@ -82,7 +82,7 @@
                                   </div>
                               </div>
 
-                              <button>Order</button>
+                              <button  type="submit">Order</button>
 
                           </div>
                       </form>
