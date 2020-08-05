@@ -75,10 +75,10 @@
                               </div><br>
                               <div class=" row col-lg-12">
                                   <div class="col-md-6">
-                                      <input type="date" name="tanggal" class="form-control">
+                                      <input type="date" name="tanggal" class="form-control" required>
                                   </div>
                                   <div class="col-md-6">
-                                      <input type="time" name="waktu" class="form-control">
+                                      <input type="time" name="waktu" class="form-control" required>
                                   </div>
                               </div>
                               <button class="button" type="submit">Order</button>
