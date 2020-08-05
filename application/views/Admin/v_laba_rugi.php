@@ -82,9 +82,7 @@
                                             </select>
                                         </div>
                                     </form>
-                                    <div class="col-md-4">
-                                        <a class="btn btn-success" href="<?= base_url() ?>Admin/Laporan/tambah_jurnal" type="button">Tambah </a>
-                                    </div>
+
                                 </div>
 
 

@@ -30,6 +30,7 @@
                             $id_cus = $this->session->userdata('id_cus');
                             $this->db->select('COUNT(id_pemesanan) as total');
                             $this->db->where('id_cus ', $id_cus);
+                            $this->db->where('status_cus != ', 'Pesanan Selesai');
                             $total = $this->db->get('pemesanan')->row();
                             ?>
                           <?= $total->total ?>

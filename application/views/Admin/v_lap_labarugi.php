@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>STUDIO FOTO - Bukti pemesanan</title>
+
+    <link href="<?php echo base_url('assets/css/font-awesome.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/all.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/invoice.css'); ?>" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container-fluid invoice-container">
+
+        <div class="row invoice-header">
+            <div class="invoice-col">
+
+            </div>
+
+            <div class="invoice-col text-center">
+                <div class="invoice-status">
+                    <!-- <span class="paid">Paid</span> -->
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <h1 style="text-align: center;">Laba Rugi Bulan <?= bulan($bulan)  ?></h1><br>
+        <hr>
+        <br />
+
+        <!-- <h4><strong>Jenis Tempat :</strong> <?php echo $a->jenis ?>, <?php echo $a->lokasi ?></h4>
+        <h4><strong> Tanggal dan Waktu Pemotretan :</strong> <?php echo $a->tgl_pemesanan ?>, <strong>Pukul </strong> <?php echo $a->waktu_pemesanan ?>-<?php echo $a->waktu_selesai ?></h4> -->
+
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color: #2980b9; ">
+                <h3 class="panel-title" style="color: white;"><strong>Laba Rugi</strong></h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <td><strong>Kode</strong></td>
+                                <td><strong>Keterangan</strong></td>
+                                <td width="20%" class="text-center"><strong>Total</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="background-color: #2980b9; color:aliceblue;" colspan="4">Pendapatan</td>
+                            </tr>
+                            <?php foreach ($jurnal as $j) { ?>
+                                <tr>
+                                    <td><?= $j->no_reff ?></td>
+                                    <td><?= $j->nama_reff ?></td>
+                                    <td>Rp. <?= number_format($j->total)  ?></td>
+                                </tr>
+                            <?php } ?>
+
+                            <tr>
+                                <td class="total-row text-right"></td>
+                                <td class="total-row text-right"><strong>Total</strong></td>
+                                <td class="total-row text-center">Rp .<?= number_format($total1->total)  ?></td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #2980b9; color:aliceblue;" colspan="4">Pengeluaran</td>
+                            </tr>
+                            <?php
+                            foreach ($biaya as $j) {
+                            ?>
+                                <tr>
+                                    <td><?= $j->no_reff ?></td>
+                                    <td><?= $j->nama_reff ?></td>
+                                    <td>Rp. <?= number_format($j->total) ?></td>
+                                </tr>
+                            <?php } ?>
+                            <tr>
+                                <td class="total-row text-right"></td>
+                                <td class="total-row text-right"><strong>Total</strong></td>
+                                <td class="total-row text-center">Rp .<?= number_format($total2->total)  ?></td>
+                            </tr>
+                            <tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading" style="background-color: white;">
+                <h3 class="panel-title"><strong>Catatan</strong></h3>
+            </div>
+
+            <!-- memberikan keterangan untuk yang di proses dan terbayar -->
+            <div class="panel-body">
+                <?php
+                if ($total1->total > $total2->total) {
+                ?>
+                    <p><b> Status : Untung</b></p>
+                    <p style=" float:right"><b>Laba bersih : Rp.<?= number_format($total1->total - $total2->total)  ?></b></p>
+                <?php } else  if ($total1->total == $total2->total) {  ?>
+                    <p><b> Status : Seimbang</b></p>
+                    <p style=" float:right"><b>Laba bersih : Rp.<?= number_format($total1->total - $total2->total)  ?></b></p>
+                <?php } else { ?>
+                    <p><b> Status : Rugi</b></p>
+                    <p style=" float:right"><b>Laba bersih : Rp.<?= number_format($total1->total - $total2->total)  ?></b></p>
+                <?php } ?>
+            </div>
+        </div>
+
+        <div class="pull-right btn-group btn-group-sm hidden-print">
+            <a href="javascript:window.print()" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+            <!-- <a href="dl.php?type=i&amp;id=763834" class="btn btn-default"><i class="fa fa-download"></i> Download</a> -->
+        </div>
+    </div>
+</body>
+
+</html>

@@ -282,7 +282,7 @@ class Laporan extends CI_Controller
         // $this->db->where('year(transaksi.tgl_transaksi)', $tahun);
         // $data['kredit'] = $this->db->get('transaksi')->row();
 
-        $this->load->view('Admin/v_detail_laba', $data);
+        $this->load->view('Admin/v_lap_labarugi', $data);
     }
     function getJenis()
     {
