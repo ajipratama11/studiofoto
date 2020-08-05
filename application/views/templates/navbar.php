@@ -110,8 +110,8 @@
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/jurnal" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Jurnal Umum </span></a></li>
                         <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/buku_besar" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Buku Besar </span></a></li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/neraca_saldo" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Neraca Saldo </span></a></li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/laba_rugi" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Laba Rugi </span></a></li>
+                        <!-- <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/neraca_saldo" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Neraca Saldo </span></a></li>
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Laporan/laba_rugi" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Laba Rugi </span></a></li> -->
 
                     </ul>
                 </li>
