@@ -129,6 +129,8 @@
                             <ul>
 
                                 <div>
+                                    <li class=" mt-4">No Rekening </li>
+                                    <h4 class=" mt-4">0038650807 (Bank Jatim)</h4>
                                     <li class=" mt-4">Opsi Pembayaran </li>
                                     <input type="radio" name="opsi" id="rad1" value="Lunas" class="rad" required /> Bayar Lunas
                                     <input type="radio" name="opsi" id="rad2" value="DP" class="rad ml-5" required /> Bayar DP
