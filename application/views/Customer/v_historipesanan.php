@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="page-breadcrumb">
-                        <h2>Keranjang<span>.</span></h2>
+                        <h2>HISTORI PESANAN<span>.</span></h2>
                         <a href="#">Home</a>
                         <a href="#">Dresses</a>
                         <a class="active" href="#">Night Dresses</a>
@@ -17,8 +17,7 @@
                 <div class="col-lg-8">
                     <img src="img/add.jpg" alt="">
                 </div>
-            </div><br>
-                <a class="btn btn-success" href="<?= base_url('Customer/Keranjang/histori_pesanan'); ?>">Histori Pesanan</a>
+            </div>
         </div>
     </section>
     <!-- Page Add Section End -->
