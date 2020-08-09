@@ -55,11 +55,15 @@
                       <li><a class="active" href="<?= base_url() ?>Customer/Beranda">Beranda</a></li>
                       <li><a>Kategori Foto</a>
                           <ul class="sub-menu">
-                              <?php $data = $this->db->get('kategori')->result();
-                                foreach ($data as $k) {
+                              <?php $data = $this->db->get('kategori')->result(); ?>
+                               
+                                  <li>
+                                  <a href="<?= base_url('Customer/Kategori/') ?>">All</a>
+                                  <?php foreach ($data as $k) {
                                 ?>
-                                  <li><a href="<?= base_url('Customer/Kategori/detail_kategori/' . $k->id_kategori) ?>"><?= $k->nama_kategori ?></a></li>
+                                  <a href="<?= base_url('Customer/Kategori/detail_kategori/' . $k->id_kategori) ?>"><?= $k->nama_kategori ?></a>
                               <?php } ?>
+                                  </li>
                           </ul>
                       </li>
                       <li><a href="./categories.html">Dekorasi</a>

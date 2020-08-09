@@ -18,17 +18,25 @@ class Kategori extends CI_Controller
 
     public function index()
     {
+        
+        $data['kategori'] = $this->db->query("SELECT * FROM kategori")->result();
+
+        $data['galeri1'] = $this->db->query('SELECT * FROM galeri JOIN kategori ON galeri.id_kategori=kategori.id_kategori')->result();
+        $this->load->view('Customer/v_all_kategori', $data);
     }
 
     public function detail_kategori($id_kategori = null)
     {
-        $this->db->join('galeri', 'galeri.id_kategori=kategori.id_kategori');
-        $this->db->where('kategori.id_kategori', $id_kategori);
-        $data['kategori'] = $this->db->get('kategori')->row_array();
+       
 
-        $this->db->join('kategori', 'galeri.id_kategori=kategori.id_kategori');
-        $this->db->where('galeri.id_kategori', $id_kategori);
-        $data['galeri'] = $this->db->get('galeri')->result();
-        $this->load->view('Customer/v_detail_kategori', $data);
+            $this->db->join('galeri', 'galeri.id_kategori=kategori.id_kategori');
+            $this->db->where('kategori.id_kategori', $id_kategori);
+            $data['kategori'] = $this->db->get('kategori')->row_array();
+    
+            $this->db->join('kategori', 'galeri.id_kategori=kategori.id_kategori');
+            $this->db->where('galeri.id_kategori', $id_kategori);
+            $data['galeri'] = $this->db->get('galeri')->result();
+            $this->load->view('Customer/v_detail_kategori', $data);
+        
     }
 }
