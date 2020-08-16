@@ -98,7 +98,11 @@ class M_pemesan extends CI_Model
     }
 
     function tampil_pesan(){
-		$query = $this->db->query("SELECT * FROM pemesanan JOIN kategori ON pemesanan.id_kategori=kategori.id_kategori JOIN dekorasi ON pemesanan.id_dekorasi=dekorasi.id_dekorasi JOIN sesi_pemotretan ON pemesanan.id_sesi=sesi_pemotretan.id_sesi JOIN customer ON pemesanan.id_cus=customer.id_cus JOIN konfirmasi_pembayaran ON pemesanan.id_pemesanan=konfirmasi_pembayaran.id_pemesanan ORDER BY pemesanan.id_pemesanan DESC");
+		$query = $this->db->query("SELECT * FROM pemesanan JOIN kategori ON pemesanan.id_kategori=kategori.id_kategori JOIN dekorasi ON pemesanan.id_dekorasi=dekorasi.id_dekorasi JOIN sesi_pemotretan ON pemesanan.id_sesi=sesi_pemotretan.id_sesi JOIN customer ON pemesanan.id_cus=customer.id_cus JOIN konfirmasi_pembayaran ON pemesanan.id_pemesanan=konfirmasi_pembayaran.id_pemesanan WHERE pemesanan.status_cus!='Pesanan Selesai' ORDER BY pemesanan.id_pemesanan DESC");
+		return $query->result();
+    }
+    function tampil_pesanselesai(){
+		$query = $this->db->query("SELECT * FROM pemesanan JOIN kategori ON pemesanan.id_kategori=kategori.id_kategori JOIN dekorasi ON pemesanan.id_dekorasi=dekorasi.id_dekorasi JOIN sesi_pemotretan ON pemesanan.id_sesi=sesi_pemotretan.id_sesi JOIN customer ON pemesanan.id_cus=customer.id_cus JOIN konfirmasi_pembayaran ON pemesanan.id_pemesanan=konfirmasi_pembayaran.id_pemesanan WHERE pemesanan.status_cus='Pesanan Selesai' ORDER BY pemesanan.id_pemesanan DESC");
 		return $query->result();
     }
     function tampil_pesan2($idpesan){

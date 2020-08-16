@@ -39,6 +39,7 @@ class Pemesanan extends CI_Controller
         $this->id_sesi = $post['id_sesi'];
         $this->id_kategori = $post['id_kategori'];
         $this->jenis = $post['jenis'];
+        $this->kiriman = $post['kiriman'];
 
         $this->db->where('id_sesi', $post['id_sesi']);
         $sesi = $this->db->get('sesi_pemotretan')->row();
@@ -49,10 +50,9 @@ class Pemesanan extends CI_Controller
             $lama = $sesi->jumlah_sesi * 6;
         }
 
-
         $this->db->where('id_dekorasi', $post['id_dekorasi']);
         $dekor = $this->db->get('dekorasi')->row();
-
+        
         $this->db->where('id_kategori', $post['id_kategori']);
         $kategori = $this->db->get('kategori')->row();
 

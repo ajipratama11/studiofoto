@@ -71,6 +71,17 @@
                                   </select>
                               </div>
                               <div class="col-lg-12" style="margin-top: 15px;">
+                                  <label><b>Pilih Kiriman :</b> </label>
+                              </div><br>
+                              <div class="col-lg-12">
+                                  <select id="tempat" name="kiriman" type="text" class="form-control" placeholder="First Name">
+                    
+                                          <option value="cetak">Cetak</option>
+                                          <option value="file/dvd">File/Dvd</option>
+                                     
+                                  </select>
+                              </div>
+                              <div class="col-lg-12" style="margin-top: 15px;">
                                   <label><b>Pilih Jadwal :</b> </label>
                               </div><br>
                               <div class=" row col-lg-12">

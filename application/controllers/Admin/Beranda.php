@@ -47,6 +47,11 @@ class Beranda extends CI_Controller
         $data['pemesanan'] = $this->M_pemesan->tampil_pesan();
         $this->load->view('Admin/v_pemesanan', $data);
     }
+    public function pemesananselesai()
+    {
+        $data['pemesanan'] = $this->M_pemesan->tampil_pesanselesai();
+        $this->load->view('Admin/v_pemesananselesai', $data);
+    }
     public function statusDP()
     {
         $idpesan = $this->uri->segment(4);
